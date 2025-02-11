@@ -1,6 +1,6 @@
-module github.com/thousandeyes/thousandeyes-sdk-go/v2
+module github.com/thousandeyes/thousandeyes-sdk-go/v3
 
-go 1.17
+go 1.18
 
 require github.com/stretchr/testify v1.7.2
 
