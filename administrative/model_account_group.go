@@ -12,11 +12,11 @@ package administrative
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 )
 
 // checks if the AccountGroup type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &AccountGroup{}
+var _ utils.MappedNullable = &AccountGroup{}
 
 // AccountGroup struct for AccountGroup
 type AccountGroup struct {
@@ -45,7 +45,7 @@ func NewAccountGroupWithDefaults() *AccountGroup {
 
 // GetAid returns the Aid field value if set, zero value otherwise.
 func (o *AccountGroup) GetAid() string {
-	if o == nil || core.IsNil(o.Aid) {
+	if o == nil || utils.IsNil(o.Aid) {
 		var ret string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *AccountGroup) GetAid() string {
 // GetAidOk returns a tuple with the Aid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountGroup) GetAidOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Aid) {
+	if o == nil || utils.IsNil(o.Aid) {
 		return nil, false
 	}
 	return o.Aid, true
@@ -63,7 +63,7 @@ func (o *AccountGroup) GetAidOk() (*string, bool) {
 
 // HasAid returns a boolean if a field has been set.
 func (o *AccountGroup) HasAid() bool {
-	if o != nil && !core.IsNil(o.Aid) {
+	if o != nil && !utils.IsNil(o.Aid) {
 		return true
 	}
 
@@ -77,7 +77,7 @@ func (o *AccountGroup) SetAid(v string) {
 
 // GetAccountGroupName returns the AccountGroupName field value if set, zero value otherwise.
 func (o *AccountGroup) GetAccountGroupName() string {
-	if o == nil || core.IsNil(o.AccountGroupName) {
+	if o == nil || utils.IsNil(o.AccountGroupName) {
 		var ret string
 		return ret
 	}
@@ -87,7 +87,7 @@ func (o *AccountGroup) GetAccountGroupName() string {
 // GetAccountGroupNameOk returns a tuple with the AccountGroupName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountGroup) GetAccountGroupNameOk() (*string, bool) {
-	if o == nil || core.IsNil(o.AccountGroupName) {
+	if o == nil || utils.IsNil(o.AccountGroupName) {
 		return nil, false
 	}
 	return o.AccountGroupName, true
@@ -95,7 +95,7 @@ func (o *AccountGroup) GetAccountGroupNameOk() (*string, bool) {
 
 // HasAccountGroupName returns a boolean if a field has been set.
 func (o *AccountGroup) HasAccountGroupName() bool {
-	if o != nil && !core.IsNil(o.AccountGroupName) {
+	if o != nil && !utils.IsNil(o.AccountGroupName) {
 		return true
 	}
 
@@ -108,7 +108,7 @@ func (o *AccountGroup) SetAccountGroupName(v string) {
 }
 
 func (o AccountGroup) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -117,10 +117,10 @@ func (o AccountGroup) MarshalJSON() ([]byte, error) {
 
 func (o AccountGroup) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !core.IsNil(o.Aid) {
+	if !utils.IsNil(o.Aid) {
 		toSerialize["aid"] = o.Aid
 	}
-	if !core.IsNil(o.AccountGroupName) {
+	if !utils.IsNil(o.AccountGroupName) {
 		toSerialize["accountGroupName"] = o.AccountGroupName
 	}
 	return toSerialize, nil
@@ -161,5 +161,3 @@ func (v *NullableAccountGroup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -12,16 +12,16 @@ package administrative
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 )
 
 // checks if the AccountGroupRole type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &AccountGroupRole{}
+var _ utils.MappedNullable = &AccountGroupRole{}
 
 // AccountGroupRole struct for AccountGroupRole
 type AccountGroupRole struct {
 	AccountGroup *AccountGroup `json:"accountGroup,omitempty"`
-	Roles []Role `json:"roles,omitempty"`
+	Roles        []Role        `json:"roles,omitempty"`
 }
 
 // NewAccountGroupRole instantiates a new AccountGroupRole object
@@ -43,7 +43,7 @@ func NewAccountGroupRoleWithDefaults() *AccountGroupRole {
 
 // GetAccountGroup returns the AccountGroup field value if set, zero value otherwise.
 func (o *AccountGroupRole) GetAccountGroup() AccountGroup {
-	if o == nil || core.IsNil(o.AccountGroup) {
+	if o == nil || utils.IsNil(o.AccountGroup) {
 		var ret AccountGroup
 		return ret
 	}
@@ -53,7 +53,7 @@ func (o *AccountGroupRole) GetAccountGroup() AccountGroup {
 // GetAccountGroupOk returns a tuple with the AccountGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountGroupRole) GetAccountGroupOk() (*AccountGroup, bool) {
-	if o == nil || core.IsNil(o.AccountGroup) {
+	if o == nil || utils.IsNil(o.AccountGroup) {
 		return nil, false
 	}
 	return o.AccountGroup, true
@@ -61,7 +61,7 @@ func (o *AccountGroupRole) GetAccountGroupOk() (*AccountGroup, bool) {
 
 // HasAccountGroup returns a boolean if a field has been set.
 func (o *AccountGroupRole) HasAccountGroup() bool {
-	if o != nil && !core.IsNil(o.AccountGroup) {
+	if o != nil && !utils.IsNil(o.AccountGroup) {
 		return true
 	}
 
@@ -75,7 +75,7 @@ func (o *AccountGroupRole) SetAccountGroup(v AccountGroup) {
 
 // GetRoles returns the Roles field value if set, zero value otherwise.
 func (o *AccountGroupRole) GetRoles() []Role {
-	if o == nil || core.IsNil(o.Roles) {
+	if o == nil || utils.IsNil(o.Roles) {
 		var ret []Role
 		return ret
 	}
@@ -85,7 +85,7 @@ func (o *AccountGroupRole) GetRoles() []Role {
 // GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountGroupRole) GetRolesOk() ([]Role, bool) {
-	if o == nil || core.IsNil(o.Roles) {
+	if o == nil || utils.IsNil(o.Roles) {
 		return nil, false
 	}
 	return o.Roles, true
@@ -93,7 +93,7 @@ func (o *AccountGroupRole) GetRolesOk() ([]Role, bool) {
 
 // HasRoles returns a boolean if a field has been set.
 func (o *AccountGroupRole) HasRoles() bool {
-	if o != nil && !core.IsNil(o.Roles) {
+	if o != nil && !utils.IsNil(o.Roles) {
 		return true
 	}
 
@@ -106,7 +106,7 @@ func (o *AccountGroupRole) SetRoles(v []Role) {
 }
 
 func (o AccountGroupRole) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -115,10 +115,10 @@ func (o AccountGroupRole) MarshalJSON() ([]byte, error) {
 
 func (o AccountGroupRole) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !core.IsNil(o.AccountGroup) {
+	if !utils.IsNil(o.AccountGroup) {
 		toSerialize["accountGroup"] = o.AccountGroup
 	}
-	if !core.IsNil(o.Roles) {
+	if !utils.IsNil(o.Roles) {
 		toSerialize["roles"] = o.Roles
 	}
 	return toSerialize, nil
@@ -159,5 +159,3 @@ func (v *NullableAccountGroupRole) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

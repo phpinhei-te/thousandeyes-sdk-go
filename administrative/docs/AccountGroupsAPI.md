@@ -1,4 +1,4 @@
-# \AccountGroupsAPI
+# AccountGroupsAPI
 
 All URIs are relative to *https://api.thousandeyes.com/v7*
 
@@ -28,7 +28,7 @@ package main
 import (
 	"fmt"
 	"os"
-	"github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/client"
 	"github.com/thousandeyes/thousandeyes-sdk-go/v3/administrative"
 )
 
@@ -36,8 +36,8 @@ func main() {
 	accountGroupRequest := *administrative.NewAccountGroupRequest("My testing account group") // AccountGroupRequest | 
 	expand := []administrative.ExpandAccountGroupOptions{administrative.ExpandAccountGroupOptions("user")} // []ExpandAccountGroupOptions | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the `users` resource, pass the `?expand=user` query. (optional)
 
-	configuration := core.NewConfiguration().WithAuthToken("<bearer-token>")
-	apiClient := core.NewAPIClient(configuration)
+	configuration := client.NewConfiguration().WithAuthToken("<bearer-token>")
+	apiClient := client.NewAPIClient(configuration)
 
 	api := (*administrative.AccountGroupsAPIService)(&apiClient.Common)
 
@@ -58,7 +58,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateAccountGroupRequest struct via the builder pattern
+Other parameters are passed through a pointer to a ApiCreateAccountGroupRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)[[Back to README]](../README.md)
 
@@ -98,15 +98,15 @@ package main
 import (
 	"fmt"
 	"os"
-	"github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/client"
 	"github.com/thousandeyes/thousandeyes-sdk-go/v3/administrative"
 )
 
 func main() {
 	id := "1234" // string | Identifier for the account group.
 
-	configuration := core.NewConfiguration().WithAuthToken("<bearer-token>")
-	apiClient := core.NewAPIClient(configuration)
+	configuration := client.NewConfiguration().WithAuthToken("<bearer-token>")
+	apiClient := client.NewAPIClient(configuration)
 
 	api := (*administrative.AccountGroupsAPIService)(&apiClient.Common)
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteAccountGroupRequest struct via the builder pattern
+Other parameters are passed through a pointer to a ApiDeleteAccountGroupRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -145,7 +145,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/problem+json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)[[Back to README]](../README.md)
 
@@ -166,7 +166,7 @@ package main
 import (
 	"fmt"
 	"os"
-	"github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/client"
 	"github.com/thousandeyes/thousandeyes-sdk-go/v3/administrative"
 )
 
@@ -174,8 +174,8 @@ func main() {
 	id := "1234" // string | Identifier for the account group.
 	expand := []administrative.ExpandAccountGroupOptions{administrative.ExpandAccountGroupOptions("user")} // []ExpandAccountGroupOptions | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the `users` resource, pass the `?expand=user` query. (optional)
 
-	configuration := core.NewConfiguration().WithAuthToken("<bearer-token>")
-	apiClient := core.NewAPIClient(configuration)
+	configuration := client.NewConfiguration().WithAuthToken("<bearer-token>")
+	apiClient := client.NewAPIClient(configuration)
 
 	api := (*administrative.AccountGroupsAPIService)(&apiClient.Common)
 
@@ -199,7 +199,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetAccountGroupRequest struct via the builder pattern
+Other parameters are passed through a pointer to a ApiGetAccountGroupRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)[[Back to README]](../README.md)
 
@@ -239,14 +239,14 @@ package main
 import (
 	"fmt"
 	"os"
-	"github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/client"
 	"github.com/thousandeyes/thousandeyes-sdk-go/v3/administrative"
 )
 
 func main() {
 
-	configuration := core.NewConfiguration().WithAuthToken("<bearer-token>")
-	apiClient := core.NewAPIClient(configuration)
+	configuration := client.NewConfiguration().WithAuthToken("<bearer-token>")
+	apiClient := client.NewAPIClient(configuration)
 
 	api := (*administrative.AccountGroupsAPIService)(&apiClient.Common)
 
@@ -267,7 +267,7 @@ This endpoint does not need any parameter.
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetAccountGroupsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a ApiGetAccountGroupsRequest struct via the builder pattern
 
 
 ### Return type
@@ -281,7 +281,7 @@ Other parameters are passed through a pointer to a apiGetAccountGroupsRequest st
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)[[Back to README]](../README.md)
 
@@ -302,7 +302,7 @@ package main
 import (
 	"fmt"
 	"os"
-	"github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/client"
 	"github.com/thousandeyes/thousandeyes-sdk-go/v3/administrative"
 )
 
@@ -311,8 +311,8 @@ func main() {
 	accountGroupRequest := *administrative.NewAccountGroupRequest("My testing account group") // AccountGroupRequest | 
 	expand := []administrative.ExpandAccountGroupOptions{administrative.ExpandAccountGroupOptions("user")} // []ExpandAccountGroupOptions | Optional parameter that specifies whether or not account group related resources should be expanded. By default, no expansion takes place if the query parameter is not passed. For example, to expand the `users` resource, pass the `?expand=user` query. (optional)
 
-	configuration := core.NewConfiguration().WithAuthToken("<bearer-token>")
-	apiClient := core.NewAPIClient(configuration)
+	configuration := client.NewConfiguration().WithAuthToken("<bearer-token>")
+	apiClient := client.NewAPIClient(configuration)
 
 	api := (*administrative.AccountGroupsAPIService)(&apiClient.Common)
 
@@ -336,7 +336,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateAccountGroupRequest struct via the builder pattern
+Other parameters are passed through a pointer to a ApiUpdateAccountGroupRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -356,7 +356,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)[[Back to README]](../README.md)
 

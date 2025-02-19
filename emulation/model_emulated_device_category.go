@@ -1,7 +1,7 @@
 /*
 Emulation API
 
-The Emulation API facilitates the retrieval of user-agent strings for HTTP, pageload, and transaction tests. It also enables the retrieval and addition of emulated devices for pageload and transaction tests.  To access Emulation API operations, the following permissions are required:  * `Settings Tests Read` for read operations. * `Settings Tests Update` for write operations. 
+The Emulation API facilitates the retrieval of user-agent strings for HTTP, pageload, and transaction tests. It also enables the retrieval and addition of emulated devices for pageload and transaction tests.  To access Emulation API operations, the following permissions are required:  * `Settings Tests Read` for read operations. * `Settings Tests Update` for write operations.
 
 API version: 7.0.36
 */
@@ -12,7 +12,6 @@ package emulation
 
 import (
 	"encoding/json"
-    
 	"fmt"
 )
 
@@ -22,9 +21,9 @@ type EmulatedDeviceCategory string
 // List of EmulatedDeviceCategory
 const (
 	EMULATEDDEVICECATEGORY_DESKTOP EmulatedDeviceCategory = "desktop"
-	EMULATEDDEVICECATEGORY_LAPTOP EmulatedDeviceCategory = "laptop"
-	EMULATEDDEVICECATEGORY_PHONE EmulatedDeviceCategory = "phone"
-	EMULATEDDEVICECATEGORY_TABLET EmulatedDeviceCategory = "tablet"
+	EMULATEDDEVICECATEGORY_LAPTOP  EmulatedDeviceCategory = "laptop"
+	EMULATEDDEVICECATEGORY_PHONE   EmulatedDeviceCategory = "phone"
+	EMULATEDDEVICECATEGORY_TABLET  EmulatedDeviceCategory = "tablet"
 )
 
 // All allowed values of EmulatedDeviceCategory enum
@@ -113,4 +112,3 @@ func (v *NullableEmulatedDeviceCategory) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

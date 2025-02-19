@@ -1,4 +1,4 @@
-# \UsersAPI
+# UsersAPI
 
 All URIs are relative to *https://api.thousandeyes.com/v7*
 
@@ -29,7 +29,7 @@ package main
 import (
 	"fmt"
 	"os"
-	"github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/client"
 	"github.com/thousandeyes/thousandeyes-sdk-go/v3/administrative"
 )
 
@@ -37,8 +37,8 @@ func main() {
 	userRequest := *administrative.NewUserRequest() // UserRequest | 
 	aid := "1234" // string | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
 
-	configuration := core.NewConfiguration().WithAuthToken("<bearer-token>")
-	apiClient := core.NewAPIClient(configuration)
+	configuration := client.NewConfiguration().WithAuthToken("<bearer-token>")
+	apiClient := client.NewAPIClient(configuration)
 
 	api := (*administrative.UsersAPIService)(&apiClient.Common)
 
@@ -59,7 +59,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateUserRequest struct via the builder pattern
+Other parameters are passed through a pointer to a ApiCreateUserRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)[[Back to README]](../README.md)
 
@@ -99,7 +99,7 @@ package main
 import (
 	"fmt"
 	"os"
-	"github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/client"
 	"github.com/thousandeyes/thousandeyes-sdk-go/v3/administrative"
 )
 
@@ -107,8 +107,8 @@ func main() {
 	id := "1234" // string | Identifier for the user.
 	aid := "1234" // string | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
 
-	configuration := core.NewConfiguration().WithAuthToken("<bearer-token>")
-	apiClient := core.NewAPIClient(configuration)
+	configuration := client.NewConfiguration().WithAuthToken("<bearer-token>")
+	apiClient := client.NewAPIClient(configuration)
 
 	api := (*administrative.UsersAPIService)(&apiClient.Common)
 
@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteUserRequest struct via the builder pattern
+Other parameters are passed through a pointer to a ApiDeleteUserRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/problem+json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)[[Back to README]](../README.md)
 
@@ -169,14 +169,14 @@ package main
 import (
 	"fmt"
 	"os"
-	"github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/client"
 	"github.com/thousandeyes/thousandeyes-sdk-go/v3/administrative"
 )
 
 func main() {
 
-	configuration := core.NewConfiguration().WithAuthToken("<bearer-token>")
-	apiClient := core.NewAPIClient(configuration)
+	configuration := client.NewConfiguration().WithAuthToken("<bearer-token>")
+	apiClient := client.NewAPIClient(configuration)
 
 	api := (*administrative.UsersAPIService)(&apiClient.Common)
 
@@ -197,7 +197,7 @@ This endpoint does not need any parameter.
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetCurrentUserRequest struct via the builder pattern
+Other parameters are passed through a pointer to a ApiGetCurrentUserRequest struct via the builder pattern
 
 
 ### Return type
@@ -211,7 +211,7 @@ Other parameters are passed through a pointer to a apiGetCurrentUserRequest stru
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)[[Back to README]](../README.md)
 
@@ -232,7 +232,7 @@ package main
 import (
 	"fmt"
 	"os"
-	"github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/client"
 	"github.com/thousandeyes/thousandeyes-sdk-go/v3/administrative"
 )
 
@@ -240,8 +240,8 @@ func main() {
 	id := "1234" // string | Identifier for the user.
 	aid := "1234" // string | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
 
-	configuration := core.NewConfiguration().WithAuthToken("<bearer-token>")
-	apiClient := core.NewAPIClient(configuration)
+	configuration := client.NewConfiguration().WithAuthToken("<bearer-token>")
+	apiClient := client.NewAPIClient(configuration)
 
 	api := (*administrative.UsersAPIService)(&apiClient.Common)
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetUserRequest struct via the builder pattern
+Other parameters are passed through a pointer to a ApiGetUserRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -284,7 +284,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)[[Back to README]](../README.md)
 
@@ -305,15 +305,15 @@ package main
 import (
 	"fmt"
 	"os"
-	"github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/client"
 	"github.com/thousandeyes/thousandeyes-sdk-go/v3/administrative"
 )
 
 func main() {
 	aid := "1234" // string | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
 
-	configuration := core.NewConfiguration().WithAuthToken("<bearer-token>")
-	apiClient := core.NewAPIClient(configuration)
+	configuration := client.NewConfiguration().WithAuthToken("<bearer-token>")
+	apiClient := client.NewAPIClient(configuration)
 
 	api := (*administrative.UsersAPIService)(&apiClient.Common)
 
@@ -334,7 +334,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetUsersRequest struct via the builder pattern
+Other parameters are passed through a pointer to a ApiGetUsersRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -352,7 +352,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)[[Back to README]](../README.md)
 
@@ -373,7 +373,7 @@ package main
 import (
 	"fmt"
 	"os"
-	"github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/client"
 	"github.com/thousandeyes/thousandeyes-sdk-go/v3/administrative"
 )
 
@@ -382,8 +382,8 @@ func main() {
 	userRequest := *administrative.NewUserRequest() // UserRequest | 
 	aid := "1234" // string | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
 
-	configuration := core.NewConfiguration().WithAuthToken("<bearer-token>")
-	apiClient := core.NewAPIClient(configuration)
+	configuration := client.NewConfiguration().WithAuthToken("<bearer-token>")
+	apiClient := client.NewAPIClient(configuration)
 
 	api := (*administrative.UsersAPIService)(&apiClient.Common)
 
@@ -407,7 +407,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateUserRequest struct via the builder pattern
+Other parameters are passed through a pointer to a ApiUpdateUserRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -427,7 +427,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)[[Back to README]](../README.md)
 

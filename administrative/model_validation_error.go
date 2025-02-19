@@ -12,11 +12,11 @@ package administrative
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 )
 
 // checks if the ValidationError type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &ValidationError{}
+var _ utils.MappedNullable = &ValidationError{}
 
 // ValidationError struct for ValidationError
 type ValidationError struct {
@@ -53,7 +53,7 @@ func NewValidationErrorWithDefaults() *ValidationError {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *ValidationError) GetType() string {
-	if o == nil || core.IsNil(o.Type) {
+	if o == nil || utils.IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -63,7 +63,7 @@ func (o *ValidationError) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ValidationError) GetTypeOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Type) {
+	if o == nil || utils.IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -71,7 +71,7 @@ func (o *ValidationError) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *ValidationError) HasType() bool {
-	if o != nil && !core.IsNil(o.Type) {
+	if o != nil && !utils.IsNil(o.Type) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o *ValidationError) SetType(v string) {
 
 // GetTitle returns the Title field value if set, zero value otherwise.
 func (o *ValidationError) GetTitle() string {
-	if o == nil || core.IsNil(o.Title) {
+	if o == nil || utils.IsNil(o.Title) {
 		var ret string
 		return ret
 	}
@@ -95,7 +95,7 @@ func (o *ValidationError) GetTitle() string {
 // GetTitleOk returns a tuple with the Title field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ValidationError) GetTitleOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Title) {
+	if o == nil || utils.IsNil(o.Title) {
 		return nil, false
 	}
 	return o.Title, true
@@ -103,7 +103,7 @@ func (o *ValidationError) GetTitleOk() (*string, bool) {
 
 // HasTitle returns a boolean if a field has been set.
 func (o *ValidationError) HasTitle() bool {
-	if o != nil && !core.IsNil(o.Title) {
+	if o != nil && !utils.IsNil(o.Title) {
 		return true
 	}
 
@@ -117,7 +117,7 @@ func (o *ValidationError) SetTitle(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *ValidationError) GetStatus() int32 {
-	if o == nil || core.IsNil(o.Status) {
+	if o == nil || utils.IsNil(o.Status) {
 		var ret int32
 		return ret
 	}
@@ -127,7 +127,7 @@ func (o *ValidationError) GetStatus() int32 {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ValidationError) GetStatusOk() (*int32, bool) {
-	if o == nil || core.IsNil(o.Status) {
+	if o == nil || utils.IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -135,7 +135,7 @@ func (o *ValidationError) GetStatusOk() (*int32, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *ValidationError) HasStatus() bool {
-	if o != nil && !core.IsNil(o.Status) {
+	if o != nil && !utils.IsNil(o.Status) {
 		return true
 	}
 
@@ -149,7 +149,7 @@ func (o *ValidationError) SetStatus(v int32) {
 
 // GetDetail returns the Detail field value if set, zero value otherwise.
 func (o *ValidationError) GetDetail() string {
-	if o == nil || core.IsNil(o.Detail) {
+	if o == nil || utils.IsNil(o.Detail) {
 		var ret string
 		return ret
 	}
@@ -159,7 +159,7 @@ func (o *ValidationError) GetDetail() string {
 // GetDetailOk returns a tuple with the Detail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ValidationError) GetDetailOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Detail) {
+	if o == nil || utils.IsNil(o.Detail) {
 		return nil, false
 	}
 	return o.Detail, true
@@ -167,7 +167,7 @@ func (o *ValidationError) GetDetailOk() (*string, bool) {
 
 // HasDetail returns a boolean if a field has been set.
 func (o *ValidationError) HasDetail() bool {
-	if o != nil && !core.IsNil(o.Detail) {
+	if o != nil && !utils.IsNil(o.Detail) {
 		return true
 	}
 
@@ -181,7 +181,7 @@ func (o *ValidationError) SetDetail(v string) {
 
 // GetInstance returns the Instance field value if set, zero value otherwise.
 func (o *ValidationError) GetInstance() string {
-	if o == nil || core.IsNil(o.Instance) {
+	if o == nil || utils.IsNil(o.Instance) {
 		var ret string
 		return ret
 	}
@@ -191,7 +191,7 @@ func (o *ValidationError) GetInstance() string {
 // GetInstanceOk returns a tuple with the Instance field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ValidationError) GetInstanceOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Instance) {
+	if o == nil || utils.IsNil(o.Instance) {
 		return nil, false
 	}
 	return o.Instance, true
@@ -199,7 +199,7 @@ func (o *ValidationError) GetInstanceOk() (*string, bool) {
 
 // HasInstance returns a boolean if a field has been set.
 func (o *ValidationError) HasInstance() bool {
-	if o != nil && !core.IsNil(o.Instance) {
+	if o != nil && !utils.IsNil(o.Instance) {
 		return true
 	}
 
@@ -224,7 +224,7 @@ func (o *ValidationError) GetErrors() []ValidationErrorItem {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ValidationError) GetErrorsOk() ([]ValidationErrorItem, bool) {
-	if o == nil || core.IsNil(o.Errors) {
+	if o == nil || utils.IsNil(o.Errors) {
 		return nil, false
 	}
 	return o.Errors, true
@@ -232,7 +232,7 @@ func (o *ValidationError) GetErrorsOk() ([]ValidationErrorItem, bool) {
 
 // HasErrors returns a boolean if a field has been set.
 func (o *ValidationError) HasErrors() bool {
-	if o != nil && !core.IsNil(o.Errors) {
+	if o != nil && !utils.IsNil(o.Errors) {
 		return true
 	}
 
@@ -245,7 +245,7 @@ func (o *ValidationError) SetErrors(v []ValidationErrorItem) {
 }
 
 func (o ValidationError) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -254,19 +254,19 @@ func (o ValidationError) MarshalJSON() ([]byte, error) {
 
 func (o ValidationError) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !core.IsNil(o.Type) {
+	if !utils.IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !core.IsNil(o.Title) {
+	if !utils.IsNil(o.Title) {
 		toSerialize["title"] = o.Title
 	}
-	if !core.IsNil(o.Status) {
+	if !utils.IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if !core.IsNil(o.Detail) {
+	if !utils.IsNil(o.Detail) {
 		toSerialize["detail"] = o.Detail
 	}
-	if !core.IsNil(o.Instance) {
+	if !utils.IsNil(o.Instance) {
 		toSerialize["instance"] = o.Instance
 	}
 	if o.Errors != nil {
@@ -310,5 +310,3 @@ func (v *NullableValidationError) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

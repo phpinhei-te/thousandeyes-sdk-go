@@ -12,7 +12,6 @@ package administrative
 
 import (
 	"encoding/json"
-    
 	"fmt"
 )
 
@@ -21,9 +20,9 @@ type CloudEnterpriseAgentType string
 
 // List of CloudEnterpriseAgentType
 const (
-	CLOUDENTERPRISEAGENTTYPE_CLOUD CloudEnterpriseAgentType = "cloud"
+	CLOUDENTERPRISEAGENTTYPE_CLOUD              CloudEnterpriseAgentType = "cloud"
 	CLOUDENTERPRISEAGENTTYPE_ENTERPRISE_CLUSTER CloudEnterpriseAgentType = "enterprise-cluster"
-	CLOUDENTERPRISEAGENTTYPE_ENTERPRISE CloudEnterpriseAgentType = "enterprise"
+	CLOUDENTERPRISEAGENTTYPE_ENTERPRISE         CloudEnterpriseAgentType = "enterprise"
 )
 
 // All allowed values of CloudEnterpriseAgentType enum
@@ -111,4 +110,3 @@ func (v *NullableCloudEnterpriseAgentType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

@@ -12,13 +12,12 @@ package administrative
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
-	"bytes"
 	"fmt"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 )
 
 // checks if the AccountGroupRequest type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &AccountGroupRequest{}
+var _ utils.MappedNullable = &AccountGroupRequest{}
 
 // AccountGroupRequest struct for AccountGroupRequest
 type AccountGroupRequest struct {
@@ -74,7 +73,7 @@ func (o *AccountGroupRequest) SetAccountGroupName(v string) {
 
 // GetAgents returns the Agents field value if set, zero value otherwise.
 func (o *AccountGroupRequest) GetAgents() []string {
-	if o == nil || core.IsNil(o.Agents) {
+	if o == nil || utils.IsNil(o.Agents) {
 		var ret []string
 		return ret
 	}
@@ -84,7 +83,7 @@ func (o *AccountGroupRequest) GetAgents() []string {
 // GetAgentsOk returns a tuple with the Agents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountGroupRequest) GetAgentsOk() ([]string, bool) {
-	if o == nil || core.IsNil(o.Agents) {
+	if o == nil || utils.IsNil(o.Agents) {
 		return nil, false
 	}
 	return o.Agents, true
@@ -92,7 +91,7 @@ func (o *AccountGroupRequest) GetAgentsOk() ([]string, bool) {
 
 // HasAgents returns a boolean if a field has been set.
 func (o *AccountGroupRequest) HasAgents() bool {
-	if o != nil && !core.IsNil(o.Agents) {
+	if o != nil && !utils.IsNil(o.Agents) {
 		return true
 	}
 
@@ -105,7 +104,7 @@ func (o *AccountGroupRequest) SetAgents(v []string) {
 }
 
 func (o AccountGroupRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -115,7 +114,7 @@ func (o AccountGroupRequest) MarshalJSON() ([]byte, error) {
 func (o AccountGroupRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["accountGroupName"] = o.AccountGroupName
-	if !core.IsNil(o.Agents) {
+	if !utils.IsNil(o.Agents) {
 		toSerialize["agents"] = o.Agents
 	}
 	return toSerialize, nil
@@ -134,10 +133,10 @@ func (o *AccountGroupRequest) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -145,9 +144,7 @@ func (o *AccountGroupRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varAccountGroupRequest := _AccountGroupRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAccountGroupRequest)
+	err = json.Unmarshal(data, &varAccountGroupRequest)
 
 	if err != nil {
 		return err
@@ -193,5 +190,3 @@ func (v *NullableAccountGroupRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

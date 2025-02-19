@@ -12,12 +12,12 @@ package administrative
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 	"time"
 )
 
 // checks if the ClusterMember type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &ClusterMember{}
+var _ utils.MappedNullable = &ClusterMember{}
 
 // ClusterMember struct for ClusterMember
 type ClusterMember struct {
@@ -34,7 +34,7 @@ type ClusterMember struct {
 	// If an enterprise agent or a cluster member presents at least one error, the errors will be shown as an array of entries in the errorDetails field (Enterprise Agents and Enterprise Cluster members only)
 	ErrorDetails []ErrorDetail `json:"errorDetails,omitempty"`
 	// UTC last seen date (ISO date-time format).
-	LastSeen *time.Time `json:"lastSeen,omitempty"`
+	LastSeen   *time.Time            `json:"lastSeen,omitempty"`
 	AgentState *EnterpriseAgentState `json:"agentState,omitempty"`
 	// Test target IP address.
 	TargetForTests *string `json:"targetForTests,omitempty"`
@@ -61,7 +61,7 @@ func NewClusterMemberWithDefaults() *ClusterMember {
 
 // GetIpAddresses returns the IpAddresses field value if set, zero value otherwise.
 func (o *ClusterMember) GetIpAddresses() []string {
-	if o == nil || core.IsNil(o.IpAddresses) {
+	if o == nil || utils.IsNil(o.IpAddresses) {
 		var ret []string
 		return ret
 	}
@@ -71,7 +71,7 @@ func (o *ClusterMember) GetIpAddresses() []string {
 // GetIpAddressesOk returns a tuple with the IpAddresses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterMember) GetIpAddressesOk() ([]string, bool) {
-	if o == nil || core.IsNil(o.IpAddresses) {
+	if o == nil || utils.IsNil(o.IpAddresses) {
 		return nil, false
 	}
 	return o.IpAddresses, true
@@ -79,7 +79,7 @@ func (o *ClusterMember) GetIpAddressesOk() ([]string, bool) {
 
 // HasIpAddresses returns a boolean if a field has been set.
 func (o *ClusterMember) HasIpAddresses() bool {
-	if o != nil && !core.IsNil(o.IpAddresses) {
+	if o != nil && !utils.IsNil(o.IpAddresses) {
 		return true
 	}
 
@@ -93,7 +93,7 @@ func (o *ClusterMember) SetIpAddresses(v []string) {
 
 // GetPublicIpAddresses returns the PublicIpAddresses field value if set, zero value otherwise.
 func (o *ClusterMember) GetPublicIpAddresses() []string {
-	if o == nil || core.IsNil(o.PublicIpAddresses) {
+	if o == nil || utils.IsNil(o.PublicIpAddresses) {
 		var ret []string
 		return ret
 	}
@@ -103,7 +103,7 @@ func (o *ClusterMember) GetPublicIpAddresses() []string {
 // GetPublicIpAddressesOk returns a tuple with the PublicIpAddresses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterMember) GetPublicIpAddressesOk() ([]string, bool) {
-	if o == nil || core.IsNil(o.PublicIpAddresses) {
+	if o == nil || utils.IsNil(o.PublicIpAddresses) {
 		return nil, false
 	}
 	return o.PublicIpAddresses, true
@@ -111,7 +111,7 @@ func (o *ClusterMember) GetPublicIpAddressesOk() ([]string, bool) {
 
 // HasPublicIpAddresses returns a boolean if a field has been set.
 func (o *ClusterMember) HasPublicIpAddresses() bool {
-	if o != nil && !core.IsNil(o.PublicIpAddresses) {
+	if o != nil && !utils.IsNil(o.PublicIpAddresses) {
 		return true
 	}
 
@@ -125,7 +125,7 @@ func (o *ClusterMember) SetPublicIpAddresses(v []string) {
 
 // GetNetwork returns the Network field value if set, zero value otherwise.
 func (o *ClusterMember) GetNetwork() string {
-	if o == nil || core.IsNil(o.Network) {
+	if o == nil || utils.IsNil(o.Network) {
 		var ret string
 		return ret
 	}
@@ -135,7 +135,7 @@ func (o *ClusterMember) GetNetwork() string {
 // GetNetworkOk returns a tuple with the Network field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterMember) GetNetworkOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Network) {
+	if o == nil || utils.IsNil(o.Network) {
 		return nil, false
 	}
 	return o.Network, true
@@ -143,7 +143,7 @@ func (o *ClusterMember) GetNetworkOk() (*string, bool) {
 
 // HasNetwork returns a boolean if a field has been set.
 func (o *ClusterMember) HasNetwork() bool {
-	if o != nil && !core.IsNil(o.Network) {
+	if o != nil && !utils.IsNil(o.Network) {
 		return true
 	}
 
@@ -157,7 +157,7 @@ func (o *ClusterMember) SetNetwork(v string) {
 
 // GetMemberId returns the MemberId field value if set, zero value otherwise.
 func (o *ClusterMember) GetMemberId() string {
-	if o == nil || core.IsNil(o.MemberId) {
+	if o == nil || utils.IsNil(o.MemberId) {
 		var ret string
 		return ret
 	}
@@ -167,7 +167,7 @@ func (o *ClusterMember) GetMemberId() string {
 // GetMemberIdOk returns a tuple with the MemberId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterMember) GetMemberIdOk() (*string, bool) {
-	if o == nil || core.IsNil(o.MemberId) {
+	if o == nil || utils.IsNil(o.MemberId) {
 		return nil, false
 	}
 	return o.MemberId, true
@@ -175,7 +175,7 @@ func (o *ClusterMember) GetMemberIdOk() (*string, bool) {
 
 // HasMemberId returns a boolean if a field has been set.
 func (o *ClusterMember) HasMemberId() bool {
-	if o != nil && !core.IsNil(o.MemberId) {
+	if o != nil && !utils.IsNil(o.MemberId) {
 		return true
 	}
 
@@ -189,7 +189,7 @@ func (o *ClusterMember) SetMemberId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ClusterMember) GetName() string {
-	if o == nil || core.IsNil(o.Name) {
+	if o == nil || utils.IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -199,7 +199,7 @@ func (o *ClusterMember) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterMember) GetNameOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Name) {
+	if o == nil || utils.IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -207,7 +207,7 @@ func (o *ClusterMember) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ClusterMember) HasName() bool {
-	if o != nil && !core.IsNil(o.Name) {
+	if o != nil && !utils.IsNil(o.Name) {
 		return true
 	}
 
@@ -221,7 +221,7 @@ func (o *ClusterMember) SetName(v string) {
 
 // GetErrorDetails returns the ErrorDetails field value if set, zero value otherwise.
 func (o *ClusterMember) GetErrorDetails() []ErrorDetail {
-	if o == nil || core.IsNil(o.ErrorDetails) {
+	if o == nil || utils.IsNil(o.ErrorDetails) {
 		var ret []ErrorDetail
 		return ret
 	}
@@ -231,7 +231,7 @@ func (o *ClusterMember) GetErrorDetails() []ErrorDetail {
 // GetErrorDetailsOk returns a tuple with the ErrorDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterMember) GetErrorDetailsOk() ([]ErrorDetail, bool) {
-	if o == nil || core.IsNil(o.ErrorDetails) {
+	if o == nil || utils.IsNil(o.ErrorDetails) {
 		return nil, false
 	}
 	return o.ErrorDetails, true
@@ -239,7 +239,7 @@ func (o *ClusterMember) GetErrorDetailsOk() ([]ErrorDetail, bool) {
 
 // HasErrorDetails returns a boolean if a field has been set.
 func (o *ClusterMember) HasErrorDetails() bool {
-	if o != nil && !core.IsNil(o.ErrorDetails) {
+	if o != nil && !utils.IsNil(o.ErrorDetails) {
 		return true
 	}
 
@@ -253,7 +253,7 @@ func (o *ClusterMember) SetErrorDetails(v []ErrorDetail) {
 
 // GetLastSeen returns the LastSeen field value if set, zero value otherwise.
 func (o *ClusterMember) GetLastSeen() time.Time {
-	if o == nil || core.IsNil(o.LastSeen) {
+	if o == nil || utils.IsNil(o.LastSeen) {
 		var ret time.Time
 		return ret
 	}
@@ -263,7 +263,7 @@ func (o *ClusterMember) GetLastSeen() time.Time {
 // GetLastSeenOk returns a tuple with the LastSeen field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterMember) GetLastSeenOk() (*time.Time, bool) {
-	if o == nil || core.IsNil(o.LastSeen) {
+	if o == nil || utils.IsNil(o.LastSeen) {
 		return nil, false
 	}
 	return o.LastSeen, true
@@ -271,7 +271,7 @@ func (o *ClusterMember) GetLastSeenOk() (*time.Time, bool) {
 
 // HasLastSeen returns a boolean if a field has been set.
 func (o *ClusterMember) HasLastSeen() bool {
-	if o != nil && !core.IsNil(o.LastSeen) {
+	if o != nil && !utils.IsNil(o.LastSeen) {
 		return true
 	}
 
@@ -285,7 +285,7 @@ func (o *ClusterMember) SetLastSeen(v time.Time) {
 
 // GetAgentState returns the AgentState field value if set, zero value otherwise.
 func (o *ClusterMember) GetAgentState() EnterpriseAgentState {
-	if o == nil || core.IsNil(o.AgentState) {
+	if o == nil || utils.IsNil(o.AgentState) {
 		var ret EnterpriseAgentState
 		return ret
 	}
@@ -295,7 +295,7 @@ func (o *ClusterMember) GetAgentState() EnterpriseAgentState {
 // GetAgentStateOk returns a tuple with the AgentState field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterMember) GetAgentStateOk() (*EnterpriseAgentState, bool) {
-	if o == nil || core.IsNil(o.AgentState) {
+	if o == nil || utils.IsNil(o.AgentState) {
 		return nil, false
 	}
 	return o.AgentState, true
@@ -303,7 +303,7 @@ func (o *ClusterMember) GetAgentStateOk() (*EnterpriseAgentState, bool) {
 
 // HasAgentState returns a boolean if a field has been set.
 func (o *ClusterMember) HasAgentState() bool {
-	if o != nil && !core.IsNil(o.AgentState) {
+	if o != nil && !utils.IsNil(o.AgentState) {
 		return true
 	}
 
@@ -317,7 +317,7 @@ func (o *ClusterMember) SetAgentState(v EnterpriseAgentState) {
 
 // GetTargetForTests returns the TargetForTests field value if set, zero value otherwise.
 func (o *ClusterMember) GetTargetForTests() string {
-	if o == nil || core.IsNil(o.TargetForTests) {
+	if o == nil || utils.IsNil(o.TargetForTests) {
 		var ret string
 		return ret
 	}
@@ -327,7 +327,7 @@ func (o *ClusterMember) GetTargetForTests() string {
 // GetTargetForTestsOk returns a tuple with the TargetForTests field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterMember) GetTargetForTestsOk() (*string, bool) {
-	if o == nil || core.IsNil(o.TargetForTests) {
+	if o == nil || utils.IsNil(o.TargetForTests) {
 		return nil, false
 	}
 	return o.TargetForTests, true
@@ -335,7 +335,7 @@ func (o *ClusterMember) GetTargetForTestsOk() (*string, bool) {
 
 // HasTargetForTests returns a boolean if a field has been set.
 func (o *ClusterMember) HasTargetForTests() bool {
-	if o != nil && !core.IsNil(o.TargetForTests) {
+	if o != nil && !utils.IsNil(o.TargetForTests) {
 		return true
 	}
 
@@ -349,7 +349,7 @@ func (o *ClusterMember) SetTargetForTests(v string) {
 
 // GetUtilization returns the Utilization field value if set, zero value otherwise.
 func (o *ClusterMember) GetUtilization() int32 {
-	if o == nil || core.IsNil(o.Utilization) {
+	if o == nil || utils.IsNil(o.Utilization) {
 		var ret int32
 		return ret
 	}
@@ -359,7 +359,7 @@ func (o *ClusterMember) GetUtilization() int32 {
 // GetUtilizationOk returns a tuple with the Utilization field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterMember) GetUtilizationOk() (*int32, bool) {
-	if o == nil || core.IsNil(o.Utilization) {
+	if o == nil || utils.IsNil(o.Utilization) {
 		return nil, false
 	}
 	return o.Utilization, true
@@ -367,7 +367,7 @@ func (o *ClusterMember) GetUtilizationOk() (*int32, bool) {
 
 // HasUtilization returns a boolean if a field has been set.
 func (o *ClusterMember) HasUtilization() bool {
-	if o != nil && !core.IsNil(o.Utilization) {
+	if o != nil && !utils.IsNil(o.Utilization) {
 		return true
 	}
 
@@ -380,7 +380,7 @@ func (o *ClusterMember) SetUtilization(v int32) {
 }
 
 func (o ClusterMember) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -389,34 +389,34 @@ func (o ClusterMember) MarshalJSON() ([]byte, error) {
 
 func (o ClusterMember) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !core.IsNil(o.IpAddresses) {
+	if !utils.IsNil(o.IpAddresses) {
 		toSerialize["ipAddresses"] = o.IpAddresses
 	}
-	if !core.IsNil(o.PublicIpAddresses) {
+	if !utils.IsNil(o.PublicIpAddresses) {
 		toSerialize["publicIpAddresses"] = o.PublicIpAddresses
 	}
-	if !core.IsNil(o.Network) {
+	if !utils.IsNil(o.Network) {
 		toSerialize["network"] = o.Network
 	}
-	if !core.IsNil(o.MemberId) {
+	if !utils.IsNil(o.MemberId) {
 		toSerialize["memberId"] = o.MemberId
 	}
-	if !core.IsNil(o.Name) {
+	if !utils.IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !core.IsNil(o.ErrorDetails) {
+	if !utils.IsNil(o.ErrorDetails) {
 		toSerialize["errorDetails"] = o.ErrorDetails
 	}
-	if !core.IsNil(o.LastSeen) {
+	if !utils.IsNil(o.LastSeen) {
 		toSerialize["lastSeen"] = o.LastSeen
 	}
-	if !core.IsNil(o.AgentState) {
+	if !utils.IsNil(o.AgentState) {
 		toSerialize["agentState"] = o.AgentState
 	}
-	if !core.IsNil(o.TargetForTests) {
+	if !utils.IsNil(o.TargetForTests) {
 		toSerialize["targetForTests"] = o.TargetForTests
 	}
-	if !core.IsNil(o.Utilization) {
+	if !utils.IsNil(o.Utilization) {
 		toSerialize["utilization"] = o.Utilization
 	}
 	return toSerialize, nil
@@ -457,5 +457,3 @@ func (v *NullableClusterMember) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

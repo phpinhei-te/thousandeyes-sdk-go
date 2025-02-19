@@ -12,11 +12,11 @@ package administrative
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 )
 
 // checks if the InterfaceIpMapping type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &InterfaceIpMapping{}
+var _ utils.MappedNullable = &InterfaceIpMapping{}
 
 // InterfaceIpMapping struct for InterfaceIpMapping
 type InterfaceIpMapping struct {
@@ -45,7 +45,7 @@ func NewInterfaceIpMappingWithDefaults() *InterfaceIpMapping {
 
 // GetInterfaceName returns the InterfaceName field value if set, zero value otherwise.
 func (o *InterfaceIpMapping) GetInterfaceName() string {
-	if o == nil || core.IsNil(o.InterfaceName) {
+	if o == nil || utils.IsNil(o.InterfaceName) {
 		var ret string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *InterfaceIpMapping) GetInterfaceName() string {
 // GetInterfaceNameOk returns a tuple with the InterfaceName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InterfaceIpMapping) GetInterfaceNameOk() (*string, bool) {
-	if o == nil || core.IsNil(o.InterfaceName) {
+	if o == nil || utils.IsNil(o.InterfaceName) {
 		return nil, false
 	}
 	return o.InterfaceName, true
@@ -63,7 +63,7 @@ func (o *InterfaceIpMapping) GetInterfaceNameOk() (*string, bool) {
 
 // HasInterfaceName returns a boolean if a field has been set.
 func (o *InterfaceIpMapping) HasInterfaceName() bool {
-	if o != nil && !core.IsNil(o.InterfaceName) {
+	if o != nil && !utils.IsNil(o.InterfaceName) {
 		return true
 	}
 
@@ -77,7 +77,7 @@ func (o *InterfaceIpMapping) SetInterfaceName(v string) {
 
 // GetIpAddresses returns the IpAddresses field value if set, zero value otherwise.
 func (o *InterfaceIpMapping) GetIpAddresses() []string {
-	if o == nil || core.IsNil(o.IpAddresses) {
+	if o == nil || utils.IsNil(o.IpAddresses) {
 		var ret []string
 		return ret
 	}
@@ -87,7 +87,7 @@ func (o *InterfaceIpMapping) GetIpAddresses() []string {
 // GetIpAddressesOk returns a tuple with the IpAddresses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InterfaceIpMapping) GetIpAddressesOk() ([]string, bool) {
-	if o == nil || core.IsNil(o.IpAddresses) {
+	if o == nil || utils.IsNil(o.IpAddresses) {
 		return nil, false
 	}
 	return o.IpAddresses, true
@@ -95,7 +95,7 @@ func (o *InterfaceIpMapping) GetIpAddressesOk() ([]string, bool) {
 
 // HasIpAddresses returns a boolean if a field has been set.
 func (o *InterfaceIpMapping) HasIpAddresses() bool {
-	if o != nil && !core.IsNil(o.IpAddresses) {
+	if o != nil && !utils.IsNil(o.IpAddresses) {
 		return true
 	}
 
@@ -108,7 +108,7 @@ func (o *InterfaceIpMapping) SetIpAddresses(v []string) {
 }
 
 func (o InterfaceIpMapping) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -117,10 +117,10 @@ func (o InterfaceIpMapping) MarshalJSON() ([]byte, error) {
 
 func (o InterfaceIpMapping) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !core.IsNil(o.InterfaceName) {
+	if !utils.IsNil(o.InterfaceName) {
 		toSerialize["interfaceName"] = o.InterfaceName
 	}
-	if !core.IsNil(o.IpAddresses) {
+	if !utils.IsNil(o.IpAddresses) {
 		toSerialize["ipAddresses"] = o.IpAddresses
 	}
 	return toSerialize, nil
@@ -161,5 +161,3 @@ func (v *NullableInterfaceIpMapping) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

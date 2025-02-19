@@ -12,11 +12,11 @@ package administrative
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 )
 
 // checks if the RoleRequestBody type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &RoleRequestBody{}
+var _ utils.MappedNullable = &RoleRequestBody{}
 
 // RoleRequestBody struct for RoleRequestBody
 type RoleRequestBody struct {
@@ -45,7 +45,7 @@ func NewRoleRequestBodyWithDefaults() *RoleRequestBody {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *RoleRequestBody) GetName() string {
-	if o == nil || core.IsNil(o.Name) {
+	if o == nil || utils.IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *RoleRequestBody) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleRequestBody) GetNameOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Name) {
+	if o == nil || utils.IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -63,7 +63,7 @@ func (o *RoleRequestBody) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *RoleRequestBody) HasName() bool {
-	if o != nil && !core.IsNil(o.Name) {
+	if o != nil && !utils.IsNil(o.Name) {
 		return true
 	}
 
@@ -77,7 +77,7 @@ func (o *RoleRequestBody) SetName(v string) {
 
 // GetPermissions returns the Permissions field value if set, zero value otherwise.
 func (o *RoleRequestBody) GetPermissions() []string {
-	if o == nil || core.IsNil(o.Permissions) {
+	if o == nil || utils.IsNil(o.Permissions) {
 		var ret []string
 		return ret
 	}
@@ -87,7 +87,7 @@ func (o *RoleRequestBody) GetPermissions() []string {
 // GetPermissionsOk returns a tuple with the Permissions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleRequestBody) GetPermissionsOk() ([]string, bool) {
-	if o == nil || core.IsNil(o.Permissions) {
+	if o == nil || utils.IsNil(o.Permissions) {
 		return nil, false
 	}
 	return o.Permissions, true
@@ -95,7 +95,7 @@ func (o *RoleRequestBody) GetPermissionsOk() ([]string, bool) {
 
 // HasPermissions returns a boolean if a field has been set.
 func (o *RoleRequestBody) HasPermissions() bool {
-	if o != nil && !core.IsNil(o.Permissions) {
+	if o != nil && !utils.IsNil(o.Permissions) {
 		return true
 	}
 
@@ -108,7 +108,7 @@ func (o *RoleRequestBody) SetPermissions(v []string) {
 }
 
 func (o RoleRequestBody) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -117,10 +117,10 @@ func (o RoleRequestBody) MarshalJSON() ([]byte, error) {
 
 func (o RoleRequestBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !core.IsNil(o.Name) {
+	if !utils.IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !core.IsNil(o.Permissions) {
+	if !utils.IsNil(o.Permissions) {
 		toSerialize["permissions"] = o.Permissions
 	}
 	return toSerialize, nil
@@ -161,5 +161,3 @@ func (v *NullableRoleRequestBody) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

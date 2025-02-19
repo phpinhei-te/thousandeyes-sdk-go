@@ -1,4 +1,4 @@
-# \RolesAPI
+# RolesAPI
 
 All URIs are relative to *https://api.thousandeyes.com/v7*
 
@@ -28,7 +28,7 @@ package main
 import (
 	"fmt"
 	"os"
-	"github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/client"
 	"github.com/thousandeyes/thousandeyes-sdk-go/v3/administrative"
 )
 
@@ -36,8 +36,8 @@ func main() {
 	roleRequestBody := *administrative.NewRoleRequestBody() // RoleRequestBody | 
 	aid := "1234" // string | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
 
-	configuration := core.NewConfiguration().WithAuthToken("<bearer-token>")
-	apiClient := core.NewAPIClient(configuration)
+	configuration := client.NewConfiguration().WithAuthToken("<bearer-token>")
+	apiClient := client.NewAPIClient(configuration)
 
 	api := (*administrative.RolesAPIService)(&apiClient.Common)
 
@@ -58,7 +58,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateRoleRequest struct via the builder pattern
+Other parameters are passed through a pointer to a ApiCreateRoleRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)[[Back to README]](../README.md)
 
@@ -98,7 +98,7 @@ package main
 import (
 	"fmt"
 	"os"
-	"github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/client"
 	"github.com/thousandeyes/thousandeyes-sdk-go/v3/administrative"
 )
 
@@ -106,8 +106,8 @@ func main() {
 	id := "23" // string | The ID of the desired role.
 	aid := "1234" // string | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
 
-	configuration := core.NewConfiguration().WithAuthToken("<bearer-token>")
-	apiClient := core.NewAPIClient(configuration)
+	configuration := client.NewConfiguration().WithAuthToken("<bearer-token>")
+	apiClient := client.NewAPIClient(configuration)
 
 	api := (*administrative.RolesAPIService)(&apiClient.Common)
 
@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteRoleRequest struct via the builder pattern
+Other parameters are passed through a pointer to a ApiDeleteRoleRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/problem+json
+- **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)[[Back to README]](../README.md)
 
@@ -168,7 +168,7 @@ package main
 import (
 	"fmt"
 	"os"
-	"github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/client"
 	"github.com/thousandeyes/thousandeyes-sdk-go/v3/administrative"
 )
 
@@ -176,8 +176,8 @@ func main() {
 	id := "23" // string | The ID of the desired role.
 	aid := "1234" // string | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
 
-	configuration := core.NewConfiguration().WithAuthToken("<bearer-token>")
-	apiClient := core.NewAPIClient(configuration)
+	configuration := client.NewConfiguration().WithAuthToken("<bearer-token>")
+	apiClient := client.NewAPIClient(configuration)
 
 	api := (*administrative.RolesAPIService)(&apiClient.Common)
 
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetRoleRequest struct via the builder pattern
+Other parameters are passed through a pointer to a ApiGetRoleRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)[[Back to README]](../README.md)
 
@@ -241,15 +241,15 @@ package main
 import (
 	"fmt"
 	"os"
-	"github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/client"
 	"github.com/thousandeyes/thousandeyes-sdk-go/v3/administrative"
 )
 
 func main() {
 	aid := "1234" // string | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
 
-	configuration := core.NewConfiguration().WithAuthToken("<bearer-token>")
-	apiClient := core.NewAPIClient(configuration)
+	configuration := client.NewConfiguration().WithAuthToken("<bearer-token>")
+	apiClient := client.NewAPIClient(configuration)
 
 	api := (*administrative.RolesAPIService)(&apiClient.Common)
 
@@ -270,7 +270,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetRolesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a ApiGetRolesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -288,7 +288,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)[[Back to README]](../README.md)
 
@@ -309,7 +309,7 @@ package main
 import (
 	"fmt"
 	"os"
-	"github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/client"
 	"github.com/thousandeyes/thousandeyes-sdk-go/v3/administrative"
 )
 
@@ -318,8 +318,8 @@ func main() {
 	roleRequestBody := *administrative.NewRoleRequestBody() // RoleRequestBody | 
 	aid := "1234" // string | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
 
-	configuration := core.NewConfiguration().WithAuthToken("<bearer-token>")
-	apiClient := core.NewAPIClient(configuration)
+	configuration := client.NewConfiguration().WithAuthToken("<bearer-token>")
+	apiClient := client.NewAPIClient(configuration)
 
 	api := (*administrative.RolesAPIService)(&apiClient.Common)
 
@@ -343,7 +343,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateRoleRequest struct via the builder pattern
+Other parameters are passed through a pointer to a ApiUpdateRoleRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -363,7 +363,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)[[Back to README]](../README.md)
 

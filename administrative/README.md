@@ -31,7 +31,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```go
-import "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+import "github.com/thousandeyes/thousandeyes-sdk-go/v3/client"
 import "github.com/thousandeyes/thousandeyes-sdk-go/v3/administrative"
 ```
 
@@ -50,8 +50,8 @@ Authentication schemes defined for the API:
 Example
 
 ```go
-configuration := core.NewConfiguration().WithAuthToken("<bearer-token>")
-apiClient := core.NewAPIClient(configuration)
+configuration := client.NewConfiguration().WithAuthToken("<bearer-token>")
+apiClient := client.NewAPIClient(configuration)
 ```
 
 ## Documentation for API Endpoints
@@ -79,20 +79,3 @@ Class | Method | HTTP request | Description
 *UsersAPI* | [**GetUsers**](docs/UsersAPI.md#getusers) | **Get** /users | List users
 *UsersAPI* | [**UpdateUser**](docs/UsersAPI.md#updateuser) | **Put** /users/{id} | Update user
 
-
-
-## Documentation for Utility Methods
-
-Due to the fact that model structure members are all pointers, this package contains
-a number of utility functions to easily obtain pointers to values of basic types.
-Each of these functions takes a value of the given basic type and returns a pointer to it:
-
-* `PtrBool`
-* `PtrInt`
-* `PtrInt32`
-* `PtrInt64`
-* `PtrFloat`
-* `PtrFloat32`
-* `PtrFloat64`
-* `PtrString`
-* `PtrTime`

@@ -12,11 +12,11 @@ package administrative
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 )
 
 // checks if the CreatedAccountGroup type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &CreatedAccountGroup{}
+var _ utils.MappedNullable = &CreatedAccountGroup{}
 
 // CreatedAccountGroup struct for CreatedAccountGroup
 type CreatedAccountGroup struct {
@@ -31,9 +31,9 @@ type CreatedAccountGroup struct {
 	// (Optional) The name of the organization associated with the account group.
 	OrganizationName *string `json:"organizationName,omitempty"`
 	// (Optional) The ID for the organization associated with the account group.
-	OrgId *string `json:"orgId,omitempty"`
+	OrgId *string            `json:"orgId,omitempty"`
 	Users []UserAccountGroup `json:"users,omitempty"`
-	Links *SelfLinks `json:"_links,omitempty"`
+	Links *SelfLinks         `json:"_links,omitempty"`
 }
 
 // NewCreatedAccountGroup instantiates a new CreatedAccountGroup object
@@ -55,7 +55,7 @@ func NewCreatedAccountGroupWithDefaults() *CreatedAccountGroup {
 
 // GetAid returns the Aid field value if set, zero value otherwise.
 func (o *CreatedAccountGroup) GetAid() string {
-	if o == nil || core.IsNil(o.Aid) {
+	if o == nil || utils.IsNil(o.Aid) {
 		var ret string
 		return ret
 	}
@@ -65,7 +65,7 @@ func (o *CreatedAccountGroup) GetAid() string {
 // GetAidOk returns a tuple with the Aid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreatedAccountGroup) GetAidOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Aid) {
+	if o == nil || utils.IsNil(o.Aid) {
 		return nil, false
 	}
 	return o.Aid, true
@@ -73,7 +73,7 @@ func (o *CreatedAccountGroup) GetAidOk() (*string, bool) {
 
 // HasAid returns a boolean if a field has been set.
 func (o *CreatedAccountGroup) HasAid() bool {
-	if o != nil && !core.IsNil(o.Aid) {
+	if o != nil && !utils.IsNil(o.Aid) {
 		return true
 	}
 
@@ -87,7 +87,7 @@ func (o *CreatedAccountGroup) SetAid(v string) {
 
 // GetAccountGroupName returns the AccountGroupName field value if set, zero value otherwise.
 func (o *CreatedAccountGroup) GetAccountGroupName() string {
-	if o == nil || core.IsNil(o.AccountGroupName) {
+	if o == nil || utils.IsNil(o.AccountGroupName) {
 		var ret string
 		return ret
 	}
@@ -97,7 +97,7 @@ func (o *CreatedAccountGroup) GetAccountGroupName() string {
 // GetAccountGroupNameOk returns a tuple with the AccountGroupName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreatedAccountGroup) GetAccountGroupNameOk() (*string, bool) {
-	if o == nil || core.IsNil(o.AccountGroupName) {
+	if o == nil || utils.IsNil(o.AccountGroupName) {
 		return nil, false
 	}
 	return o.AccountGroupName, true
@@ -105,7 +105,7 @@ func (o *CreatedAccountGroup) GetAccountGroupNameOk() (*string, bool) {
 
 // HasAccountGroupName returns a boolean if a field has been set.
 func (o *CreatedAccountGroup) HasAccountGroupName() bool {
-	if o != nil && !core.IsNil(o.AccountGroupName) {
+	if o != nil && !utils.IsNil(o.AccountGroupName) {
 		return true
 	}
 
@@ -119,7 +119,7 @@ func (o *CreatedAccountGroup) SetAccountGroupName(v string) {
 
 // GetIsCurrentAccountGroup returns the IsCurrentAccountGroup field value if set, zero value otherwise.
 func (o *CreatedAccountGroup) GetIsCurrentAccountGroup() bool {
-	if o == nil || core.IsNil(o.IsCurrentAccountGroup) {
+	if o == nil || utils.IsNil(o.IsCurrentAccountGroup) {
 		var ret bool
 		return ret
 	}
@@ -129,7 +129,7 @@ func (o *CreatedAccountGroup) GetIsCurrentAccountGroup() bool {
 // GetIsCurrentAccountGroupOk returns a tuple with the IsCurrentAccountGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreatedAccountGroup) GetIsCurrentAccountGroupOk() (*bool, bool) {
-	if o == nil || core.IsNil(o.IsCurrentAccountGroup) {
+	if o == nil || utils.IsNil(o.IsCurrentAccountGroup) {
 		return nil, false
 	}
 	return o.IsCurrentAccountGroup, true
@@ -137,7 +137,7 @@ func (o *CreatedAccountGroup) GetIsCurrentAccountGroupOk() (*bool, bool) {
 
 // HasIsCurrentAccountGroup returns a boolean if a field has been set.
 func (o *CreatedAccountGroup) HasIsCurrentAccountGroup() bool {
-	if o != nil && !core.IsNil(o.IsCurrentAccountGroup) {
+	if o != nil && !utils.IsNil(o.IsCurrentAccountGroup) {
 		return true
 	}
 
@@ -151,7 +151,7 @@ func (o *CreatedAccountGroup) SetIsCurrentAccountGroup(v bool) {
 
 // GetIsDefaultAccountGroup returns the IsDefaultAccountGroup field value if set, zero value otherwise.
 func (o *CreatedAccountGroup) GetIsDefaultAccountGroup() bool {
-	if o == nil || core.IsNil(o.IsDefaultAccountGroup) {
+	if o == nil || utils.IsNil(o.IsDefaultAccountGroup) {
 		var ret bool
 		return ret
 	}
@@ -161,7 +161,7 @@ func (o *CreatedAccountGroup) GetIsDefaultAccountGroup() bool {
 // GetIsDefaultAccountGroupOk returns a tuple with the IsDefaultAccountGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreatedAccountGroup) GetIsDefaultAccountGroupOk() (*bool, bool) {
-	if o == nil || core.IsNil(o.IsDefaultAccountGroup) {
+	if o == nil || utils.IsNil(o.IsDefaultAccountGroup) {
 		return nil, false
 	}
 	return o.IsDefaultAccountGroup, true
@@ -169,7 +169,7 @@ func (o *CreatedAccountGroup) GetIsDefaultAccountGroupOk() (*bool, bool) {
 
 // HasIsDefaultAccountGroup returns a boolean if a field has been set.
 func (o *CreatedAccountGroup) HasIsDefaultAccountGroup() bool {
-	if o != nil && !core.IsNil(o.IsDefaultAccountGroup) {
+	if o != nil && !utils.IsNil(o.IsDefaultAccountGroup) {
 		return true
 	}
 
@@ -183,7 +183,7 @@ func (o *CreatedAccountGroup) SetIsDefaultAccountGroup(v bool) {
 
 // GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
 func (o *CreatedAccountGroup) GetOrganizationName() string {
-	if o == nil || core.IsNil(o.OrganizationName) {
+	if o == nil || utils.IsNil(o.OrganizationName) {
 		var ret string
 		return ret
 	}
@@ -193,7 +193,7 @@ func (o *CreatedAccountGroup) GetOrganizationName() string {
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreatedAccountGroup) GetOrganizationNameOk() (*string, bool) {
-	if o == nil || core.IsNil(o.OrganizationName) {
+	if o == nil || utils.IsNil(o.OrganizationName) {
 		return nil, false
 	}
 	return o.OrganizationName, true
@@ -201,7 +201,7 @@ func (o *CreatedAccountGroup) GetOrganizationNameOk() (*string, bool) {
 
 // HasOrganizationName returns a boolean if a field has been set.
 func (o *CreatedAccountGroup) HasOrganizationName() bool {
-	if o != nil && !core.IsNil(o.OrganizationName) {
+	if o != nil && !utils.IsNil(o.OrganizationName) {
 		return true
 	}
 
@@ -215,7 +215,7 @@ func (o *CreatedAccountGroup) SetOrganizationName(v string) {
 
 // GetOrgId returns the OrgId field value if set, zero value otherwise.
 func (o *CreatedAccountGroup) GetOrgId() string {
-	if o == nil || core.IsNil(o.OrgId) {
+	if o == nil || utils.IsNil(o.OrgId) {
 		var ret string
 		return ret
 	}
@@ -225,7 +225,7 @@ func (o *CreatedAccountGroup) GetOrgId() string {
 // GetOrgIdOk returns a tuple with the OrgId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreatedAccountGroup) GetOrgIdOk() (*string, bool) {
-	if o == nil || core.IsNil(o.OrgId) {
+	if o == nil || utils.IsNil(o.OrgId) {
 		return nil, false
 	}
 	return o.OrgId, true
@@ -233,7 +233,7 @@ func (o *CreatedAccountGroup) GetOrgIdOk() (*string, bool) {
 
 // HasOrgId returns a boolean if a field has been set.
 func (o *CreatedAccountGroup) HasOrgId() bool {
-	if o != nil && !core.IsNil(o.OrgId) {
+	if o != nil && !utils.IsNil(o.OrgId) {
 		return true
 	}
 
@@ -247,7 +247,7 @@ func (o *CreatedAccountGroup) SetOrgId(v string) {
 
 // GetUsers returns the Users field value if set, zero value otherwise.
 func (o *CreatedAccountGroup) GetUsers() []UserAccountGroup {
-	if o == nil || core.IsNil(o.Users) {
+	if o == nil || utils.IsNil(o.Users) {
 		var ret []UserAccountGroup
 		return ret
 	}
@@ -257,7 +257,7 @@ func (o *CreatedAccountGroup) GetUsers() []UserAccountGroup {
 // GetUsersOk returns a tuple with the Users field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreatedAccountGroup) GetUsersOk() ([]UserAccountGroup, bool) {
-	if o == nil || core.IsNil(o.Users) {
+	if o == nil || utils.IsNil(o.Users) {
 		return nil, false
 	}
 	return o.Users, true
@@ -265,7 +265,7 @@ func (o *CreatedAccountGroup) GetUsersOk() ([]UserAccountGroup, bool) {
 
 // HasUsers returns a boolean if a field has been set.
 func (o *CreatedAccountGroup) HasUsers() bool {
-	if o != nil && !core.IsNil(o.Users) {
+	if o != nil && !utils.IsNil(o.Users) {
 		return true
 	}
 
@@ -279,7 +279,7 @@ func (o *CreatedAccountGroup) SetUsers(v []UserAccountGroup) {
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *CreatedAccountGroup) GetLinks() SelfLinks {
-	if o == nil || core.IsNil(o.Links) {
+	if o == nil || utils.IsNil(o.Links) {
 		var ret SelfLinks
 		return ret
 	}
@@ -289,7 +289,7 @@ func (o *CreatedAccountGroup) GetLinks() SelfLinks {
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreatedAccountGroup) GetLinksOk() (*SelfLinks, bool) {
-	if o == nil || core.IsNil(o.Links) {
+	if o == nil || utils.IsNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -297,7 +297,7 @@ func (o *CreatedAccountGroup) GetLinksOk() (*SelfLinks, bool) {
 
 // HasLinks returns a boolean if a field has been set.
 func (o *CreatedAccountGroup) HasLinks() bool {
-	if o != nil && !core.IsNil(o.Links) {
+	if o != nil && !utils.IsNil(o.Links) {
 		return true
 	}
 
@@ -310,7 +310,7 @@ func (o *CreatedAccountGroup) SetLinks(v SelfLinks) {
 }
 
 func (o CreatedAccountGroup) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -319,28 +319,28 @@ func (o CreatedAccountGroup) MarshalJSON() ([]byte, error) {
 
 func (o CreatedAccountGroup) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !core.IsNil(o.Aid) {
+	if !utils.IsNil(o.Aid) {
 		toSerialize["aid"] = o.Aid
 	}
-	if !core.IsNil(o.AccountGroupName) {
+	if !utils.IsNil(o.AccountGroupName) {
 		toSerialize["accountGroupName"] = o.AccountGroupName
 	}
-	if !core.IsNil(o.IsCurrentAccountGroup) {
+	if !utils.IsNil(o.IsCurrentAccountGroup) {
 		toSerialize["isCurrentAccountGroup"] = o.IsCurrentAccountGroup
 	}
-	if !core.IsNil(o.IsDefaultAccountGroup) {
+	if !utils.IsNil(o.IsDefaultAccountGroup) {
 		toSerialize["isDefaultAccountGroup"] = o.IsDefaultAccountGroup
 	}
-	if !core.IsNil(o.OrganizationName) {
+	if !utils.IsNil(o.OrganizationName) {
 		toSerialize["organizationName"] = o.OrganizationName
 	}
-	if !core.IsNil(o.OrgId) {
+	if !utils.IsNil(o.OrgId) {
 		toSerialize["orgId"] = o.OrgId
 	}
-	if !core.IsNil(o.Users) {
+	if !utils.IsNil(o.Users) {
 		toSerialize["users"] = o.Users
 	}
-	if !core.IsNil(o.Links) {
+	if !utils.IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
 	return toSerialize, nil
@@ -381,5 +381,3 @@ func (v *NullableCreatedAccountGroup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

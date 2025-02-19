@@ -12,13 +12,12 @@ package administrative
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
-	"bytes"
 	"fmt"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 )
 
 // checks if the Link type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &Link{}
+var _ utils.MappedNullable = &Link{}
 
 // Link A hyperlink from the containing resource to a URI.
 type Link struct {
@@ -86,7 +85,7 @@ func (o *Link) SetHref(v string) {
 
 // GetTemplated returns the Templated field value if set, zero value otherwise.
 func (o *Link) GetTemplated() bool {
-	if o == nil || core.IsNil(o.Templated) {
+	if o == nil || utils.IsNil(o.Templated) {
 		var ret bool
 		return ret
 	}
@@ -96,7 +95,7 @@ func (o *Link) GetTemplated() bool {
 // GetTemplatedOk returns a tuple with the Templated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Link) GetTemplatedOk() (*bool, bool) {
-	if o == nil || core.IsNil(o.Templated) {
+	if o == nil || utils.IsNil(o.Templated) {
 		return nil, false
 	}
 	return o.Templated, true
@@ -104,7 +103,7 @@ func (o *Link) GetTemplatedOk() (*bool, bool) {
 
 // HasTemplated returns a boolean if a field has been set.
 func (o *Link) HasTemplated() bool {
-	if o != nil && !core.IsNil(o.Templated) {
+	if o != nil && !utils.IsNil(o.Templated) {
 		return true
 	}
 
@@ -118,7 +117,7 @@ func (o *Link) SetTemplated(v bool) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *Link) GetType() string {
-	if o == nil || core.IsNil(o.Type) {
+	if o == nil || utils.IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -128,7 +127,7 @@ func (o *Link) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Link) GetTypeOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Type) {
+	if o == nil || utils.IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -136,7 +135,7 @@ func (o *Link) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *Link) HasType() bool {
-	if o != nil && !core.IsNil(o.Type) {
+	if o != nil && !utils.IsNil(o.Type) {
 		return true
 	}
 
@@ -150,7 +149,7 @@ func (o *Link) SetType(v string) {
 
 // GetDeprecation returns the Deprecation field value if set, zero value otherwise.
 func (o *Link) GetDeprecation() string {
-	if o == nil || core.IsNil(o.Deprecation) {
+	if o == nil || utils.IsNil(o.Deprecation) {
 		var ret string
 		return ret
 	}
@@ -160,7 +159,7 @@ func (o *Link) GetDeprecation() string {
 // GetDeprecationOk returns a tuple with the Deprecation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Link) GetDeprecationOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Deprecation) {
+	if o == nil || utils.IsNil(o.Deprecation) {
 		return nil, false
 	}
 	return o.Deprecation, true
@@ -168,7 +167,7 @@ func (o *Link) GetDeprecationOk() (*string, bool) {
 
 // HasDeprecation returns a boolean if a field has been set.
 func (o *Link) HasDeprecation() bool {
-	if o != nil && !core.IsNil(o.Deprecation) {
+	if o != nil && !utils.IsNil(o.Deprecation) {
 		return true
 	}
 
@@ -182,7 +181,7 @@ func (o *Link) SetDeprecation(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Link) GetName() string {
-	if o == nil || core.IsNil(o.Name) {
+	if o == nil || utils.IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -192,7 +191,7 @@ func (o *Link) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Link) GetNameOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Name) {
+	if o == nil || utils.IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -200,7 +199,7 @@ func (o *Link) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *Link) HasName() bool {
-	if o != nil && !core.IsNil(o.Name) {
+	if o != nil && !utils.IsNil(o.Name) {
 		return true
 	}
 
@@ -214,7 +213,7 @@ func (o *Link) SetName(v string) {
 
 // GetProfile returns the Profile field value if set, zero value otherwise.
 func (o *Link) GetProfile() string {
-	if o == nil || core.IsNil(o.Profile) {
+	if o == nil || utils.IsNil(o.Profile) {
 		var ret string
 		return ret
 	}
@@ -224,7 +223,7 @@ func (o *Link) GetProfile() string {
 // GetProfileOk returns a tuple with the Profile field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Link) GetProfileOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Profile) {
+	if o == nil || utils.IsNil(o.Profile) {
 		return nil, false
 	}
 	return o.Profile, true
@@ -232,7 +231,7 @@ func (o *Link) GetProfileOk() (*string, bool) {
 
 // HasProfile returns a boolean if a field has been set.
 func (o *Link) HasProfile() bool {
-	if o != nil && !core.IsNil(o.Profile) {
+	if o != nil && !utils.IsNil(o.Profile) {
 		return true
 	}
 
@@ -246,7 +245,7 @@ func (o *Link) SetProfile(v string) {
 
 // GetTitle returns the Title field value if set, zero value otherwise.
 func (o *Link) GetTitle() string {
-	if o == nil || core.IsNil(o.Title) {
+	if o == nil || utils.IsNil(o.Title) {
 		var ret string
 		return ret
 	}
@@ -256,7 +255,7 @@ func (o *Link) GetTitle() string {
 // GetTitleOk returns a tuple with the Title field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Link) GetTitleOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Title) {
+	if o == nil || utils.IsNil(o.Title) {
 		return nil, false
 	}
 	return o.Title, true
@@ -264,7 +263,7 @@ func (o *Link) GetTitleOk() (*string, bool) {
 
 // HasTitle returns a boolean if a field has been set.
 func (o *Link) HasTitle() bool {
-	if o != nil && !core.IsNil(o.Title) {
+	if o != nil && !utils.IsNil(o.Title) {
 		return true
 	}
 
@@ -278,7 +277,7 @@ func (o *Link) SetTitle(v string) {
 
 // GetHreflang returns the Hreflang field value if set, zero value otherwise.
 func (o *Link) GetHreflang() string {
-	if o == nil || core.IsNil(o.Hreflang) {
+	if o == nil || utils.IsNil(o.Hreflang) {
 		var ret string
 		return ret
 	}
@@ -288,7 +287,7 @@ func (o *Link) GetHreflang() string {
 // GetHreflangOk returns a tuple with the Hreflang field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Link) GetHreflangOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Hreflang) {
+	if o == nil || utils.IsNil(o.Hreflang) {
 		return nil, false
 	}
 	return o.Hreflang, true
@@ -296,7 +295,7 @@ func (o *Link) GetHreflangOk() (*string, bool) {
 
 // HasHreflang returns a boolean if a field has been set.
 func (o *Link) HasHreflang() bool {
-	if o != nil && !core.IsNil(o.Hreflang) {
+	if o != nil && !utils.IsNil(o.Hreflang) {
 		return true
 	}
 
@@ -309,7 +308,7 @@ func (o *Link) SetHreflang(v string) {
 }
 
 func (o Link) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -319,25 +318,25 @@ func (o Link) MarshalJSON() ([]byte, error) {
 func (o Link) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["href"] = o.Href
-	if !core.IsNil(o.Templated) {
+	if !utils.IsNil(o.Templated) {
 		toSerialize["templated"] = o.Templated
 	}
-	if !core.IsNil(o.Type) {
+	if !utils.IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !core.IsNil(o.Deprecation) {
+	if !utils.IsNil(o.Deprecation) {
 		toSerialize["deprecation"] = o.Deprecation
 	}
-	if !core.IsNil(o.Name) {
+	if !utils.IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !core.IsNil(o.Profile) {
+	if !utils.IsNil(o.Profile) {
 		toSerialize["profile"] = o.Profile
 	}
-	if !core.IsNil(o.Title) {
+	if !utils.IsNil(o.Title) {
 		toSerialize["title"] = o.Title
 	}
-	if !core.IsNil(o.Hreflang) {
+	if !utils.IsNil(o.Hreflang) {
 		toSerialize["hreflang"] = o.Hreflang
 	}
 	return toSerialize, nil
@@ -356,10 +355,10 @@ func (o *Link) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -367,9 +366,7 @@ func (o *Link) UnmarshalJSON(data []byte) (err error) {
 
 	varLink := _Link{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varLink)
+	err = json.Unmarshal(data, &varLink)
 
 	if err != nil {
 		return err
@@ -415,5 +412,3 @@ func (v *NullableLink) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

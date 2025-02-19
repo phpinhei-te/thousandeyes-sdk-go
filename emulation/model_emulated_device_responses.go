@@ -1,7 +1,7 @@
 /*
 Emulation API
 
-The Emulation API facilitates the retrieval of user-agent strings for HTTP, pageload, and transaction tests. It also enables the retrieval and addition of emulated devices for pageload and transaction tests.  To access Emulation API operations, the following permissions are required:  * `Settings Tests Read` for read operations. * `Settings Tests Update` for write operations. 
+The Emulation API facilitates the retrieval of user-agent strings for HTTP, pageload, and transaction tests. It also enables the retrieval and addition of emulated devices for pageload and transaction tests.  To access Emulation API operations, the following permissions are required:  * `Settings Tests Read` for read operations. * `Settings Tests Update` for write operations.
 
 API version: 7.0.36
 */
@@ -12,16 +12,16 @@ package emulation
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 )
 
 // checks if the EmulatedDeviceResponses type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &EmulatedDeviceResponses{}
+var _ utils.MappedNullable = &EmulatedDeviceResponses{}
 
 // EmulatedDeviceResponses struct for EmulatedDeviceResponses
 type EmulatedDeviceResponses struct {
 	EmulatedDevices []EmulatedDeviceResponse `json:"emulatedDevices,omitempty"`
-	Links *SelfLinks `json:"_links,omitempty"`
+	Links           *SelfLinks               `json:"_links,omitempty"`
 }
 
 // NewEmulatedDeviceResponses instantiates a new EmulatedDeviceResponses object
@@ -43,7 +43,7 @@ func NewEmulatedDeviceResponsesWithDefaults() *EmulatedDeviceResponses {
 
 // GetEmulatedDevices returns the EmulatedDevices field value if set, zero value otherwise.
 func (o *EmulatedDeviceResponses) GetEmulatedDevices() []EmulatedDeviceResponse {
-	if o == nil || core.IsNil(o.EmulatedDevices) {
+	if o == nil || utils.IsNil(o.EmulatedDevices) {
 		var ret []EmulatedDeviceResponse
 		return ret
 	}
@@ -53,7 +53,7 @@ func (o *EmulatedDeviceResponses) GetEmulatedDevices() []EmulatedDeviceResponse 
 // GetEmulatedDevicesOk returns a tuple with the EmulatedDevices field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmulatedDeviceResponses) GetEmulatedDevicesOk() ([]EmulatedDeviceResponse, bool) {
-	if o == nil || core.IsNil(o.EmulatedDevices) {
+	if o == nil || utils.IsNil(o.EmulatedDevices) {
 		return nil, false
 	}
 	return o.EmulatedDevices, true
@@ -61,7 +61,7 @@ func (o *EmulatedDeviceResponses) GetEmulatedDevicesOk() ([]EmulatedDeviceRespon
 
 // HasEmulatedDevices returns a boolean if a field has been set.
 func (o *EmulatedDeviceResponses) HasEmulatedDevices() bool {
-	if o != nil && !core.IsNil(o.EmulatedDevices) {
+	if o != nil && !utils.IsNil(o.EmulatedDevices) {
 		return true
 	}
 
@@ -75,7 +75,7 @@ func (o *EmulatedDeviceResponses) SetEmulatedDevices(v []EmulatedDeviceResponse)
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *EmulatedDeviceResponses) GetLinks() SelfLinks {
-	if o == nil || core.IsNil(o.Links) {
+	if o == nil || utils.IsNil(o.Links) {
 		var ret SelfLinks
 		return ret
 	}
@@ -85,7 +85,7 @@ func (o *EmulatedDeviceResponses) GetLinks() SelfLinks {
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmulatedDeviceResponses) GetLinksOk() (*SelfLinks, bool) {
-	if o == nil || core.IsNil(o.Links) {
+	if o == nil || utils.IsNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -93,7 +93,7 @@ func (o *EmulatedDeviceResponses) GetLinksOk() (*SelfLinks, bool) {
 
 // HasLinks returns a boolean if a field has been set.
 func (o *EmulatedDeviceResponses) HasLinks() bool {
-	if o != nil && !core.IsNil(o.Links) {
+	if o != nil && !utils.IsNil(o.Links) {
 		return true
 	}
 
@@ -106,7 +106,7 @@ func (o *EmulatedDeviceResponses) SetLinks(v SelfLinks) {
 }
 
 func (o EmulatedDeviceResponses) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -115,10 +115,10 @@ func (o EmulatedDeviceResponses) MarshalJSON() ([]byte, error) {
 
 func (o EmulatedDeviceResponses) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !core.IsNil(o.EmulatedDevices) {
+	if !utils.IsNil(o.EmulatedDevices) {
 		toSerialize["emulatedDevices"] = o.EmulatedDevices
 	}
-	if !core.IsNil(o.Links) {
+	if !utils.IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
 	return toSerialize, nil
@@ -159,5 +159,3 @@ func (v *NullableEmulatedDeviceResponses) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

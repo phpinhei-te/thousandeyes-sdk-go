@@ -12,11 +12,11 @@ package administrative
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 )
 
 // checks if the SelfLinks type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &SelfLinks{}
+var _ utils.MappedNullable = &SelfLinks{}
 
 // SelfLinks A links object containing the self link.
 type SelfLinks struct {
@@ -42,7 +42,7 @@ func NewSelfLinksWithDefaults() *SelfLinks {
 
 // GetSelf returns the Self field value if set, zero value otherwise.
 func (o *SelfLinks) GetSelf() Link {
-	if o == nil || core.IsNil(o.Self) {
+	if o == nil || utils.IsNil(o.Self) {
 		var ret Link
 		return ret
 	}
@@ -52,7 +52,7 @@ func (o *SelfLinks) GetSelf() Link {
 // GetSelfOk returns a tuple with the Self field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SelfLinks) GetSelfOk() (*Link, bool) {
-	if o == nil || core.IsNil(o.Self) {
+	if o == nil || utils.IsNil(o.Self) {
 		return nil, false
 	}
 	return o.Self, true
@@ -60,7 +60,7 @@ func (o *SelfLinks) GetSelfOk() (*Link, bool) {
 
 // HasSelf returns a boolean if a field has been set.
 func (o *SelfLinks) HasSelf() bool {
-	if o != nil && !core.IsNil(o.Self) {
+	if o != nil && !utils.IsNil(o.Self) {
 		return true
 	}
 
@@ -73,7 +73,7 @@ func (o *SelfLinks) SetSelf(v Link) {
 }
 
 func (o SelfLinks) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -82,7 +82,7 @@ func (o SelfLinks) MarshalJSON() ([]byte, error) {
 
 func (o SelfLinks) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !core.IsNil(o.Self) {
+	if !utils.IsNil(o.Self) {
 		toSerialize["self"] = o.Self
 	}
 	return toSerialize, nil
@@ -123,5 +123,3 @@ func (v *NullableSelfLinks) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

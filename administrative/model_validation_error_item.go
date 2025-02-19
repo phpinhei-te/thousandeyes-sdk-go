@@ -12,11 +12,11 @@ package administrative
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 )
 
 // checks if the ValidationErrorItem type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &ValidationErrorItem{}
+var _ utils.MappedNullable = &ValidationErrorItem{}
 
 // ValidationErrorItem struct for ValidationErrorItem
 type ValidationErrorItem struct {
@@ -47,7 +47,7 @@ func NewValidationErrorItemWithDefaults() *ValidationErrorItem {
 
 // GetCode returns the Code field value if set, zero value otherwise.
 func (o *ValidationErrorItem) GetCode() string {
-	if o == nil || core.IsNil(o.Code) {
+	if o == nil || utils.IsNil(o.Code) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *ValidationErrorItem) GetCode() string {
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ValidationErrorItem) GetCodeOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Code) {
+	if o == nil || utils.IsNil(o.Code) {
 		return nil, false
 	}
 	return o.Code, true
@@ -65,7 +65,7 @@ func (o *ValidationErrorItem) GetCodeOk() (*string, bool) {
 
 // HasCode returns a boolean if a field has been set.
 func (o *ValidationErrorItem) HasCode() bool {
-	if o != nil && !core.IsNil(o.Code) {
+	if o != nil && !utils.IsNil(o.Code) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *ValidationErrorItem) SetCode(v string) {
 
 // GetField returns the Field field value if set, zero value otherwise.
 func (o *ValidationErrorItem) GetField() string {
-	if o == nil || core.IsNil(o.Field) {
+	if o == nil || utils.IsNil(o.Field) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *ValidationErrorItem) GetField() string {
 // GetFieldOk returns a tuple with the Field field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ValidationErrorItem) GetFieldOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Field) {
+	if o == nil || utils.IsNil(o.Field) {
 		return nil, false
 	}
 	return o.Field, true
@@ -97,7 +97,7 @@ func (o *ValidationErrorItem) GetFieldOk() (*string, bool) {
 
 // HasField returns a boolean if a field has been set.
 func (o *ValidationErrorItem) HasField() bool {
-	if o != nil && !core.IsNil(o.Field) {
+	if o != nil && !utils.IsNil(o.Field) {
 		return true
 	}
 
@@ -111,7 +111,7 @@ func (o *ValidationErrorItem) SetField(v string) {
 
 // GetMessage returns the Message field value if set, zero value otherwise.
 func (o *ValidationErrorItem) GetMessage() string {
-	if o == nil || core.IsNil(o.Message) {
+	if o == nil || utils.IsNil(o.Message) {
 		var ret string
 		return ret
 	}
@@ -121,7 +121,7 @@ func (o *ValidationErrorItem) GetMessage() string {
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ValidationErrorItem) GetMessageOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Message) {
+	if o == nil || utils.IsNil(o.Message) {
 		return nil, false
 	}
 	return o.Message, true
@@ -129,7 +129,7 @@ func (o *ValidationErrorItem) GetMessageOk() (*string, bool) {
 
 // HasMessage returns a boolean if a field has been set.
 func (o *ValidationErrorItem) HasMessage() bool {
-	if o != nil && !core.IsNil(o.Message) {
+	if o != nil && !utils.IsNil(o.Message) {
 		return true
 	}
 
@@ -142,7 +142,7 @@ func (o *ValidationErrorItem) SetMessage(v string) {
 }
 
 func (o ValidationErrorItem) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -151,13 +151,13 @@ func (o ValidationErrorItem) MarshalJSON() ([]byte, error) {
 
 func (o ValidationErrorItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !core.IsNil(o.Code) {
+	if !utils.IsNil(o.Code) {
 		toSerialize["code"] = o.Code
 	}
-	if !core.IsNil(o.Field) {
+	if !utils.IsNil(o.Field) {
 		toSerialize["field"] = o.Field
 	}
-	if !core.IsNil(o.Message) {
+	if !utils.IsNil(o.Message) {
 		toSerialize["message"] = o.Message
 	}
 	return toSerialize, nil
@@ -198,5 +198,3 @@ func (v *NullableValidationErrorItem) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

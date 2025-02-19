@@ -12,12 +12,12 @@ package administrative
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 	"time"
 )
 
 // checks if the UserEvent type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &UserEvent{}
+var _ utils.MappedNullable = &UserEvent{}
 
 // UserEvent struct for UserEvent
 type UserEvent struct {
@@ -34,7 +34,7 @@ type UserEvent struct {
 	// Unique id representing the user.
 	Uid *string `json:"uid,omitempty"`
 	// The name and email address of the user.
-	User *string `json:"user,omitempty"`
+	User      *string    `json:"user,omitempty"`
 	Resources []Resource `json:"resources,omitempty"`
 }
 
@@ -57,7 +57,7 @@ func NewUserEventWithDefaults() *UserEvent {
 
 // GetAid returns the Aid field value if set, zero value otherwise.
 func (o *UserEvent) GetAid() string {
-	if o == nil || core.IsNil(o.Aid) {
+	if o == nil || utils.IsNil(o.Aid) {
 		var ret string
 		return ret
 	}
@@ -67,7 +67,7 @@ func (o *UserEvent) GetAid() string {
 // GetAidOk returns a tuple with the Aid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserEvent) GetAidOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Aid) {
+	if o == nil || utils.IsNil(o.Aid) {
 		return nil, false
 	}
 	return o.Aid, true
@@ -75,7 +75,7 @@ func (o *UserEvent) GetAidOk() (*string, bool) {
 
 // HasAid returns a boolean if a field has been set.
 func (o *UserEvent) HasAid() bool {
-	if o != nil && !core.IsNil(o.Aid) {
+	if o != nil && !utils.IsNil(o.Aid) {
 		return true
 	}
 
@@ -89,7 +89,7 @@ func (o *UserEvent) SetAid(v string) {
 
 // GetAccountGroupName returns the AccountGroupName field value if set, zero value otherwise.
 func (o *UserEvent) GetAccountGroupName() string {
-	if o == nil || core.IsNil(o.AccountGroupName) {
+	if o == nil || utils.IsNil(o.AccountGroupName) {
 		var ret string
 		return ret
 	}
@@ -99,7 +99,7 @@ func (o *UserEvent) GetAccountGroupName() string {
 // GetAccountGroupNameOk returns a tuple with the AccountGroupName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserEvent) GetAccountGroupNameOk() (*string, bool) {
-	if o == nil || core.IsNil(o.AccountGroupName) {
+	if o == nil || utils.IsNil(o.AccountGroupName) {
 		return nil, false
 	}
 	return o.AccountGroupName, true
@@ -107,7 +107,7 @@ func (o *UserEvent) GetAccountGroupNameOk() (*string, bool) {
 
 // HasAccountGroupName returns a boolean if a field has been set.
 func (o *UserEvent) HasAccountGroupName() bool {
-	if o != nil && !core.IsNil(o.AccountGroupName) {
+	if o != nil && !utils.IsNil(o.AccountGroupName) {
 		return true
 	}
 
@@ -121,7 +121,7 @@ func (o *UserEvent) SetAccountGroupName(v string) {
 
 // GetDate returns the Date field value if set, zero value otherwise.
 func (o *UserEvent) GetDate() time.Time {
-	if o == nil || core.IsNil(o.Date) {
+	if o == nil || utils.IsNil(o.Date) {
 		var ret time.Time
 		return ret
 	}
@@ -131,7 +131,7 @@ func (o *UserEvent) GetDate() time.Time {
 // GetDateOk returns a tuple with the Date field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserEvent) GetDateOk() (*time.Time, bool) {
-	if o == nil || core.IsNil(o.Date) {
+	if o == nil || utils.IsNil(o.Date) {
 		return nil, false
 	}
 	return o.Date, true
@@ -139,7 +139,7 @@ func (o *UserEvent) GetDateOk() (*time.Time, bool) {
 
 // HasDate returns a boolean if a field has been set.
 func (o *UserEvent) HasDate() bool {
-	if o != nil && !core.IsNil(o.Date) {
+	if o != nil && !utils.IsNil(o.Date) {
 		return true
 	}
 
@@ -153,7 +153,7 @@ func (o *UserEvent) SetDate(v time.Time) {
 
 // GetEvent returns the Event field value if set, zero value otherwise.
 func (o *UserEvent) GetEvent() string {
-	if o == nil || core.IsNil(o.Event) {
+	if o == nil || utils.IsNil(o.Event) {
 		var ret string
 		return ret
 	}
@@ -163,7 +163,7 @@ func (o *UserEvent) GetEvent() string {
 // GetEventOk returns a tuple with the Event field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserEvent) GetEventOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Event) {
+	if o == nil || utils.IsNil(o.Event) {
 		return nil, false
 	}
 	return o.Event, true
@@ -171,7 +171,7 @@ func (o *UserEvent) GetEventOk() (*string, bool) {
 
 // HasEvent returns a boolean if a field has been set.
 func (o *UserEvent) HasEvent() bool {
-	if o != nil && !core.IsNil(o.Event) {
+	if o != nil && !utils.IsNil(o.Event) {
 		return true
 	}
 
@@ -185,7 +185,7 @@ func (o *UserEvent) SetEvent(v string) {
 
 // GetIpAddress returns the IpAddress field value if set, zero value otherwise.
 func (o *UserEvent) GetIpAddress() string {
-	if o == nil || core.IsNil(o.IpAddress) {
+	if o == nil || utils.IsNil(o.IpAddress) {
 		var ret string
 		return ret
 	}
@@ -195,7 +195,7 @@ func (o *UserEvent) GetIpAddress() string {
 // GetIpAddressOk returns a tuple with the IpAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserEvent) GetIpAddressOk() (*string, bool) {
-	if o == nil || core.IsNil(o.IpAddress) {
+	if o == nil || utils.IsNil(o.IpAddress) {
 		return nil, false
 	}
 	return o.IpAddress, true
@@ -203,7 +203,7 @@ func (o *UserEvent) GetIpAddressOk() (*string, bool) {
 
 // HasIpAddress returns a boolean if a field has been set.
 func (o *UserEvent) HasIpAddress() bool {
-	if o != nil && !core.IsNil(o.IpAddress) {
+	if o != nil && !utils.IsNil(o.IpAddress) {
 		return true
 	}
 
@@ -217,7 +217,7 @@ func (o *UserEvent) SetIpAddress(v string) {
 
 // GetUid returns the Uid field value if set, zero value otherwise.
 func (o *UserEvent) GetUid() string {
-	if o == nil || core.IsNil(o.Uid) {
+	if o == nil || utils.IsNil(o.Uid) {
 		var ret string
 		return ret
 	}
@@ -227,7 +227,7 @@ func (o *UserEvent) GetUid() string {
 // GetUidOk returns a tuple with the Uid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserEvent) GetUidOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Uid) {
+	if o == nil || utils.IsNil(o.Uid) {
 		return nil, false
 	}
 	return o.Uid, true
@@ -235,7 +235,7 @@ func (o *UserEvent) GetUidOk() (*string, bool) {
 
 // HasUid returns a boolean if a field has been set.
 func (o *UserEvent) HasUid() bool {
-	if o != nil && !core.IsNil(o.Uid) {
+	if o != nil && !utils.IsNil(o.Uid) {
 		return true
 	}
 
@@ -249,7 +249,7 @@ func (o *UserEvent) SetUid(v string) {
 
 // GetUser returns the User field value if set, zero value otherwise.
 func (o *UserEvent) GetUser() string {
-	if o == nil || core.IsNil(o.User) {
+	if o == nil || utils.IsNil(o.User) {
 		var ret string
 		return ret
 	}
@@ -259,7 +259,7 @@ func (o *UserEvent) GetUser() string {
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserEvent) GetUserOk() (*string, bool) {
-	if o == nil || core.IsNil(o.User) {
+	if o == nil || utils.IsNil(o.User) {
 		return nil, false
 	}
 	return o.User, true
@@ -267,7 +267,7 @@ func (o *UserEvent) GetUserOk() (*string, bool) {
 
 // HasUser returns a boolean if a field has been set.
 func (o *UserEvent) HasUser() bool {
-	if o != nil && !core.IsNil(o.User) {
+	if o != nil && !utils.IsNil(o.User) {
 		return true
 	}
 
@@ -281,7 +281,7 @@ func (o *UserEvent) SetUser(v string) {
 
 // GetResources returns the Resources field value if set, zero value otherwise.
 func (o *UserEvent) GetResources() []Resource {
-	if o == nil || core.IsNil(o.Resources) {
+	if o == nil || utils.IsNil(o.Resources) {
 		var ret []Resource
 		return ret
 	}
@@ -291,7 +291,7 @@ func (o *UserEvent) GetResources() []Resource {
 // GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserEvent) GetResourcesOk() ([]Resource, bool) {
-	if o == nil || core.IsNil(o.Resources) {
+	if o == nil || utils.IsNil(o.Resources) {
 		return nil, false
 	}
 	return o.Resources, true
@@ -299,7 +299,7 @@ func (o *UserEvent) GetResourcesOk() ([]Resource, bool) {
 
 // HasResources returns a boolean if a field has been set.
 func (o *UserEvent) HasResources() bool {
-	if o != nil && !core.IsNil(o.Resources) {
+	if o != nil && !utils.IsNil(o.Resources) {
 		return true
 	}
 
@@ -312,7 +312,7 @@ func (o *UserEvent) SetResources(v []Resource) {
 }
 
 func (o UserEvent) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -321,28 +321,28 @@ func (o UserEvent) MarshalJSON() ([]byte, error) {
 
 func (o UserEvent) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !core.IsNil(o.Aid) {
+	if !utils.IsNil(o.Aid) {
 		toSerialize["aid"] = o.Aid
 	}
-	if !core.IsNil(o.AccountGroupName) {
+	if !utils.IsNil(o.AccountGroupName) {
 		toSerialize["accountGroupName"] = o.AccountGroupName
 	}
-	if !core.IsNil(o.Date) {
+	if !utils.IsNil(o.Date) {
 		toSerialize["date"] = o.Date
 	}
-	if !core.IsNil(o.Event) {
+	if !utils.IsNil(o.Event) {
 		toSerialize["event"] = o.Event
 	}
-	if !core.IsNil(o.IpAddress) {
+	if !utils.IsNil(o.IpAddress) {
 		toSerialize["ipAddress"] = o.IpAddress
 	}
-	if !core.IsNil(o.Uid) {
+	if !utils.IsNil(o.Uid) {
 		toSerialize["uid"] = o.Uid
 	}
-	if !core.IsNil(o.User) {
+	if !utils.IsNil(o.User) {
 		toSerialize["user"] = o.User
 	}
-	if !core.IsNil(o.Resources) {
+	if !utils.IsNil(o.Resources) {
 		toSerialize["resources"] = o.Resources
 	}
 	return toSerialize, nil
@@ -383,5 +383,3 @@ func (v *NullableUserEvent) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -12,12 +12,12 @@ package administrative
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 	"time"
 )
 
 // checks if the User type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &User{}
+var _ utils.MappedNullable = &User{}
 
 // User struct for User
 type User struct {
@@ -28,7 +28,7 @@ type User struct {
 	// Unique ID of the user.
 	Uid *string `json:"uid,omitempty"`
 	// UTC date the user registered their account (ISO date-time format).
-	DateRegistered *time.Time `json:"dateRegistered,omitempty"`
+	DateRegistered    *time.Time    `json:"dateRegistered,omitempty"`
 	LoginAccountGroup *AccountGroup `json:"loginAccountGroup,omitempty"`
 }
 
@@ -51,7 +51,7 @@ func NewUserWithDefaults() *User {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *User) GetName() string {
-	if o == nil || core.IsNil(o.Name) {
+	if o == nil || utils.IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -61,7 +61,7 @@ func (o *User) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *User) GetNameOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Name) {
+	if o == nil || utils.IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -69,7 +69,7 @@ func (o *User) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *User) HasName() bool {
-	if o != nil && !core.IsNil(o.Name) {
+	if o != nil && !utils.IsNil(o.Name) {
 		return true
 	}
 
@@ -83,7 +83,7 @@ func (o *User) SetName(v string) {
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *User) GetEmail() string {
-	if o == nil || core.IsNil(o.Email) {
+	if o == nil || utils.IsNil(o.Email) {
 		var ret string
 		return ret
 	}
@@ -93,7 +93,7 @@ func (o *User) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *User) GetEmailOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Email) {
+	if o == nil || utils.IsNil(o.Email) {
 		return nil, false
 	}
 	return o.Email, true
@@ -101,7 +101,7 @@ func (o *User) GetEmailOk() (*string, bool) {
 
 // HasEmail returns a boolean if a field has been set.
 func (o *User) HasEmail() bool {
-	if o != nil && !core.IsNil(o.Email) {
+	if o != nil && !utils.IsNil(o.Email) {
 		return true
 	}
 
@@ -115,7 +115,7 @@ func (o *User) SetEmail(v string) {
 
 // GetUid returns the Uid field value if set, zero value otherwise.
 func (o *User) GetUid() string {
-	if o == nil || core.IsNil(o.Uid) {
+	if o == nil || utils.IsNil(o.Uid) {
 		var ret string
 		return ret
 	}
@@ -125,7 +125,7 @@ func (o *User) GetUid() string {
 // GetUidOk returns a tuple with the Uid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *User) GetUidOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Uid) {
+	if o == nil || utils.IsNil(o.Uid) {
 		return nil, false
 	}
 	return o.Uid, true
@@ -133,7 +133,7 @@ func (o *User) GetUidOk() (*string, bool) {
 
 // HasUid returns a boolean if a field has been set.
 func (o *User) HasUid() bool {
-	if o != nil && !core.IsNil(o.Uid) {
+	if o != nil && !utils.IsNil(o.Uid) {
 		return true
 	}
 
@@ -147,7 +147,7 @@ func (o *User) SetUid(v string) {
 
 // GetDateRegistered returns the DateRegistered field value if set, zero value otherwise.
 func (o *User) GetDateRegistered() time.Time {
-	if o == nil || core.IsNil(o.DateRegistered) {
+	if o == nil || utils.IsNil(o.DateRegistered) {
 		var ret time.Time
 		return ret
 	}
@@ -157,7 +157,7 @@ func (o *User) GetDateRegistered() time.Time {
 // GetDateRegisteredOk returns a tuple with the DateRegistered field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *User) GetDateRegisteredOk() (*time.Time, bool) {
-	if o == nil || core.IsNil(o.DateRegistered) {
+	if o == nil || utils.IsNil(o.DateRegistered) {
 		return nil, false
 	}
 	return o.DateRegistered, true
@@ -165,7 +165,7 @@ func (o *User) GetDateRegisteredOk() (*time.Time, bool) {
 
 // HasDateRegistered returns a boolean if a field has been set.
 func (o *User) HasDateRegistered() bool {
-	if o != nil && !core.IsNil(o.DateRegistered) {
+	if o != nil && !utils.IsNil(o.DateRegistered) {
 		return true
 	}
 
@@ -179,7 +179,7 @@ func (o *User) SetDateRegistered(v time.Time) {
 
 // GetLoginAccountGroup returns the LoginAccountGroup field value if set, zero value otherwise.
 func (o *User) GetLoginAccountGroup() AccountGroup {
-	if o == nil || core.IsNil(o.LoginAccountGroup) {
+	if o == nil || utils.IsNil(o.LoginAccountGroup) {
 		var ret AccountGroup
 		return ret
 	}
@@ -189,7 +189,7 @@ func (o *User) GetLoginAccountGroup() AccountGroup {
 // GetLoginAccountGroupOk returns a tuple with the LoginAccountGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *User) GetLoginAccountGroupOk() (*AccountGroup, bool) {
-	if o == nil || core.IsNil(o.LoginAccountGroup) {
+	if o == nil || utils.IsNil(o.LoginAccountGroup) {
 		return nil, false
 	}
 	return o.LoginAccountGroup, true
@@ -197,7 +197,7 @@ func (o *User) GetLoginAccountGroupOk() (*AccountGroup, bool) {
 
 // HasLoginAccountGroup returns a boolean if a field has been set.
 func (o *User) HasLoginAccountGroup() bool {
-	if o != nil && !core.IsNil(o.LoginAccountGroup) {
+	if o != nil && !utils.IsNil(o.LoginAccountGroup) {
 		return true
 	}
 
@@ -210,7 +210,7 @@ func (o *User) SetLoginAccountGroup(v AccountGroup) {
 }
 
 func (o User) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -219,19 +219,19 @@ func (o User) MarshalJSON() ([]byte, error) {
 
 func (o User) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !core.IsNil(o.Name) {
+	if !utils.IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !core.IsNil(o.Email) {
+	if !utils.IsNil(o.Email) {
 		toSerialize["email"] = o.Email
 	}
-	if !core.IsNil(o.Uid) {
+	if !utils.IsNil(o.Uid) {
 		toSerialize["uid"] = o.Uid
 	}
-	if !core.IsNil(o.DateRegistered) {
+	if !utils.IsNil(o.DateRegistered) {
 		toSerialize["dateRegistered"] = o.DateRegistered
 	}
-	if !core.IsNil(o.LoginAccountGroup) {
+	if !utils.IsNil(o.LoginAccountGroup) {
 		toSerialize["loginAccountGroup"] = o.LoginAccountGroup
 	}
 	return toSerialize, nil
@@ -272,5 +272,3 @@ func (v *NullableUser) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -1,7 +1,7 @@
 /*
 Emulation API
 
-The Emulation API facilitates the retrieval of user-agent strings for HTTP, pageload, and transaction tests. It also enables the retrieval and addition of emulated devices for pageload and transaction tests.  To access Emulation API operations, the following permissions are required:  * `Settings Tests Read` for read operations. * `Settings Tests Update` for write operations. 
+The Emulation API facilitates the retrieval of user-agent strings for HTTP, pageload, and transaction tests. It also enables the retrieval and addition of emulated devices for pageload and transaction tests.  To access Emulation API operations, the following permissions are required:  * `Settings Tests Read` for read operations. * `Settings Tests Update` for write operations.
 
 API version: 7.0.36
 */
@@ -12,13 +12,12 @@ package emulation
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
-	"bytes"
 	"fmt"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 )
 
 // checks if the EmulatedDeviceResponse type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &EmulatedDeviceResponse{}
+var _ utils.MappedNullable = &EmulatedDeviceResponse{}
 
 // EmulatedDeviceResponse struct for EmulatedDeviceResponse
 type EmulatedDeviceResponse struct {
@@ -135,7 +134,7 @@ func (o *EmulatedDeviceResponse) SetHeight(v int32) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *EmulatedDeviceResponse) GetName() string {
-	if o == nil || core.IsNil(o.Name) {
+	if o == nil || utils.IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -145,7 +144,7 @@ func (o *EmulatedDeviceResponse) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmulatedDeviceResponse) GetNameOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Name) {
+	if o == nil || utils.IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -153,7 +152,7 @@ func (o *EmulatedDeviceResponse) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *EmulatedDeviceResponse) HasName() bool {
-	if o != nil && !core.IsNil(o.Name) {
+	if o != nil && !utils.IsNil(o.Name) {
 		return true
 	}
 
@@ -167,7 +166,7 @@ func (o *EmulatedDeviceResponse) SetName(v string) {
 
 // GetCodeName returns the CodeName field value if set, zero value otherwise.
 func (o *EmulatedDeviceResponse) GetCodeName() string {
-	if o == nil || core.IsNil(o.CodeName) {
+	if o == nil || utils.IsNil(o.CodeName) {
 		var ret string
 		return ret
 	}
@@ -177,7 +176,7 @@ func (o *EmulatedDeviceResponse) GetCodeName() string {
 // GetCodeNameOk returns a tuple with the CodeName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmulatedDeviceResponse) GetCodeNameOk() (*string, bool) {
-	if o == nil || core.IsNil(o.CodeName) {
+	if o == nil || utils.IsNil(o.CodeName) {
 		return nil, false
 	}
 	return o.CodeName, true
@@ -185,7 +184,7 @@ func (o *EmulatedDeviceResponse) GetCodeNameOk() (*string, bool) {
 
 // HasCodeName returns a boolean if a field has been set.
 func (o *EmulatedDeviceResponse) HasCodeName() bool {
-	if o != nil && !core.IsNil(o.CodeName) {
+	if o != nil && !utils.IsNil(o.CodeName) {
 		return true
 	}
 
@@ -199,7 +198,7 @@ func (o *EmulatedDeviceResponse) SetCodeName(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *EmulatedDeviceResponse) GetId() string {
-	if o == nil || core.IsNil(o.Id) {
+	if o == nil || utils.IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -209,7 +208,7 @@ func (o *EmulatedDeviceResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmulatedDeviceResponse) GetIdOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Id) {
+	if o == nil || utils.IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -217,7 +216,7 @@ func (o *EmulatedDeviceResponse) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *EmulatedDeviceResponse) HasId() bool {
-	if o != nil && !core.IsNil(o.Id) {
+	if o != nil && !utils.IsNil(o.Id) {
 		return true
 	}
 
@@ -231,7 +230,7 @@ func (o *EmulatedDeviceResponse) SetId(v string) {
 
 // GetAvailableUserAgents returns the AvailableUserAgents field value if set, zero value otherwise.
 func (o *EmulatedDeviceResponse) GetAvailableUserAgents() []string {
-	if o == nil || core.IsNil(o.AvailableUserAgents) {
+	if o == nil || utils.IsNil(o.AvailableUserAgents) {
 		var ret []string
 		return ret
 	}
@@ -241,7 +240,7 @@ func (o *EmulatedDeviceResponse) GetAvailableUserAgents() []string {
 // GetAvailableUserAgentsOk returns a tuple with the AvailableUserAgents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmulatedDeviceResponse) GetAvailableUserAgentsOk() ([]string, bool) {
-	if o == nil || core.IsNil(o.AvailableUserAgents) {
+	if o == nil || utils.IsNil(o.AvailableUserAgents) {
 		return nil, false
 	}
 	return o.AvailableUserAgents, true
@@ -249,7 +248,7 @@ func (o *EmulatedDeviceResponse) GetAvailableUserAgentsOk() ([]string, bool) {
 
 // HasAvailableUserAgents returns a boolean if a field has been set.
 func (o *EmulatedDeviceResponse) HasAvailableUserAgents() bool {
-	if o != nil && !core.IsNil(o.AvailableUserAgents) {
+	if o != nil && !utils.IsNil(o.AvailableUserAgents) {
 		return true
 	}
 
@@ -263,7 +262,7 @@ func (o *EmulatedDeviceResponse) SetAvailableUserAgents(v []string) {
 
 // GetDefaultUserAgentTemplate returns the DefaultUserAgentTemplate field value if set, zero value otherwise.
 func (o *EmulatedDeviceResponse) GetDefaultUserAgentTemplate() string {
-	if o == nil || core.IsNil(o.DefaultUserAgentTemplate) {
+	if o == nil || utils.IsNil(o.DefaultUserAgentTemplate) {
 		var ret string
 		return ret
 	}
@@ -273,7 +272,7 @@ func (o *EmulatedDeviceResponse) GetDefaultUserAgentTemplate() string {
 // GetDefaultUserAgentTemplateOk returns a tuple with the DefaultUserAgentTemplate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmulatedDeviceResponse) GetDefaultUserAgentTemplateOk() (*string, bool) {
-	if o == nil || core.IsNil(o.DefaultUserAgentTemplate) {
+	if o == nil || utils.IsNil(o.DefaultUserAgentTemplate) {
 		return nil, false
 	}
 	return o.DefaultUserAgentTemplate, true
@@ -281,7 +280,7 @@ func (o *EmulatedDeviceResponse) GetDefaultUserAgentTemplateOk() (*string, bool)
 
 // HasDefaultUserAgentTemplate returns a boolean if a field has been set.
 func (o *EmulatedDeviceResponse) HasDefaultUserAgentTemplate() bool {
-	if o != nil && !core.IsNil(o.DefaultUserAgentTemplate) {
+	if o != nil && !utils.IsNil(o.DefaultUserAgentTemplate) {
 		return true
 	}
 
@@ -294,7 +293,7 @@ func (o *EmulatedDeviceResponse) SetDefaultUserAgentTemplate(v string) {
 }
 
 func (o EmulatedDeviceResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -306,19 +305,19 @@ func (o EmulatedDeviceResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["category"] = o.Category
 	toSerialize["width"] = o.Width
 	toSerialize["height"] = o.Height
-	if !core.IsNil(o.Name) {
+	if !utils.IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !core.IsNil(o.CodeName) {
+	if !utils.IsNil(o.CodeName) {
 		toSerialize["codeName"] = o.CodeName
 	}
-	if !core.IsNil(o.Id) {
+	if !utils.IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !core.IsNil(o.AvailableUserAgents) {
+	if !utils.IsNil(o.AvailableUserAgents) {
 		toSerialize["availableUserAgents"] = o.AvailableUserAgents
 	}
-	if !core.IsNil(o.DefaultUserAgentTemplate) {
+	if !utils.IsNil(o.DefaultUserAgentTemplate) {
 		toSerialize["defaultUserAgentTemplate"] = o.DefaultUserAgentTemplate
 	}
 	return toSerialize, nil
@@ -339,10 +338,10 @@ func (o *EmulatedDeviceResponse) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -350,9 +349,7 @@ func (o *EmulatedDeviceResponse) UnmarshalJSON(data []byte) (err error) {
 
 	varEmulatedDeviceResponse := _EmulatedDeviceResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEmulatedDeviceResponse)
+	err = json.Unmarshal(data, &varEmulatedDeviceResponse)
 
 	if err != nil {
 		return err
@@ -398,5 +395,3 @@ func (v *NullableEmulatedDeviceResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -12,11 +12,11 @@ package administrative
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 )
 
 // checks if the Permission type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &Permission{}
+var _ utils.MappedNullable = &Permission{}
 
 // Permission struct for Permission
 type Permission struct {
@@ -49,7 +49,7 @@ func NewPermissionWithDefaults() *Permission {
 
 // GetLabel returns the Label field value if set, zero value otherwise.
 func (o *Permission) GetLabel() string {
-	if o == nil || core.IsNil(o.Label) {
+	if o == nil || utils.IsNil(o.Label) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *Permission) GetLabel() string {
 // GetLabelOk returns a tuple with the Label field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Permission) GetLabelOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Label) {
+	if o == nil || utils.IsNil(o.Label) {
 		return nil, false
 	}
 	return o.Label, true
@@ -67,7 +67,7 @@ func (o *Permission) GetLabelOk() (*string, bool) {
 
 // HasLabel returns a boolean if a field has been set.
 func (o *Permission) HasLabel() bool {
-	if o != nil && !core.IsNil(o.Label) {
+	if o != nil && !utils.IsNil(o.Label) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *Permission) SetLabel(v string) {
 
 // GetPermissionId returns the PermissionId field value if set, zero value otherwise.
 func (o *Permission) GetPermissionId() string {
-	if o == nil || core.IsNil(o.PermissionId) {
+	if o == nil || utils.IsNil(o.PermissionId) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *Permission) GetPermissionId() string {
 // GetPermissionIdOk returns a tuple with the PermissionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Permission) GetPermissionIdOk() (*string, bool) {
-	if o == nil || core.IsNil(o.PermissionId) {
+	if o == nil || utils.IsNil(o.PermissionId) {
 		return nil, false
 	}
 	return o.PermissionId, true
@@ -99,7 +99,7 @@ func (o *Permission) GetPermissionIdOk() (*string, bool) {
 
 // HasPermissionId returns a boolean if a field has been set.
 func (o *Permission) HasPermissionId() bool {
-	if o != nil && !core.IsNil(o.PermissionId) {
+	if o != nil && !utils.IsNil(o.PermissionId) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *Permission) SetPermissionId(v string) {
 
 // GetIsManagementPermission returns the IsManagementPermission field value if set, zero value otherwise.
 func (o *Permission) GetIsManagementPermission() bool {
-	if o == nil || core.IsNil(o.IsManagementPermission) {
+	if o == nil || utils.IsNil(o.IsManagementPermission) {
 		var ret bool
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *Permission) GetIsManagementPermission() bool {
 // GetIsManagementPermissionOk returns a tuple with the IsManagementPermission field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Permission) GetIsManagementPermissionOk() (*bool, bool) {
-	if o == nil || core.IsNil(o.IsManagementPermission) {
+	if o == nil || utils.IsNil(o.IsManagementPermission) {
 		return nil, false
 	}
 	return o.IsManagementPermission, true
@@ -131,7 +131,7 @@ func (o *Permission) GetIsManagementPermissionOk() (*bool, bool) {
 
 // HasIsManagementPermission returns a boolean if a field has been set.
 func (o *Permission) HasIsManagementPermission() bool {
-	if o != nil && !core.IsNil(o.IsManagementPermission) {
+	if o != nil && !utils.IsNil(o.IsManagementPermission) {
 		return true
 	}
 
@@ -145,7 +145,7 @@ func (o *Permission) SetIsManagementPermission(v bool) {
 
 // GetPermission returns the Permission field value if set, zero value otherwise.
 func (o *Permission) GetPermission() string {
-	if o == nil || core.IsNil(o.Permission) {
+	if o == nil || utils.IsNil(o.Permission) {
 		var ret string
 		return ret
 	}
@@ -155,7 +155,7 @@ func (o *Permission) GetPermission() string {
 // GetPermissionOk returns a tuple with the Permission field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Permission) GetPermissionOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Permission) {
+	if o == nil || utils.IsNil(o.Permission) {
 		return nil, false
 	}
 	return o.Permission, true
@@ -163,7 +163,7 @@ func (o *Permission) GetPermissionOk() (*string, bool) {
 
 // HasPermission returns a boolean if a field has been set.
 func (o *Permission) HasPermission() bool {
-	if o != nil && !core.IsNil(o.Permission) {
+	if o != nil && !utils.IsNil(o.Permission) {
 		return true
 	}
 
@@ -176,7 +176,7 @@ func (o *Permission) SetPermission(v string) {
 }
 
 func (o Permission) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -185,16 +185,16 @@ func (o Permission) MarshalJSON() ([]byte, error) {
 
 func (o Permission) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !core.IsNil(o.Label) {
+	if !utils.IsNil(o.Label) {
 		toSerialize["label"] = o.Label
 	}
-	if !core.IsNil(o.PermissionId) {
+	if !utils.IsNil(o.PermissionId) {
 		toSerialize["permissionId"] = o.PermissionId
 	}
-	if !core.IsNil(o.IsManagementPermission) {
+	if !utils.IsNil(o.IsManagementPermission) {
 		toSerialize["isManagementPermission"] = o.IsManagementPermission
 	}
-	if !core.IsNil(o.Permission) {
+	if !utils.IsNil(o.Permission) {
 		toSerialize["permission"] = o.Permission
 	}
 	return toSerialize, nil
@@ -235,5 +235,3 @@ func (v *NullablePermission) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

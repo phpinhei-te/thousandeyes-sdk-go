@@ -12,11 +12,11 @@ package administrative
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 )
 
 // checks if the BaseRole type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &BaseRole{}
+var _ utils.MappedNullable = &BaseRole{}
 
 // BaseRole struct for BaseRole
 type BaseRole struct {
@@ -47,7 +47,7 @@ func NewBaseRoleWithDefaults() *BaseRole {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *BaseRole) GetName() string {
-	if o == nil || core.IsNil(o.Name) {
+	if o == nil || utils.IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *BaseRole) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseRole) GetNameOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Name) {
+	if o == nil || utils.IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -65,7 +65,7 @@ func (o *BaseRole) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *BaseRole) HasName() bool {
-	if o != nil && !core.IsNil(o.Name) {
+	if o != nil && !utils.IsNil(o.Name) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *BaseRole) SetName(v string) {
 
 // GetRoleId returns the RoleId field value if set, zero value otherwise.
 func (o *BaseRole) GetRoleId() string {
-	if o == nil || core.IsNil(o.RoleId) {
+	if o == nil || utils.IsNil(o.RoleId) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *BaseRole) GetRoleId() string {
 // GetRoleIdOk returns a tuple with the RoleId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseRole) GetRoleIdOk() (*string, bool) {
-	if o == nil || core.IsNil(o.RoleId) {
+	if o == nil || utils.IsNil(o.RoleId) {
 		return nil, false
 	}
 	return o.RoleId, true
@@ -97,7 +97,7 @@ func (o *BaseRole) GetRoleIdOk() (*string, bool) {
 
 // HasRoleId returns a boolean if a field has been set.
 func (o *BaseRole) HasRoleId() bool {
-	if o != nil && !core.IsNil(o.RoleId) {
+	if o != nil && !utils.IsNil(o.RoleId) {
 		return true
 	}
 
@@ -111,7 +111,7 @@ func (o *BaseRole) SetRoleId(v string) {
 
 // GetIsBuiltin returns the IsBuiltin field value if set, zero value otherwise.
 func (o *BaseRole) GetIsBuiltin() bool {
-	if o == nil || core.IsNil(o.IsBuiltin) {
+	if o == nil || utils.IsNil(o.IsBuiltin) {
 		var ret bool
 		return ret
 	}
@@ -121,7 +121,7 @@ func (o *BaseRole) GetIsBuiltin() bool {
 // GetIsBuiltinOk returns a tuple with the IsBuiltin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BaseRole) GetIsBuiltinOk() (*bool, bool) {
-	if o == nil || core.IsNil(o.IsBuiltin) {
+	if o == nil || utils.IsNil(o.IsBuiltin) {
 		return nil, false
 	}
 	return o.IsBuiltin, true
@@ -129,7 +129,7 @@ func (o *BaseRole) GetIsBuiltinOk() (*bool, bool) {
 
 // HasIsBuiltin returns a boolean if a field has been set.
 func (o *BaseRole) HasIsBuiltin() bool {
-	if o != nil && !core.IsNil(o.IsBuiltin) {
+	if o != nil && !utils.IsNil(o.IsBuiltin) {
 		return true
 	}
 
@@ -142,7 +142,7 @@ func (o *BaseRole) SetIsBuiltin(v bool) {
 }
 
 func (o BaseRole) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -151,13 +151,13 @@ func (o BaseRole) MarshalJSON() ([]byte, error) {
 
 func (o BaseRole) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !core.IsNil(o.Name) {
+	if !utils.IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !core.IsNil(o.RoleId) {
+	if !utils.IsNil(o.RoleId) {
 		toSerialize["roleId"] = o.RoleId
 	}
-	if !core.IsNil(o.IsBuiltin) {
+	if !utils.IsNil(o.IsBuiltin) {
 		toSerialize["isBuiltin"] = o.IsBuiltin
 	}
 	return toSerialize, nil
@@ -198,5 +198,3 @@ func (v *NullableBaseRole) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

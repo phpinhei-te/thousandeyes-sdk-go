@@ -12,12 +12,12 @@ package administrative
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 	"time"
 )
 
 // checks if the ExtendedUser type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &ExtendedUser{}
+var _ utils.MappedNullable = &ExtendedUser{}
 
 // ExtendedUser struct for ExtendedUser
 type ExtendedUser struct {
@@ -28,7 +28,7 @@ type ExtendedUser struct {
 	// Unique ID of the user.
 	Uid *string `json:"uid,omitempty"`
 	// UTC date the user registered their account (ISO date-time format).
-	DateRegistered *time.Time `json:"dateRegistered,omitempty"`
+	DateRegistered    *time.Time    `json:"dateRegistered,omitempty"`
 	LoginAccountGroup *AccountGroup `json:"loginAccountGroup,omitempty"`
 	// UTC last login of the user (ISO date-time format).
 	LastLogin *time.Time `json:"lastLogin,omitempty"`
@@ -53,7 +53,7 @@ func NewExtendedUserWithDefaults() *ExtendedUser {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ExtendedUser) GetName() string {
-	if o == nil || core.IsNil(o.Name) {
+	if o == nil || utils.IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -63,7 +63,7 @@ func (o *ExtendedUser) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExtendedUser) GetNameOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Name) {
+	if o == nil || utils.IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -71,7 +71,7 @@ func (o *ExtendedUser) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ExtendedUser) HasName() bool {
-	if o != nil && !core.IsNil(o.Name) {
+	if o != nil && !utils.IsNil(o.Name) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o *ExtendedUser) SetName(v string) {
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *ExtendedUser) GetEmail() string {
-	if o == nil || core.IsNil(o.Email) {
+	if o == nil || utils.IsNil(o.Email) {
 		var ret string
 		return ret
 	}
@@ -95,7 +95,7 @@ func (o *ExtendedUser) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExtendedUser) GetEmailOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Email) {
+	if o == nil || utils.IsNil(o.Email) {
 		return nil, false
 	}
 	return o.Email, true
@@ -103,7 +103,7 @@ func (o *ExtendedUser) GetEmailOk() (*string, bool) {
 
 // HasEmail returns a boolean if a field has been set.
 func (o *ExtendedUser) HasEmail() bool {
-	if o != nil && !core.IsNil(o.Email) {
+	if o != nil && !utils.IsNil(o.Email) {
 		return true
 	}
 
@@ -117,7 +117,7 @@ func (o *ExtendedUser) SetEmail(v string) {
 
 // GetUid returns the Uid field value if set, zero value otherwise.
 func (o *ExtendedUser) GetUid() string {
-	if o == nil || core.IsNil(o.Uid) {
+	if o == nil || utils.IsNil(o.Uid) {
 		var ret string
 		return ret
 	}
@@ -127,7 +127,7 @@ func (o *ExtendedUser) GetUid() string {
 // GetUidOk returns a tuple with the Uid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExtendedUser) GetUidOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Uid) {
+	if o == nil || utils.IsNil(o.Uid) {
 		return nil, false
 	}
 	return o.Uid, true
@@ -135,7 +135,7 @@ func (o *ExtendedUser) GetUidOk() (*string, bool) {
 
 // HasUid returns a boolean if a field has been set.
 func (o *ExtendedUser) HasUid() bool {
-	if o != nil && !core.IsNil(o.Uid) {
+	if o != nil && !utils.IsNil(o.Uid) {
 		return true
 	}
 
@@ -149,7 +149,7 @@ func (o *ExtendedUser) SetUid(v string) {
 
 // GetDateRegistered returns the DateRegistered field value if set, zero value otherwise.
 func (o *ExtendedUser) GetDateRegistered() time.Time {
-	if o == nil || core.IsNil(o.DateRegistered) {
+	if o == nil || utils.IsNil(o.DateRegistered) {
 		var ret time.Time
 		return ret
 	}
@@ -159,7 +159,7 @@ func (o *ExtendedUser) GetDateRegistered() time.Time {
 // GetDateRegisteredOk returns a tuple with the DateRegistered field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExtendedUser) GetDateRegisteredOk() (*time.Time, bool) {
-	if o == nil || core.IsNil(o.DateRegistered) {
+	if o == nil || utils.IsNil(o.DateRegistered) {
 		return nil, false
 	}
 	return o.DateRegistered, true
@@ -167,7 +167,7 @@ func (o *ExtendedUser) GetDateRegisteredOk() (*time.Time, bool) {
 
 // HasDateRegistered returns a boolean if a field has been set.
 func (o *ExtendedUser) HasDateRegistered() bool {
-	if o != nil && !core.IsNil(o.DateRegistered) {
+	if o != nil && !utils.IsNil(o.DateRegistered) {
 		return true
 	}
 
@@ -181,7 +181,7 @@ func (o *ExtendedUser) SetDateRegistered(v time.Time) {
 
 // GetLoginAccountGroup returns the LoginAccountGroup field value if set, zero value otherwise.
 func (o *ExtendedUser) GetLoginAccountGroup() AccountGroup {
-	if o == nil || core.IsNil(o.LoginAccountGroup) {
+	if o == nil || utils.IsNil(o.LoginAccountGroup) {
 		var ret AccountGroup
 		return ret
 	}
@@ -191,7 +191,7 @@ func (o *ExtendedUser) GetLoginAccountGroup() AccountGroup {
 // GetLoginAccountGroupOk returns a tuple with the LoginAccountGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExtendedUser) GetLoginAccountGroupOk() (*AccountGroup, bool) {
-	if o == nil || core.IsNil(o.LoginAccountGroup) {
+	if o == nil || utils.IsNil(o.LoginAccountGroup) {
 		return nil, false
 	}
 	return o.LoginAccountGroup, true
@@ -199,7 +199,7 @@ func (o *ExtendedUser) GetLoginAccountGroupOk() (*AccountGroup, bool) {
 
 // HasLoginAccountGroup returns a boolean if a field has been set.
 func (o *ExtendedUser) HasLoginAccountGroup() bool {
-	if o != nil && !core.IsNil(o.LoginAccountGroup) {
+	if o != nil && !utils.IsNil(o.LoginAccountGroup) {
 		return true
 	}
 
@@ -213,7 +213,7 @@ func (o *ExtendedUser) SetLoginAccountGroup(v AccountGroup) {
 
 // GetLastLogin returns the LastLogin field value if set, zero value otherwise.
 func (o *ExtendedUser) GetLastLogin() time.Time {
-	if o == nil || core.IsNil(o.LastLogin) {
+	if o == nil || utils.IsNil(o.LastLogin) {
 		var ret time.Time
 		return ret
 	}
@@ -223,7 +223,7 @@ func (o *ExtendedUser) GetLastLogin() time.Time {
 // GetLastLoginOk returns a tuple with the LastLogin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExtendedUser) GetLastLoginOk() (*time.Time, bool) {
-	if o == nil || core.IsNil(o.LastLogin) {
+	if o == nil || utils.IsNil(o.LastLogin) {
 		return nil, false
 	}
 	return o.LastLogin, true
@@ -231,7 +231,7 @@ func (o *ExtendedUser) GetLastLoginOk() (*time.Time, bool) {
 
 // HasLastLogin returns a boolean if a field has been set.
 func (o *ExtendedUser) HasLastLogin() bool {
-	if o != nil && !core.IsNil(o.LastLogin) {
+	if o != nil && !utils.IsNil(o.LastLogin) {
 		return true
 	}
 
@@ -244,7 +244,7 @@ func (o *ExtendedUser) SetLastLogin(v time.Time) {
 }
 
 func (o ExtendedUser) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -253,22 +253,22 @@ func (o ExtendedUser) MarshalJSON() ([]byte, error) {
 
 func (o ExtendedUser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !core.IsNil(o.Name) {
+	if !utils.IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !core.IsNil(o.Email) {
+	if !utils.IsNil(o.Email) {
 		toSerialize["email"] = o.Email
 	}
-	if !core.IsNil(o.Uid) {
+	if !utils.IsNil(o.Uid) {
 		toSerialize["uid"] = o.Uid
 	}
-	if !core.IsNil(o.DateRegistered) {
+	if !utils.IsNil(o.DateRegistered) {
 		toSerialize["dateRegistered"] = o.DateRegistered
 	}
-	if !core.IsNil(o.LoginAccountGroup) {
+	if !utils.IsNil(o.LoginAccountGroup) {
 		toSerialize["loginAccountGroup"] = o.LoginAccountGroup
 	}
-	if !core.IsNil(o.LastLogin) {
+	if !utils.IsNil(o.LastLogin) {
 		toSerialize["lastLogin"] = o.LastLogin
 	}
 	return toSerialize, nil
@@ -309,5 +309,3 @@ func (v *NullableExtendedUser) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -12,26 +12,26 @@ package administrative
 
 import (
 	"bytes"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/client"
+	internalerror "github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/error"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/request"
 	"io"
 	"net/http"
 	"net/url"
 	"time"
 )
 
-
 // UserEventsAPIService UserEventsAPI service
-type UserEventsAPIService core.Service
+type UserEventsAPIService client.Service
 
 type ApiGetUserEventsRequest struct {
-
-	ApiService *UserEventsAPIService
-	aid *string
+	ApiService          *UserEventsAPIService
+	aid                 *string
 	useAllPermittedAids *bool
-	window *string
-	startDate *time.Time
-	endDate *time.Time
-	cursor *string
+	window              *string
+	startDate           *time.Time
+	endDate             *time.Time
+	cursor              *string
 }
 
 // A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
@@ -77,14 +77,13 @@ func (r ApiGetUserEventsRequest) Execute() (*AuditUserEvents, *http.Response, er
 /*
 GetUserEvents List activity log events
 
-Returns a list of activity log events in the current account group. 
+Returns a list of activity log events in the current account group.
 
 If `useAllPermittedAids=true` query parameter is passed and the user has permission `View activity log for all users in account group` the logs returned include events across all the account groups they belong to.
 
 For more information about changing the account group context, see [Account Context](https://developer.thousandeyes.com/v7/#/accountcontext).
 
-
- @return ApiGetUserEventsRequest
+	@return ApiGetUserEventsRequest
 */
 func (a *UserEventsAPIService) GetUserEvents() ApiGetUserEventsRequest {
 	return ApiGetUserEventsRequest{
@@ -93,12 +92,13 @@ func (a *UserEventsAPIService) GetUserEvents() ApiGetUserEventsRequest {
 }
 
 // Execute executes the request
-//  @return AuditUserEvents
+//
+//	@return AuditUserEvents
 func (a *UserEventsAPIService) GetUserEventsExecute(r ApiGetUserEventsRequest) (*AuditUserEvents, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		localVarReturnValue  *AuditUserEvents
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		localVarReturnValue *AuditUserEvents
 	)
 
 	localBasePath := a.Client.GetConfig().ServerURL
@@ -110,40 +110,40 @@ func (a *UserEventsAPIService) GetUserEventsExecute(r ApiGetUserEventsRequest) (
 	localVarFormParams := url.Values{}
 
 	if r.aid != nil {
-		core.ParameterAddToHeaderOrQuery(localVarQueryParams, "aid", r.aid, "")
+		request.ParameterAddToHeaderOrQuery(localVarQueryParams, "aid", r.aid, "")
 	}
 	if r.useAllPermittedAids != nil {
-		core.ParameterAddToHeaderOrQuery(localVarQueryParams, "useAllPermittedAids", r.useAllPermittedAids, "")
+		request.ParameterAddToHeaderOrQuery(localVarQueryParams, "useAllPermittedAids", r.useAllPermittedAids, "")
 	} else {
 		var defaultValue bool = false
 		r.useAllPermittedAids = &defaultValue
 	}
 	if r.window != nil {
-		core.ParameterAddToHeaderOrQuery(localVarQueryParams, "window", r.window, "")
+		request.ParameterAddToHeaderOrQuery(localVarQueryParams, "window", r.window, "")
 	}
 	if r.startDate != nil {
-		core.ParameterAddToHeaderOrQuery(localVarQueryParams, "startDate", r.startDate, "")
+		request.ParameterAddToHeaderOrQuery(localVarQueryParams, "startDate", r.startDate, "")
 	}
 	if r.endDate != nil {
-		core.ParameterAddToHeaderOrQuery(localVarQueryParams, "endDate", r.endDate, "")
+		request.ParameterAddToHeaderOrQuery(localVarQueryParams, "endDate", r.endDate, "")
 	}
 	if r.cursor != nil {
-		core.ParameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "")
+		request.ParameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
 	// set Content-Type header
-	localVarHTTPContentType := core.SelectHeaderContentType(localVarHTTPContentTypes)
+	localVarHTTPContentType := request.SelectHeaderContentType(localVarHTTPContentTypes)
 	if localVarHTTPContentType != "" {
 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/problem+json"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/json", "application/problem+json"}
 
 	// set Accept header
-	localVarHTTPHeaderAccept := core.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	localVarHTTPHeaderAccept := request.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
@@ -165,86 +165,61 @@ func (a *UserEventsAPIService) GetUserEventsExecute(r ApiGetUserEventsRequest) (
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &core.GenericAPIError{
-			Body:  localVarBody,
+		newErr := &internalerror.GenericAPIError{
+			Body:         localVarBody,
 			ErrorMessage: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
 			var v ValidationError
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v UnauthorizedError
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
 	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &core.GenericAPIError{
-			Body:  localVarBody,
+		newErr := &internalerror.GenericAPIError{
+			Body:         localVarBody,
 			ErrorMessage: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+func (a *UserEventsAPIService) decodeError(v interface{}, localVarBody []byte, localVarHTTPResponse *http.Response, newErr *internalerror.GenericAPIError) {
+	err := a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr.ErrorMessage = err.Error()
+		return
+	}
+	newErr.ErrorMessage = internalerror.FormatErrorMessage(localVarHTTPResponse.Status, &v)
+	newErr.Model = v
 }

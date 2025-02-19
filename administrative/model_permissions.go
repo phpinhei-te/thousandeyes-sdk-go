@@ -12,16 +12,16 @@ package administrative
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 )
 
 // checks if the Permissions type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &Permissions{}
+var _ utils.MappedNullable = &Permissions{}
 
 // Permissions struct for Permissions
 type Permissions struct {
 	Permissions []Permission `json:"permissions,omitempty"`
-	Links *SelfLinks `json:"_links,omitempty"`
+	Links       *SelfLinks   `json:"_links,omitempty"`
 }
 
 // NewPermissions instantiates a new Permissions object
@@ -43,7 +43,7 @@ func NewPermissionsWithDefaults() *Permissions {
 
 // GetPermissions returns the Permissions field value if set, zero value otherwise.
 func (o *Permissions) GetPermissions() []Permission {
-	if o == nil || core.IsNil(o.Permissions) {
+	if o == nil || utils.IsNil(o.Permissions) {
 		var ret []Permission
 		return ret
 	}
@@ -53,7 +53,7 @@ func (o *Permissions) GetPermissions() []Permission {
 // GetPermissionsOk returns a tuple with the Permissions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Permissions) GetPermissionsOk() ([]Permission, bool) {
-	if o == nil || core.IsNil(o.Permissions) {
+	if o == nil || utils.IsNil(o.Permissions) {
 		return nil, false
 	}
 	return o.Permissions, true
@@ -61,7 +61,7 @@ func (o *Permissions) GetPermissionsOk() ([]Permission, bool) {
 
 // HasPermissions returns a boolean if a field has been set.
 func (o *Permissions) HasPermissions() bool {
-	if o != nil && !core.IsNil(o.Permissions) {
+	if o != nil && !utils.IsNil(o.Permissions) {
 		return true
 	}
 
@@ -75,7 +75,7 @@ func (o *Permissions) SetPermissions(v []Permission) {
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *Permissions) GetLinks() SelfLinks {
-	if o == nil || core.IsNil(o.Links) {
+	if o == nil || utils.IsNil(o.Links) {
 		var ret SelfLinks
 		return ret
 	}
@@ -85,7 +85,7 @@ func (o *Permissions) GetLinks() SelfLinks {
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Permissions) GetLinksOk() (*SelfLinks, bool) {
-	if o == nil || core.IsNil(o.Links) {
+	if o == nil || utils.IsNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -93,7 +93,7 @@ func (o *Permissions) GetLinksOk() (*SelfLinks, bool) {
 
 // HasLinks returns a boolean if a field has been set.
 func (o *Permissions) HasLinks() bool {
-	if o != nil && !core.IsNil(o.Links) {
+	if o != nil && !utils.IsNil(o.Links) {
 		return true
 	}
 
@@ -106,7 +106,7 @@ func (o *Permissions) SetLinks(v SelfLinks) {
 }
 
 func (o Permissions) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -115,10 +115,10 @@ func (o Permissions) MarshalJSON() ([]byte, error) {
 
 func (o Permissions) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !core.IsNil(o.Permissions) {
+	if !utils.IsNil(o.Permissions) {
 		toSerialize["permissions"] = o.Permissions
 	}
-	if !core.IsNil(o.Links) {
+	if !utils.IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
 	return toSerialize, nil
@@ -159,5 +159,3 @@ func (v *NullablePermissions) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

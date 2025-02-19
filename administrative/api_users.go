@@ -12,22 +12,22 @@ package administrative
 
 import (
 	"bytes"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/client"
+	internalerror "github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/error"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/request"
 	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-
 // UsersAPIService UsersAPI service
-type UsersAPIService core.Service
+type UsersAPIService client.Service
 
 type ApiCreateUserRequest struct {
-
-	ApiService *UsersAPIService
+	ApiService  *UsersAPIService
 	userRequest *UserRequest
-	aid *string
+	aid         *string
 }
 
 func (r ApiCreateUserRequest) UserRequest(userRequest UserRequest) ApiCreateUserRequest {
@@ -50,12 +50,11 @@ CreateUser Create user
 
 Creates a new user.
 
-The following applies when creating a user: 
-* If the user is already a member of another ThousandEyes customer organization, the user must set their own login account group. 
+The following applies when creating a user:
+* If the user is already a member of another ThousandEyes customer organization, the user must set their own login account group.
 * Any update that includes `accountGroupRoles` is a replace-based update and not a delta-based update.
 
-
- @return ApiCreateUserRequest
+	@return ApiCreateUserRequest
 */
 func (a *UsersAPIService) CreateUser() ApiCreateUserRequest {
 	return ApiCreateUserRequest{
@@ -64,12 +63,13 @@ func (a *UsersAPIService) CreateUser() ApiCreateUserRequest {
 }
 
 // Execute executes the request
-//  @return CreatedUser
+//
+//	@return CreatedUser
 func (a *UsersAPIService) CreateUserExecute(r ApiCreateUserRequest) (*CreatedUser, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		localVarReturnValue  *CreatedUser
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		localVarReturnValue *CreatedUser
 	)
 
 	localBasePath := a.Client.GetConfig().ServerURL
@@ -80,26 +80,26 @@ func (a *UsersAPIService) CreateUserExecute(r ApiCreateUserRequest) (*CreatedUse
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if r.userRequest == nil {
-		return localVarReturnValue, nil, core.ReportError("userRequest is required and must be specified")
+		return localVarReturnValue, nil, internalerror.ReportError("userRequest is required and must be specified")
 	}
 
 	if r.aid != nil {
-		core.ParameterAddToHeaderOrQuery(localVarQueryParams, "aid", r.aid, "")
+		request.ParameterAddToHeaderOrQuery(localVarQueryParams, "aid", r.aid, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
-	localVarHTTPContentType := core.SelectHeaderContentType(localVarHTTPContentTypes)
+	localVarHTTPContentType := request.SelectHeaderContentType(localVarHTTPContentTypes)
 	if localVarHTTPContentType != "" {
 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/problem+json"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/json", "application/problem+json"}
 
 	// set Accept header
-	localVarHTTPHeaderAccept := core.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	localVarHTTPHeaderAccept := request.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
@@ -123,82 +123,47 @@ func (a *UsersAPIService) CreateUserExecute(r ApiCreateUserRequest) (*CreatedUse
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &core.GenericAPIError{
-			Body:  localVarBody,
+		newErr := &internalerror.GenericAPIError{
+			Body:         localVarBody,
 			ErrorMessage: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
 			var v ValidationError
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v UnauthorizedError
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
 	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &core.GenericAPIError{
-			Body:  localVarBody,
+		newErr := &internalerror.GenericAPIError{
+			Body:         localVarBody,
 			ErrorMessage: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -208,10 +173,9 @@ func (a *UsersAPIService) CreateUserExecute(r ApiCreateUserRequest) (*CreatedUse
 }
 
 type ApiDeleteUserRequest struct {
-
 	ApiService *UsersAPIService
-	id string
-	aid *string
+	id         string
+	aid        *string
 }
 
 // A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
@@ -229,49 +193,49 @@ DeleteUser Delete user
 
 Deletes a user using the user ID. This operation requires the `Edit users in all account groups` or `Edit users` permission.
 
- @param id Identifier for the user.
- @return ApiDeleteUserRequest
+	@param id Identifier for the user.
+	@return ApiDeleteUserRequest
 */
 func (a *UsersAPIService) DeleteUser(id string) ApiDeleteUserRequest {
 	return ApiDeleteUserRequest{
 		ApiService: a,
-		id: id,
+		id:         id,
 	}
 }
 
 // Execute executes the request
 func (a *UsersAPIService) DeleteUserExecute(r ApiDeleteUserRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
 	)
 
 	localBasePath := a.Client.GetConfig().ServerURL
 
 	localVarPath := localBasePath + "/users/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(core.ParameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(request.ParameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.aid != nil {
-		core.ParameterAddToHeaderOrQuery(localVarQueryParams, "aid", r.aid, "")
+		request.ParameterAddToHeaderOrQuery(localVarQueryParams, "aid", r.aid, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
 	// set Content-Type header
-	localVarHTTPContentType := core.SelectHeaderContentType(localVarHTTPContentTypes)
+	localVarHTTPContentType := request.SelectHeaderContentType(localVarHTTPContentTypes)
 	if localVarHTTPContentType != "" {
 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/problem+json"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
 
 	// set Accept header
-	localVarHTTPHeaderAccept := core.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	localVarHTTPHeaderAccept := request.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
@@ -293,74 +257,39 @@ func (a *UsersAPIService) DeleteUserExecute(r ApiDeleteUserRequest) (*http.Respo
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &core.GenericAPIError{
-			Body:  localVarBody,
+		newErr := &internalerror.GenericAPIError{
+			Body:         localVarBody,
 			ErrorMessage: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
 			var v ValidationError
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v UnauthorizedError
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
+			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -369,7 +298,6 @@ func (a *UsersAPIService) DeleteUserExecute(r ApiDeleteUserRequest) (*http.Respo
 }
 
 type ApiGetCurrentUserRequest struct {
-
 	ApiService *UsersAPIService
 }
 
@@ -382,8 +310,7 @@ GetCurrentUser Retrieve current user
 
 Retrieves detailed information about the current user.
 
-
- @return ApiGetCurrentUserRequest
+	@return ApiGetCurrentUserRequest
 */
 func (a *UsersAPIService) GetCurrentUser() ApiGetCurrentUserRequest {
 	return ApiGetCurrentUserRequest{
@@ -392,12 +319,13 @@ func (a *UsersAPIService) GetCurrentUser() ApiGetCurrentUserRequest {
 }
 
 // Execute executes the request
-//  @return UserDetail
+//
+//	@return UserDetail
 func (a *UsersAPIService) GetCurrentUserExecute(r ApiGetCurrentUserRequest) (*UserDetail, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		localVarReturnValue  *UserDetail
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		localVarReturnValue *UserDetail
 	)
 
 	localBasePath := a.Client.GetConfig().ServerURL
@@ -412,16 +340,16 @@ func (a *UsersAPIService) GetCurrentUserExecute(r ApiGetCurrentUserRequest) (*Us
 	localVarHTTPContentTypes := []string{}
 
 	// set Content-Type header
-	localVarHTTPContentType := core.SelectHeaderContentType(localVarHTTPContentTypes)
+	localVarHTTPContentType := request.SelectHeaderContentType(localVarHTTPContentTypes)
 	if localVarHTTPContentType != "" {
 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/problem+json"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/json", "application/problem+json"}
 
 	// set Accept header
-	localVarHTTPHeaderAccept := core.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	localVarHTTPHeaderAccept := request.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
@@ -443,82 +371,47 @@ func (a *UsersAPIService) GetCurrentUserExecute(r ApiGetCurrentUserRequest) (*Us
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &core.GenericAPIError{
-			Body:  localVarBody,
+		newErr := &internalerror.GenericAPIError{
+			Body:         localVarBody,
 			ErrorMessage: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
 			var v ValidationError
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v UnauthorizedError
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
 	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &core.GenericAPIError{
-			Body:  localVarBody,
+		newErr := &internalerror.GenericAPIError{
+			Body:         localVarBody,
 			ErrorMessage: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -528,10 +421,9 @@ func (a *UsersAPIService) GetCurrentUserExecute(r ApiGetCurrentUserRequest) (*Us
 }
 
 type ApiGetUserRequest struct {
-
 	ApiService *UsersAPIService
-	id string
-	aid *string
+	id         string
+	aid        *string
 }
 
 // A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
@@ -549,51 +441,52 @@ GetUser Retrieve user
 
 Retrieves detailed information about a user. This operation requires the `API Access` and `View All Users` permissions.
 
- @param id Identifier for the user.
- @return ApiGetUserRequest
+	@param id Identifier for the user.
+	@return ApiGetUserRequest
 */
 func (a *UsersAPIService) GetUser(id string) ApiGetUserRequest {
 	return ApiGetUserRequest{
 		ApiService: a,
-		id: id,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return UserDetail
+//
+//	@return UserDetail
 func (a *UsersAPIService) GetUserExecute(r ApiGetUserRequest) (*UserDetail, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		localVarReturnValue  *UserDetail
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		localVarReturnValue *UserDetail
 	)
 
 	localBasePath := a.Client.GetConfig().ServerURL
 
 	localVarPath := localBasePath + "/users/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(core.ParameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(request.ParameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.aid != nil {
-		core.ParameterAddToHeaderOrQuery(localVarQueryParams, "aid", r.aid, "")
+		request.ParameterAddToHeaderOrQuery(localVarQueryParams, "aid", r.aid, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
 	// set Content-Type header
-	localVarHTTPContentType := core.SelectHeaderContentType(localVarHTTPContentTypes)
+	localVarHTTPContentType := request.SelectHeaderContentType(localVarHTTPContentTypes)
 	if localVarHTTPContentType != "" {
 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/problem+json"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/json", "application/problem+json"}
 
 	// set Accept header
-	localVarHTTPHeaderAccept := core.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	localVarHTTPHeaderAccept := request.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
@@ -615,82 +508,47 @@ func (a *UsersAPIService) GetUserExecute(r ApiGetUserRequest) (*UserDetail, *htt
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &core.GenericAPIError{
-			Body:  localVarBody,
+		newErr := &internalerror.GenericAPIError{
+			Body:         localVarBody,
 			ErrorMessage: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
 			var v ValidationError
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v UnauthorizedError
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
 	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &core.GenericAPIError{
-			Body:  localVarBody,
+		newErr := &internalerror.GenericAPIError{
+			Body:         localVarBody,
 			ErrorMessage: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -700,9 +558,8 @@ func (a *UsersAPIService) GetUserExecute(r ApiGetUserRequest) (*UserDetail, *htt
 }
 
 type ApiGetUsersRequest struct {
-
 	ApiService *UsersAPIService
-	aid *string
+	aid        *string
 }
 
 // A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
@@ -720,8 +577,7 @@ GetUsers List users
 
 Retrieves a list of users in the organization the account group ID belongs to. This operation requires the `API Access` and `View all users` permissions. See [Account Context](https://developer.thousandeyes.com/v7/#/accountcontext) for more information on changing the account group context.
 
-
- @return ApiGetUsersRequest
+	@return ApiGetUsersRequest
 */
 func (a *UsersAPIService) GetUsers() ApiGetUsersRequest {
 	return ApiGetUsersRequest{
@@ -730,12 +586,13 @@ func (a *UsersAPIService) GetUsers() ApiGetUsersRequest {
 }
 
 // Execute executes the request
-//  @return Users
+//
+//	@return Users
 func (a *UsersAPIService) GetUsersExecute(r ApiGetUsersRequest) (*Users, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		localVarReturnValue  *Users
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		localVarReturnValue *Users
 	)
 
 	localBasePath := a.Client.GetConfig().ServerURL
@@ -747,22 +604,22 @@ func (a *UsersAPIService) GetUsersExecute(r ApiGetUsersRequest) (*Users, *http.R
 	localVarFormParams := url.Values{}
 
 	if r.aid != nil {
-		core.ParameterAddToHeaderOrQuery(localVarQueryParams, "aid", r.aid, "")
+		request.ParameterAddToHeaderOrQuery(localVarQueryParams, "aid", r.aid, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
 	// set Content-Type header
-	localVarHTTPContentType := core.SelectHeaderContentType(localVarHTTPContentTypes)
+	localVarHTTPContentType := request.SelectHeaderContentType(localVarHTTPContentTypes)
 	if localVarHTTPContentType != "" {
 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/problem+json"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/json", "application/problem+json"}
 
 	// set Accept header
-	localVarHTTPHeaderAccept := core.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	localVarHTTPHeaderAccept := request.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
@@ -784,82 +641,47 @@ func (a *UsersAPIService) GetUsersExecute(r ApiGetUsersRequest) (*Users, *http.R
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &core.GenericAPIError{
-			Body:  localVarBody,
+		newErr := &internalerror.GenericAPIError{
+			Body:         localVarBody,
 			ErrorMessage: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
 			var v ValidationError
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v UnauthorizedError
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
 	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &core.GenericAPIError{
-			Body:  localVarBody,
+		newErr := &internalerror.GenericAPIError{
+			Body:         localVarBody,
 			ErrorMessage: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -869,11 +691,10 @@ func (a *UsersAPIService) GetUsersExecute(r ApiGetUsersRequest) (*Users, *http.R
 }
 
 type ApiUpdateUserRequest struct {
-
-	ApiService *UsersAPIService
-	id string
+	ApiService  *UsersAPIService
+	id          string
 	userRequest *UserRequest
-	aid *string
+	aid         *string
 }
 
 func (r ApiUpdateUserRequest) UserRequest(userRequest UserRequest) ApiUpdateUserRequest {
@@ -894,60 +715,61 @@ func (r ApiUpdateUserRequest) Execute() (*UserDetail, *http.Response, error) {
 /*
 UpdateUser Update user
 
-Updates a user using the user ID. You can update the user name, email address, account group assignments, or roles. This operation requires the `Edit users in all account groups` or `Edit users` permission. 
+Updates a user using the user ID. You can update the user name, email address, account group assignments, or roles. This operation requires the `Edit users in all account groups` or `Edit users` permission.
 
 When updating a user, the following applies:
 * When updating a user's email address, the user must confirm the username change before they can subsequently log in or perform API operations.
 * Any update that includes `accountGroupRoles` is a replace-based update and not a delta-based update.
 
- @param id Identifier for the user.
- @return ApiUpdateUserRequest
+	@param id Identifier for the user.
+	@return ApiUpdateUserRequest
 */
 func (a *UsersAPIService) UpdateUser(id string) ApiUpdateUserRequest {
 	return ApiUpdateUserRequest{
 		ApiService: a,
-		id: id,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return UserDetail
+//
+//	@return UserDetail
 func (a *UsersAPIService) UpdateUserExecute(r ApiUpdateUserRequest) (*UserDetail, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		localVarReturnValue  *UserDetail
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		localVarReturnValue *UserDetail
 	)
 
 	localBasePath := a.Client.GetConfig().ServerURL
 
 	localVarPath := localBasePath + "/users/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(core.ParameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(request.ParameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if r.userRequest == nil {
-		return localVarReturnValue, nil, core.ReportError("userRequest is required and must be specified")
+		return localVarReturnValue, nil, internalerror.ReportError("userRequest is required and must be specified")
 	}
 
 	if r.aid != nil {
-		core.ParameterAddToHeaderOrQuery(localVarQueryParams, "aid", r.aid, "")
+		request.ParameterAddToHeaderOrQuery(localVarQueryParams, "aid", r.aid, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
-	localVarHTTPContentType := core.SelectHeaderContentType(localVarHTTPContentTypes)
+	localVarHTTPContentType := request.SelectHeaderContentType(localVarHTTPContentTypes)
 	if localVarHTTPContentType != "" {
 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/problem+json"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/json", "application/problem+json"}
 
 	// set Accept header
-	localVarHTTPHeaderAccept := core.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	localVarHTTPHeaderAccept := request.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
@@ -971,86 +793,61 @@ func (a *UsersAPIService) UpdateUserExecute(r ApiUpdateUserRequest) (*UserDetail
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &core.GenericAPIError{
-			Body:  localVarBody,
+		newErr := &internalerror.GenericAPIError{
+			Body:         localVarBody,
 			ErrorMessage: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
 			var v ValidationError
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v UnauthorizedError
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
 	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &core.GenericAPIError{
-			Body:  localVarBody,
+		newErr := &internalerror.GenericAPIError{
+			Body:         localVarBody,
 			ErrorMessage: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+func (a *UsersAPIService) decodeError(v interface{}, localVarBody []byte, localVarHTTPResponse *http.Response, newErr *internalerror.GenericAPIError) {
+	err := a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr.ErrorMessage = err.Error()
+		return
+	}
+	newErr.ErrorMessage = internalerror.FormatErrorMessage(localVarHTTPResponse.Status, &v)
+	newErr.Model = v
 }

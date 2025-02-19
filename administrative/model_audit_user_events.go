@@ -12,12 +12,12 @@ package administrative
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 	"time"
 )
 
 // checks if the AuditUserEvents type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &AuditUserEvents{}
+var _ utils.MappedNullable = &AuditUserEvents{}
 
 // AuditUserEvents struct for AuditUserEvents
 type AuditUserEvents struct {
@@ -25,8 +25,8 @@ type AuditUserEvents struct {
 	// (Optional) When passing `window` or `startDate` parameter,  the client will also receive the `startDate` field indicating the UTC start date of the data's time range being retrieved  (ISO date-time format).
 	StartDate *time.Time `json:"startDate,omitempty"`
 	// (Optional) When passing `window` or `endDate` parameter,  the client will also receive the `endDate` field indicating the UTC end date of the data's time range being retrieved  (ISO date-time format).
-	EndDate *time.Time `json:"endDate,omitempty"`
-	Links *PaginationLinks `json:"_links,omitempty"`
+	EndDate *time.Time       `json:"endDate,omitempty"`
+	Links   *PaginationLinks `json:"_links,omitempty"`
 }
 
 // NewAuditUserEvents instantiates a new AuditUserEvents object
@@ -48,7 +48,7 @@ func NewAuditUserEventsWithDefaults() *AuditUserEvents {
 
 // GetAuditEvents returns the AuditEvents field value if set, zero value otherwise.
 func (o *AuditUserEvents) GetAuditEvents() []UserEvent {
-	if o == nil || core.IsNil(o.AuditEvents) {
+	if o == nil || utils.IsNil(o.AuditEvents) {
 		var ret []UserEvent
 		return ret
 	}
@@ -58,7 +58,7 @@ func (o *AuditUserEvents) GetAuditEvents() []UserEvent {
 // GetAuditEventsOk returns a tuple with the AuditEvents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuditUserEvents) GetAuditEventsOk() ([]UserEvent, bool) {
-	if o == nil || core.IsNil(o.AuditEvents) {
+	if o == nil || utils.IsNil(o.AuditEvents) {
 		return nil, false
 	}
 	return o.AuditEvents, true
@@ -66,7 +66,7 @@ func (o *AuditUserEvents) GetAuditEventsOk() ([]UserEvent, bool) {
 
 // HasAuditEvents returns a boolean if a field has been set.
 func (o *AuditUserEvents) HasAuditEvents() bool {
-	if o != nil && !core.IsNil(o.AuditEvents) {
+	if o != nil && !utils.IsNil(o.AuditEvents) {
 		return true
 	}
 
@@ -80,7 +80,7 @@ func (o *AuditUserEvents) SetAuditEvents(v []UserEvent) {
 
 // GetStartDate returns the StartDate field value if set, zero value otherwise.
 func (o *AuditUserEvents) GetStartDate() time.Time {
-	if o == nil || core.IsNil(o.StartDate) {
+	if o == nil || utils.IsNil(o.StartDate) {
 		var ret time.Time
 		return ret
 	}
@@ -90,7 +90,7 @@ func (o *AuditUserEvents) GetStartDate() time.Time {
 // GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuditUserEvents) GetStartDateOk() (*time.Time, bool) {
-	if o == nil || core.IsNil(o.StartDate) {
+	if o == nil || utils.IsNil(o.StartDate) {
 		return nil, false
 	}
 	return o.StartDate, true
@@ -98,7 +98,7 @@ func (o *AuditUserEvents) GetStartDateOk() (*time.Time, bool) {
 
 // HasStartDate returns a boolean if a field has been set.
 func (o *AuditUserEvents) HasStartDate() bool {
-	if o != nil && !core.IsNil(o.StartDate) {
+	if o != nil && !utils.IsNil(o.StartDate) {
 		return true
 	}
 
@@ -112,7 +112,7 @@ func (o *AuditUserEvents) SetStartDate(v time.Time) {
 
 // GetEndDate returns the EndDate field value if set, zero value otherwise.
 func (o *AuditUserEvents) GetEndDate() time.Time {
-	if o == nil || core.IsNil(o.EndDate) {
+	if o == nil || utils.IsNil(o.EndDate) {
 		var ret time.Time
 		return ret
 	}
@@ -122,7 +122,7 @@ func (o *AuditUserEvents) GetEndDate() time.Time {
 // GetEndDateOk returns a tuple with the EndDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuditUserEvents) GetEndDateOk() (*time.Time, bool) {
-	if o == nil || core.IsNil(o.EndDate) {
+	if o == nil || utils.IsNil(o.EndDate) {
 		return nil, false
 	}
 	return o.EndDate, true
@@ -130,7 +130,7 @@ func (o *AuditUserEvents) GetEndDateOk() (*time.Time, bool) {
 
 // HasEndDate returns a boolean if a field has been set.
 func (o *AuditUserEvents) HasEndDate() bool {
-	if o != nil && !core.IsNil(o.EndDate) {
+	if o != nil && !utils.IsNil(o.EndDate) {
 		return true
 	}
 
@@ -144,7 +144,7 @@ func (o *AuditUserEvents) SetEndDate(v time.Time) {
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *AuditUserEvents) GetLinks() PaginationLinks {
-	if o == nil || core.IsNil(o.Links) {
+	if o == nil || utils.IsNil(o.Links) {
 		var ret PaginationLinks
 		return ret
 	}
@@ -154,7 +154,7 @@ func (o *AuditUserEvents) GetLinks() PaginationLinks {
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuditUserEvents) GetLinksOk() (*PaginationLinks, bool) {
-	if o == nil || core.IsNil(o.Links) {
+	if o == nil || utils.IsNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -162,7 +162,7 @@ func (o *AuditUserEvents) GetLinksOk() (*PaginationLinks, bool) {
 
 // HasLinks returns a boolean if a field has been set.
 func (o *AuditUserEvents) HasLinks() bool {
-	if o != nil && !core.IsNil(o.Links) {
+	if o != nil && !utils.IsNil(o.Links) {
 		return true
 	}
 
@@ -175,7 +175,7 @@ func (o *AuditUserEvents) SetLinks(v PaginationLinks) {
 }
 
 func (o AuditUserEvents) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -184,16 +184,16 @@ func (o AuditUserEvents) MarshalJSON() ([]byte, error) {
 
 func (o AuditUserEvents) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !core.IsNil(o.AuditEvents) {
+	if !utils.IsNil(o.AuditEvents) {
 		toSerialize["auditEvents"] = o.AuditEvents
 	}
-	if !core.IsNil(o.StartDate) {
+	if !utils.IsNil(o.StartDate) {
 		toSerialize["startDate"] = o.StartDate
 	}
-	if !core.IsNil(o.EndDate) {
+	if !utils.IsNil(o.EndDate) {
 		toSerialize["endDate"] = o.EndDate
 	}
-	if !core.IsNil(o.Links) {
+	if !utils.IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
 	return toSerialize, nil
@@ -234,5 +234,3 @@ func (v *NullableAuditUserEvents) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

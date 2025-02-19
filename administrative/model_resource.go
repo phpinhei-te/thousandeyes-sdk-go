@@ -12,11 +12,11 @@ package administrative
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 )
 
 // checks if the Resource type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &Resource{}
+var _ utils.MappedNullable = &Resource{}
 
 // Resource struct for Resource
 type Resource struct {
@@ -45,7 +45,7 @@ func NewResourceWithDefaults() *Resource {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *Resource) GetType() string {
-	if o == nil || core.IsNil(o.Type) {
+	if o == nil || utils.IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *Resource) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Resource) GetTypeOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Type) {
+	if o == nil || utils.IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -63,7 +63,7 @@ func (o *Resource) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *Resource) HasType() bool {
-	if o != nil && !core.IsNil(o.Type) {
+	if o != nil && !utils.IsNil(o.Type) {
 		return true
 	}
 
@@ -77,7 +77,7 @@ func (o *Resource) SetType(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Resource) GetName() string {
-	if o == nil || core.IsNil(o.Name) {
+	if o == nil || utils.IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -87,7 +87,7 @@ func (o *Resource) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Resource) GetNameOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Name) {
+	if o == nil || utils.IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -95,7 +95,7 @@ func (o *Resource) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *Resource) HasName() bool {
-	if o != nil && !core.IsNil(o.Name) {
+	if o != nil && !utils.IsNil(o.Name) {
 		return true
 	}
 
@@ -108,7 +108,7 @@ func (o *Resource) SetName(v string) {
 }
 
 func (o Resource) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -117,10 +117,10 @@ func (o Resource) MarshalJSON() ([]byte, error) {
 
 func (o Resource) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !core.IsNil(o.Type) {
+	if !utils.IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !core.IsNil(o.Name) {
+	if !utils.IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 	return toSerialize, nil
@@ -161,5 +161,3 @@ func (v *NullableResource) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

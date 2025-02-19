@@ -12,15 +12,15 @@ package administrative
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 )
 
 // checks if the UnauthorizedError type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &UnauthorizedError{}
+var _ utils.MappedNullable = &UnauthorizedError{}
 
 // UnauthorizedError struct for UnauthorizedError
 type UnauthorizedError struct {
-	Error *string `json:"error,omitempty"`
+	Error            *string `json:"error,omitempty"`
 	ErrorDescription *string `json:"error_description,omitempty"`
 }
 
@@ -43,7 +43,7 @@ func NewUnauthorizedErrorWithDefaults() *UnauthorizedError {
 
 // GetError returns the Error field value if set, zero value otherwise.
 func (o *UnauthorizedError) GetError() string {
-	if o == nil || core.IsNil(o.Error) {
+	if o == nil || utils.IsNil(o.Error) {
 		var ret string
 		return ret
 	}
@@ -53,7 +53,7 @@ func (o *UnauthorizedError) GetError() string {
 // GetErrorOk returns a tuple with the Error field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UnauthorizedError) GetErrorOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Error) {
+	if o == nil || utils.IsNil(o.Error) {
 		return nil, false
 	}
 	return o.Error, true
@@ -61,7 +61,7 @@ func (o *UnauthorizedError) GetErrorOk() (*string, bool) {
 
 // HasError returns a boolean if a field has been set.
 func (o *UnauthorizedError) HasError() bool {
-	if o != nil && !core.IsNil(o.Error) {
+	if o != nil && !utils.IsNil(o.Error) {
 		return true
 	}
 
@@ -75,7 +75,7 @@ func (o *UnauthorizedError) SetError(v string) {
 
 // GetErrorDescription returns the ErrorDescription field value if set, zero value otherwise.
 func (o *UnauthorizedError) GetErrorDescription() string {
-	if o == nil || core.IsNil(o.ErrorDescription) {
+	if o == nil || utils.IsNil(o.ErrorDescription) {
 		var ret string
 		return ret
 	}
@@ -85,7 +85,7 @@ func (o *UnauthorizedError) GetErrorDescription() string {
 // GetErrorDescriptionOk returns a tuple with the ErrorDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UnauthorizedError) GetErrorDescriptionOk() (*string, bool) {
-	if o == nil || core.IsNil(o.ErrorDescription) {
+	if o == nil || utils.IsNil(o.ErrorDescription) {
 		return nil, false
 	}
 	return o.ErrorDescription, true
@@ -93,7 +93,7 @@ func (o *UnauthorizedError) GetErrorDescriptionOk() (*string, bool) {
 
 // HasErrorDescription returns a boolean if a field has been set.
 func (o *UnauthorizedError) HasErrorDescription() bool {
-	if o != nil && !core.IsNil(o.ErrorDescription) {
+	if o != nil && !utils.IsNil(o.ErrorDescription) {
 		return true
 	}
 
@@ -106,7 +106,7 @@ func (o *UnauthorizedError) SetErrorDescription(v string) {
 }
 
 func (o UnauthorizedError) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -115,10 +115,10 @@ func (o UnauthorizedError) MarshalJSON() ([]byte, error) {
 
 func (o UnauthorizedError) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !core.IsNil(o.Error) {
+	if !utils.IsNil(o.Error) {
 		toSerialize["error"] = o.Error
 	}
-	if !core.IsNil(o.ErrorDescription) {
+	if !utils.IsNil(o.ErrorDescription) {
 		toSerialize["error_description"] = o.ErrorDescription
 	}
 	return toSerialize, nil
@@ -159,5 +159,3 @@ func (v *NullableUnauthorizedError) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

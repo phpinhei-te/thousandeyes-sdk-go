@@ -12,11 +12,11 @@ package administrative
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 )
 
 // checks if the AgentBase type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &AgentBase{}
+var _ utils.MappedNullable = &AgentBase{}
 
 // AgentBase struct for AgentBase
 type AgentBase struct {
@@ -47,7 +47,7 @@ func NewAgentBaseWithDefaults() *AgentBase {
 
 // GetIpAddresses returns the IpAddresses field value if set, zero value otherwise.
 func (o *AgentBase) GetIpAddresses() []string {
-	if o == nil || core.IsNil(o.IpAddresses) {
+	if o == nil || utils.IsNil(o.IpAddresses) {
 		var ret []string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *AgentBase) GetIpAddresses() []string {
 // GetIpAddressesOk returns a tuple with the IpAddresses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgentBase) GetIpAddressesOk() ([]string, bool) {
-	if o == nil || core.IsNil(o.IpAddresses) {
+	if o == nil || utils.IsNil(o.IpAddresses) {
 		return nil, false
 	}
 	return o.IpAddresses, true
@@ -65,7 +65,7 @@ func (o *AgentBase) GetIpAddressesOk() ([]string, bool) {
 
 // HasIpAddresses returns a boolean if a field has been set.
 func (o *AgentBase) HasIpAddresses() bool {
-	if o != nil && !core.IsNil(o.IpAddresses) {
+	if o != nil && !utils.IsNil(o.IpAddresses) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *AgentBase) SetIpAddresses(v []string) {
 
 // GetPublicIpAddresses returns the PublicIpAddresses field value if set, zero value otherwise.
 func (o *AgentBase) GetPublicIpAddresses() []string {
-	if o == nil || core.IsNil(o.PublicIpAddresses) {
+	if o == nil || utils.IsNil(o.PublicIpAddresses) {
 		var ret []string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *AgentBase) GetPublicIpAddresses() []string {
 // GetPublicIpAddressesOk returns a tuple with the PublicIpAddresses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgentBase) GetPublicIpAddressesOk() ([]string, bool) {
-	if o == nil || core.IsNil(o.PublicIpAddresses) {
+	if o == nil || utils.IsNil(o.PublicIpAddresses) {
 		return nil, false
 	}
 	return o.PublicIpAddresses, true
@@ -97,7 +97,7 @@ func (o *AgentBase) GetPublicIpAddressesOk() ([]string, bool) {
 
 // HasPublicIpAddresses returns a boolean if a field has been set.
 func (o *AgentBase) HasPublicIpAddresses() bool {
-	if o != nil && !core.IsNil(o.PublicIpAddresses) {
+	if o != nil && !utils.IsNil(o.PublicIpAddresses) {
 		return true
 	}
 
@@ -111,7 +111,7 @@ func (o *AgentBase) SetPublicIpAddresses(v []string) {
 
 // GetNetwork returns the Network field value if set, zero value otherwise.
 func (o *AgentBase) GetNetwork() string {
-	if o == nil || core.IsNil(o.Network) {
+	if o == nil || utils.IsNil(o.Network) {
 		var ret string
 		return ret
 	}
@@ -121,7 +121,7 @@ func (o *AgentBase) GetNetwork() string {
 // GetNetworkOk returns a tuple with the Network field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgentBase) GetNetworkOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Network) {
+	if o == nil || utils.IsNil(o.Network) {
 		return nil, false
 	}
 	return o.Network, true
@@ -129,7 +129,7 @@ func (o *AgentBase) GetNetworkOk() (*string, bool) {
 
 // HasNetwork returns a boolean if a field has been set.
 func (o *AgentBase) HasNetwork() bool {
-	if o != nil && !core.IsNil(o.Network) {
+	if o != nil && !utils.IsNil(o.Network) {
 		return true
 	}
 
@@ -142,7 +142,7 @@ func (o *AgentBase) SetNetwork(v string) {
 }
 
 func (o AgentBase) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -151,13 +151,13 @@ func (o AgentBase) MarshalJSON() ([]byte, error) {
 
 func (o AgentBase) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !core.IsNil(o.IpAddresses) {
+	if !utils.IsNil(o.IpAddresses) {
 		toSerialize["ipAddresses"] = o.IpAddresses
 	}
-	if !core.IsNil(o.PublicIpAddresses) {
+	if !utils.IsNil(o.PublicIpAddresses) {
 		toSerialize["publicIpAddresses"] = o.PublicIpAddresses
 	}
-	if !core.IsNil(o.Network) {
+	if !utils.IsNil(o.Network) {
 		toSerialize["network"] = o.Network
 	}
 	return toSerialize, nil
@@ -198,5 +198,3 @@ func (v *NullableAgentBase) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

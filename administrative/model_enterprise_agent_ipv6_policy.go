@@ -12,7 +12,6 @@ package administrative
 
 import (
 	"encoding/json"
-    
 	"fmt"
 )
 
@@ -21,9 +20,9 @@ type EnterpriseAgentIpv6Policy string
 
 // List of EnterpriseAgentIpv6Policy
 const (
-	ENTERPRISEAGENTIPV6POLICY_FORCE_IPV4 EnterpriseAgentIpv6Policy = "force-ipv4"
+	ENTERPRISEAGENTIPV6POLICY_FORCE_IPV4  EnterpriseAgentIpv6Policy = "force-ipv4"
 	ENTERPRISEAGENTIPV6POLICY_PREFER_IPV6 EnterpriseAgentIpv6Policy = "prefer-ipv6"
-	ENTERPRISEAGENTIPV6POLICY_FORCE_IPV6 EnterpriseAgentIpv6Policy = "force-ipv6"
+	ENTERPRISEAGENTIPV6POLICY_FORCE_IPV6  EnterpriseAgentIpv6Policy = "force-ipv6"
 )
 
 // All allowed values of EnterpriseAgentIpv6Policy enum
@@ -111,4 +110,3 @@ func (v *NullableEnterpriseAgentIpv6Policy) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

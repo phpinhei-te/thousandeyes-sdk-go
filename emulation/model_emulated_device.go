@@ -1,7 +1,7 @@
 /*
 Emulation API
 
-The Emulation API facilitates the retrieval of user-agent strings for HTTP, pageload, and transaction tests. It also enables the retrieval and addition of emulated devices for pageload and transaction tests.  To access Emulation API operations, the following permissions are required:  * `Settings Tests Read` for read operations. * `Settings Tests Update` for write operations. 
+The Emulation API facilitates the retrieval of user-agent strings for HTTP, pageload, and transaction tests. It also enables the retrieval and addition of emulated devices for pageload and transaction tests.  To access Emulation API operations, the following permissions are required:  * `Settings Tests Read` for read operations. * `Settings Tests Update` for write operations.
 
 API version: 7.0.36
 */
@@ -12,13 +12,12 @@ package emulation
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
-	"bytes"
 	"fmt"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 )
 
 // checks if the EmulatedDevice type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &EmulatedDevice{}
+var _ utils.MappedNullable = &EmulatedDevice{}
 
 // EmulatedDevice struct for EmulatedDevice
 type EmulatedDevice struct {
@@ -124,7 +123,7 @@ func (o *EmulatedDevice) SetHeight(v int32) {
 }
 
 func (o EmulatedDevice) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -154,10 +153,10 @@ func (o *EmulatedDevice) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -165,9 +164,7 @@ func (o *EmulatedDevice) UnmarshalJSON(data []byte) (err error) {
 
 	varEmulatedDevice := _EmulatedDevice{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEmulatedDevice)
+	err = json.Unmarshal(data, &varEmulatedDevice)
 
 	if err != nil {
 		return err
@@ -213,5 +210,3 @@ func (v *NullableEmulatedDevice) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

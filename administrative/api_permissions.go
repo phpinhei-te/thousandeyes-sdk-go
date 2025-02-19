@@ -12,20 +12,20 @@ package administrative
 
 import (
 	"bytes"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/client"
+	internalerror "github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/error"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/request"
 	"io"
 	"net/http"
 	"net/url"
 )
 
-
 // PermissionsAPIService PermissionsAPI service
-type PermissionsAPIService core.Service
+type PermissionsAPIService client.Service
 
 type ApiGetPermissionsRequest struct {
-
 	ApiService *PermissionsAPIService
-	aid *string
+	aid        *string
 }
 
 // A unique identifier associated with your account group. You can retrieve your &#x60;AccountGroupId&#x60; from the &#x60;/account-groups&#x60; endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response.
@@ -43,8 +43,7 @@ GetPermissions List assignable permissions
 
 Users must be in a role assigned management permissions to access this operation. Users without management permissions who attempt to access this operation receive an HTTP/403 response code.
 
-
- @return ApiGetPermissionsRequest
+	@return ApiGetPermissionsRequest
 */
 func (a *PermissionsAPIService) GetPermissions() ApiGetPermissionsRequest {
 	return ApiGetPermissionsRequest{
@@ -53,12 +52,13 @@ func (a *PermissionsAPIService) GetPermissions() ApiGetPermissionsRequest {
 }
 
 // Execute executes the request
-//  @return Permissions
+//
+//	@return Permissions
 func (a *PermissionsAPIService) GetPermissionsExecute(r ApiGetPermissionsRequest) (*Permissions, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		localVarReturnValue  *Permissions
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		localVarReturnValue *Permissions
 	)
 
 	localBasePath := a.Client.GetConfig().ServerURL
@@ -70,22 +70,22 @@ func (a *PermissionsAPIService) GetPermissionsExecute(r ApiGetPermissionsRequest
 	localVarFormParams := url.Values{}
 
 	if r.aid != nil {
-		core.ParameterAddToHeaderOrQuery(localVarQueryParams, "aid", r.aid, "")
+		request.ParameterAddToHeaderOrQuery(localVarQueryParams, "aid", r.aid, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
 	// set Content-Type header
-	localVarHTTPContentType := core.SelectHeaderContentType(localVarHTTPContentTypes)
+	localVarHTTPContentType := request.SelectHeaderContentType(localVarHTTPContentTypes)
 	if localVarHTTPContentType != "" {
 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/problem+json"}
+	localVarHTTPHeaderAccepts := []string{"application/hal+json", "application/json", "application/problem+json"}
 
 	// set Accept header
-	localVarHTTPHeaderAccept := core.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	localVarHTTPHeaderAccept := request.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
@@ -107,86 +107,61 @@ func (a *PermissionsAPIService) GetPermissionsExecute(r ApiGetPermissionsRequest
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &core.GenericAPIError{
-			Body:  localVarBody,
+		newErr := &internalerror.GenericAPIError{
+			Body:         localVarBody,
 			ErrorMessage: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
 			var v ValidationError
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v UnauthorizedError
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v Error
-			err = a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.ErrorMessage = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.ErrorMessage = core.FormatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.Model = v
+			a.decodeError(&v, localVarBody, localVarHTTPResponse, newErr)
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
 	err = a.Client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &core.GenericAPIError{
-			Body:  localVarBody,
+		newErr := &internalerror.GenericAPIError{
+			Body:         localVarBody,
 			ErrorMessage: err.Error(),
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+func (a *PermissionsAPIService) decodeError(v interface{}, localVarBody []byte, localVarHTTPResponse *http.Response, newErr *internalerror.GenericAPIError) {
+	err := a.Client.Decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr.ErrorMessage = err.Error()
+		return
+	}
+	newErr.ErrorMessage = internalerror.FormatErrorMessage(localVarHTTPResponse.Status, &v)
+	newErr.Model = v
 }

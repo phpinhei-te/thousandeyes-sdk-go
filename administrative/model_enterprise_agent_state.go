@@ -12,7 +12,6 @@ package administrative
 
 import (
 	"encoding/json"
-    
 	"fmt"
 )
 
@@ -21,8 +20,8 @@ type EnterpriseAgentState string
 
 // List of EnterpriseAgentState
 const (
-	ENTERPRISEAGENTSTATE_ONLINE EnterpriseAgentState = "online"
-	ENTERPRISEAGENTSTATE_OFFLINE EnterpriseAgentState = "offline"
+	ENTERPRISEAGENTSTATE_ONLINE   EnterpriseAgentState = "online"
+	ENTERPRISEAGENTSTATE_OFFLINE  EnterpriseAgentState = "offline"
 	ENTERPRISEAGENTSTATE_DISABLED EnterpriseAgentState = "disabled"
 )
 
@@ -111,4 +110,3 @@ func (v *NullableEnterpriseAgentState) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

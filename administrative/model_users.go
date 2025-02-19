@@ -12,16 +12,16 @@ package administrative
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 )
 
 // checks if the Users type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &Users{}
+var _ utils.MappedNullable = &Users{}
 
 // Users struct for Users
 type Users struct {
 	Users []ExtendedUser `json:"users,omitempty"`
-	Links *SelfLinks `json:"_links,omitempty"`
+	Links *SelfLinks     `json:"_links,omitempty"`
 }
 
 // NewUsers instantiates a new Users object
@@ -43,7 +43,7 @@ func NewUsersWithDefaults() *Users {
 
 // GetUsers returns the Users field value if set, zero value otherwise.
 func (o *Users) GetUsers() []ExtendedUser {
-	if o == nil || core.IsNil(o.Users) {
+	if o == nil || utils.IsNil(o.Users) {
 		var ret []ExtendedUser
 		return ret
 	}
@@ -53,7 +53,7 @@ func (o *Users) GetUsers() []ExtendedUser {
 // GetUsersOk returns a tuple with the Users field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Users) GetUsersOk() ([]ExtendedUser, bool) {
-	if o == nil || core.IsNil(o.Users) {
+	if o == nil || utils.IsNil(o.Users) {
 		return nil, false
 	}
 	return o.Users, true
@@ -61,7 +61,7 @@ func (o *Users) GetUsersOk() ([]ExtendedUser, bool) {
 
 // HasUsers returns a boolean if a field has been set.
 func (o *Users) HasUsers() bool {
-	if o != nil && !core.IsNil(o.Users) {
+	if o != nil && !utils.IsNil(o.Users) {
 		return true
 	}
 
@@ -75,7 +75,7 @@ func (o *Users) SetUsers(v []ExtendedUser) {
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *Users) GetLinks() SelfLinks {
-	if o == nil || core.IsNil(o.Links) {
+	if o == nil || utils.IsNil(o.Links) {
 		var ret SelfLinks
 		return ret
 	}
@@ -85,7 +85,7 @@ func (o *Users) GetLinks() SelfLinks {
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Users) GetLinksOk() (*SelfLinks, bool) {
-	if o == nil || core.IsNil(o.Links) {
+	if o == nil || utils.IsNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -93,7 +93,7 @@ func (o *Users) GetLinksOk() (*SelfLinks, bool) {
 
 // HasLinks returns a boolean if a field has been set.
 func (o *Users) HasLinks() bool {
-	if o != nil && !core.IsNil(o.Links) {
+	if o != nil && !utils.IsNil(o.Links) {
 		return true
 	}
 
@@ -106,7 +106,7 @@ func (o *Users) SetLinks(v SelfLinks) {
 }
 
 func (o Users) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -115,10 +115,10 @@ func (o Users) MarshalJSON() ([]byte, error) {
 
 func (o Users) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !core.IsNil(o.Users) {
+	if !utils.IsNil(o.Users) {
 		toSerialize["users"] = o.Users
 	}
-	if !core.IsNil(o.Links) {
+	if !utils.IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
 	return toSerialize, nil
@@ -159,5 +159,3 @@ func (v *NullableUsers) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

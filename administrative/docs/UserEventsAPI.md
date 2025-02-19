@@ -1,4 +1,4 @@
-# \UserEventsAPI
+# UserEventsAPI
 
 All URIs are relative to *https://api.thousandeyes.com/v7*
 
@@ -25,7 +25,7 @@ import (
 	"fmt"
 	"os"
     "time"
-	"github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/client"
 	"github.com/thousandeyes/thousandeyes-sdk-go/v3/administrative"
 )
 
@@ -37,8 +37,8 @@ func main() {
 	endDate := time.Now() // time.Time | Defaults to current time the request is made. Use with the `startDate` parameter. Include the complete time (hours, minutes, and seconds) in UTC time zone, following the ISO 8601 date-time format. See the example for reference. Please note that this parameter can't be used with `window`. (optional)
 	cursor := "cursor_example" // string | (Optional) Opaque cursor used for pagination. Clients should use `next` value from `_links` instead of this parameter. (optional)
 
-	configuration := core.NewConfiguration().WithAuthToken("<bearer-token>")
-	apiClient := core.NewAPIClient(configuration)
+	configuration := client.NewConfiguration().WithAuthToken("<bearer-token>")
+	apiClient := client.NewAPIClient(configuration)
 
 	api := (*administrative.UserEventsAPIService)(&apiClient.Common)
 
@@ -59,7 +59,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetUserEventsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a ApiGetUserEventsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)[[Back to README]](../README.md)
 

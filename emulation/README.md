@@ -14,6 +14,7 @@ To access Emulation API operations, the following permissions are required:
 - API version: 7.0.36
 - Package version: 1.0.0
 
+For more information, please visit [https://developer.cisco.com/docs/thousandeyes/v7/](https://developer.cisco.com/docs/thousandeyes/v7/)
 
 ## Installation
 
@@ -27,7 +28,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```go
-import "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+import "github.com/thousandeyes/thousandeyes-sdk-go/v3/client"
 import "github.com/thousandeyes/thousandeyes-sdk-go/v3/emulation"
 ```
 
@@ -46,8 +47,8 @@ Authentication schemes defined for the API:
 Example
 
 ```go
-configuration := core.NewConfiguration().WithAuthToken("<bearer-token>")
-apiClient := core.NewAPIClient(configuration)
+configuration := client.NewConfiguration().WithAuthToken("<bearer-token>")
+apiClient := client.NewAPIClient(configuration)
 ```
 
 ## Documentation for API Endpoints
@@ -60,20 +61,3 @@ Class | Method | HTTP request | Description
 *EmulationAPI* | [**GetEmulatedDevices**](docs/EmulationAPI.md#getemulateddevices) | **Get** /emulated-devices | List emulated devices
 *EmulationAPI* | [**GetUserAgents**](docs/EmulationAPI.md#getuseragents) | **Get** /user-agents | List user-agents
 
-
-
-## Documentation for Utility Methods
-
-Due to the fact that model structure members are all pointers, this package contains
-a number of utility functions to easily obtain pointers to values of basic types.
-Each of these functions takes a value of the given basic type and returns a pointer to it:
-
-* `PtrBool`
-* `PtrInt`
-* `PtrInt32`
-* `PtrInt64`
-* `PtrFloat`
-* `PtrFloat32`
-* `PtrFloat64`
-* `PtrString`
-* `PtrTime`

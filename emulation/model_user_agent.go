@@ -1,7 +1,7 @@
 /*
 Emulation API
 
-The Emulation API facilitates the retrieval of user-agent strings for HTTP, pageload, and transaction tests. It also enables the retrieval and addition of emulated devices for pageload and transaction tests.  To access Emulation API operations, the following permissions are required:  * `Settings Tests Read` for read operations. * `Settings Tests Update` for write operations. 
+The Emulation API facilitates the retrieval of user-agent strings for HTTP, pageload, and transaction tests. It also enables the retrieval and addition of emulated devices for pageload and transaction tests.  To access Emulation API operations, the following permissions are required:  * `Settings Tests Read` for read operations. * `Settings Tests Update` for write operations.
 
 API version: 7.0.36
 */
@@ -12,11 +12,11 @@ package emulation
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 )
 
 // checks if the UserAgent type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &UserAgent{}
+var _ utils.MappedNullable = &UserAgent{}
 
 // UserAgent struct for UserAgent
 type UserAgent struct {
@@ -47,7 +47,7 @@ func NewUserAgentWithDefaults() *UserAgent {
 
 // GetBrowser returns the Browser field value if set, zero value otherwise.
 func (o *UserAgent) GetBrowser() string {
-	if o == nil || core.IsNil(o.Browser) {
+	if o == nil || utils.IsNil(o.Browser) {
 		var ret string
 		return ret
 	}
@@ -57,7 +57,7 @@ func (o *UserAgent) GetBrowser() string {
 // GetBrowserOk returns a tuple with the Browser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserAgent) GetBrowserOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Browser) {
+	if o == nil || utils.IsNil(o.Browser) {
 		return nil, false
 	}
 	return o.Browser, true
@@ -65,7 +65,7 @@ func (o *UserAgent) GetBrowserOk() (*string, bool) {
 
 // HasBrowser returns a boolean if a field has been set.
 func (o *UserAgent) HasBrowser() bool {
-	if o != nil && !core.IsNil(o.Browser) {
+	if o != nil && !utils.IsNil(o.Browser) {
 		return true
 	}
 
@@ -79,7 +79,7 @@ func (o *UserAgent) SetBrowser(v string) {
 
 // GetOs returns the Os field value if set, zero value otherwise.
 func (o *UserAgent) GetOs() string {
-	if o == nil || core.IsNil(o.Os) {
+	if o == nil || utils.IsNil(o.Os) {
 		var ret string
 		return ret
 	}
@@ -89,7 +89,7 @@ func (o *UserAgent) GetOs() string {
 // GetOsOk returns a tuple with the Os field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserAgent) GetOsOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Os) {
+	if o == nil || utils.IsNil(o.Os) {
 		return nil, false
 	}
 	return o.Os, true
@@ -97,7 +97,7 @@ func (o *UserAgent) GetOsOk() (*string, bool) {
 
 // HasOs returns a boolean if a field has been set.
 func (o *UserAgent) HasOs() bool {
-	if o != nil && !core.IsNil(o.Os) {
+	if o != nil && !utils.IsNil(o.Os) {
 		return true
 	}
 
@@ -111,7 +111,7 @@ func (o *UserAgent) SetOs(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *UserAgent) GetValue() string {
-	if o == nil || core.IsNil(o.Value) {
+	if o == nil || utils.IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -121,7 +121,7 @@ func (o *UserAgent) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserAgent) GetValueOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Value) {
+	if o == nil || utils.IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -129,7 +129,7 @@ func (o *UserAgent) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *UserAgent) HasValue() bool {
-	if o != nil && !core.IsNil(o.Value) {
+	if o != nil && !utils.IsNil(o.Value) {
 		return true
 	}
 
@@ -142,7 +142,7 @@ func (o *UserAgent) SetValue(v string) {
 }
 
 func (o UserAgent) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -151,13 +151,13 @@ func (o UserAgent) MarshalJSON() ([]byte, error) {
 
 func (o UserAgent) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !core.IsNil(o.Browser) {
+	if !utils.IsNil(o.Browser) {
 		toSerialize["browser"] = o.Browser
 	}
-	if !core.IsNil(o.Os) {
+	if !utils.IsNil(o.Os) {
 		toSerialize["os"] = o.Os
 	}
-	if !core.IsNil(o.Value) {
+	if !utils.IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
 	return toSerialize, nil
@@ -198,5 +198,3 @@ func (v *NullableUserAgent) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

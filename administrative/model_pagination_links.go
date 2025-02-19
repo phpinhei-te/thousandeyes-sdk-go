@@ -12,17 +12,17 @@ package administrative
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 )
 
 // checks if the PaginationLinks type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &PaginationLinks{}
+var _ utils.MappedNullable = &PaginationLinks{}
 
 // PaginationLinks A links object containing pagination related link(s).
 type PaginationLinks struct {
 	Previous *Link `json:"previous,omitempty"`
-	Next *Link `json:"next,omitempty"`
-	Self *Link `json:"self,omitempty"`
+	Next     *Link `json:"next,omitempty"`
+	Self     *Link `json:"self,omitempty"`
 }
 
 // NewPaginationLinks instantiates a new PaginationLinks object
@@ -44,7 +44,7 @@ func NewPaginationLinksWithDefaults() *PaginationLinks {
 
 // GetPrevious returns the Previous field value if set, zero value otherwise.
 func (o *PaginationLinks) GetPrevious() Link {
-	if o == nil || core.IsNil(o.Previous) {
+	if o == nil || utils.IsNil(o.Previous) {
 		var ret Link
 		return ret
 	}
@@ -54,7 +54,7 @@ func (o *PaginationLinks) GetPrevious() Link {
 // GetPreviousOk returns a tuple with the Previous field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaginationLinks) GetPreviousOk() (*Link, bool) {
-	if o == nil || core.IsNil(o.Previous) {
+	if o == nil || utils.IsNil(o.Previous) {
 		return nil, false
 	}
 	return o.Previous, true
@@ -62,7 +62,7 @@ func (o *PaginationLinks) GetPreviousOk() (*Link, bool) {
 
 // HasPrevious returns a boolean if a field has been set.
 func (o *PaginationLinks) HasPrevious() bool {
-	if o != nil && !core.IsNil(o.Previous) {
+	if o != nil && !utils.IsNil(o.Previous) {
 		return true
 	}
 
@@ -76,7 +76,7 @@ func (o *PaginationLinks) SetPrevious(v Link) {
 
 // GetNext returns the Next field value if set, zero value otherwise.
 func (o *PaginationLinks) GetNext() Link {
-	if o == nil || core.IsNil(o.Next) {
+	if o == nil || utils.IsNil(o.Next) {
 		var ret Link
 		return ret
 	}
@@ -86,7 +86,7 @@ func (o *PaginationLinks) GetNext() Link {
 // GetNextOk returns a tuple with the Next field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaginationLinks) GetNextOk() (*Link, bool) {
-	if o == nil || core.IsNil(o.Next) {
+	if o == nil || utils.IsNil(o.Next) {
 		return nil, false
 	}
 	return o.Next, true
@@ -94,7 +94,7 @@ func (o *PaginationLinks) GetNextOk() (*Link, bool) {
 
 // HasNext returns a boolean if a field has been set.
 func (o *PaginationLinks) HasNext() bool {
-	if o != nil && !core.IsNil(o.Next) {
+	if o != nil && !utils.IsNil(o.Next) {
 		return true
 	}
 
@@ -108,7 +108,7 @@ func (o *PaginationLinks) SetNext(v Link) {
 
 // GetSelf returns the Self field value if set, zero value otherwise.
 func (o *PaginationLinks) GetSelf() Link {
-	if o == nil || core.IsNil(o.Self) {
+	if o == nil || utils.IsNil(o.Self) {
 		var ret Link
 		return ret
 	}
@@ -118,7 +118,7 @@ func (o *PaginationLinks) GetSelf() Link {
 // GetSelfOk returns a tuple with the Self field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaginationLinks) GetSelfOk() (*Link, bool) {
-	if o == nil || core.IsNil(o.Self) {
+	if o == nil || utils.IsNil(o.Self) {
 		return nil, false
 	}
 	return o.Self, true
@@ -126,7 +126,7 @@ func (o *PaginationLinks) GetSelfOk() (*Link, bool) {
 
 // HasSelf returns a boolean if a field has been set.
 func (o *PaginationLinks) HasSelf() bool {
-	if o != nil && !core.IsNil(o.Self) {
+	if o != nil && !utils.IsNil(o.Self) {
 		return true
 	}
 
@@ -139,7 +139,7 @@ func (o *PaginationLinks) SetSelf(v Link) {
 }
 
 func (o PaginationLinks) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -148,13 +148,13 @@ func (o PaginationLinks) MarshalJSON() ([]byte, error) {
 
 func (o PaginationLinks) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !core.IsNil(o.Previous) {
+	if !utils.IsNil(o.Previous) {
 		toSerialize["previous"] = o.Previous
 	}
-	if !core.IsNil(o.Next) {
+	if !utils.IsNil(o.Next) {
 		toSerialize["next"] = o.Next
 	}
-	if !core.IsNil(o.Self) {
+	if !utils.IsNil(o.Self) {
 		toSerialize["self"] = o.Self
 	}
 	return toSerialize, nil
@@ -195,5 +195,3 @@ func (v *NullablePaginationLinks) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -12,11 +12,11 @@ package administrative
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 )
 
 // checks if the RoleDetail type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &RoleDetail{}
+var _ utils.MappedNullable = &RoleDetail{}
 
 // RoleDetail struct for RoleDetail
 type RoleDetail struct {
@@ -25,9 +25,9 @@ type RoleDetail struct {
 	// Unique ID representing the role.
 	RoleId *string `json:"roleId,omitempty"`
 	// Flag indicating if the role is built-in (Account Admin, Organization Admin, Regular User).
-	IsBuiltin *bool `json:"isBuiltin,omitempty"`
+	IsBuiltin   *bool        `json:"isBuiltin,omitempty"`
 	Permissions []Permission `json:"permissions,omitempty"`
-	Links *SelfLinks `json:"_links,omitempty"`
+	Links       *SelfLinks   `json:"_links,omitempty"`
 }
 
 // NewRoleDetail instantiates a new RoleDetail object
@@ -49,7 +49,7 @@ func NewRoleDetailWithDefaults() *RoleDetail {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *RoleDetail) GetName() string {
-	if o == nil || core.IsNil(o.Name) {
+	if o == nil || utils.IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *RoleDetail) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleDetail) GetNameOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Name) {
+	if o == nil || utils.IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -67,7 +67,7 @@ func (o *RoleDetail) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *RoleDetail) HasName() bool {
-	if o != nil && !core.IsNil(o.Name) {
+	if o != nil && !utils.IsNil(o.Name) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *RoleDetail) SetName(v string) {
 
 // GetRoleId returns the RoleId field value if set, zero value otherwise.
 func (o *RoleDetail) GetRoleId() string {
-	if o == nil || core.IsNil(o.RoleId) {
+	if o == nil || utils.IsNil(o.RoleId) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *RoleDetail) GetRoleId() string {
 // GetRoleIdOk returns a tuple with the RoleId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleDetail) GetRoleIdOk() (*string, bool) {
-	if o == nil || core.IsNil(o.RoleId) {
+	if o == nil || utils.IsNil(o.RoleId) {
 		return nil, false
 	}
 	return o.RoleId, true
@@ -99,7 +99,7 @@ func (o *RoleDetail) GetRoleIdOk() (*string, bool) {
 
 // HasRoleId returns a boolean if a field has been set.
 func (o *RoleDetail) HasRoleId() bool {
-	if o != nil && !core.IsNil(o.RoleId) {
+	if o != nil && !utils.IsNil(o.RoleId) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *RoleDetail) SetRoleId(v string) {
 
 // GetIsBuiltin returns the IsBuiltin field value if set, zero value otherwise.
 func (o *RoleDetail) GetIsBuiltin() bool {
-	if o == nil || core.IsNil(o.IsBuiltin) {
+	if o == nil || utils.IsNil(o.IsBuiltin) {
 		var ret bool
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *RoleDetail) GetIsBuiltin() bool {
 // GetIsBuiltinOk returns a tuple with the IsBuiltin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleDetail) GetIsBuiltinOk() (*bool, bool) {
-	if o == nil || core.IsNil(o.IsBuiltin) {
+	if o == nil || utils.IsNil(o.IsBuiltin) {
 		return nil, false
 	}
 	return o.IsBuiltin, true
@@ -131,7 +131,7 @@ func (o *RoleDetail) GetIsBuiltinOk() (*bool, bool) {
 
 // HasIsBuiltin returns a boolean if a field has been set.
 func (o *RoleDetail) HasIsBuiltin() bool {
-	if o != nil && !core.IsNil(o.IsBuiltin) {
+	if o != nil && !utils.IsNil(o.IsBuiltin) {
 		return true
 	}
 
@@ -145,7 +145,7 @@ func (o *RoleDetail) SetIsBuiltin(v bool) {
 
 // GetPermissions returns the Permissions field value if set, zero value otherwise.
 func (o *RoleDetail) GetPermissions() []Permission {
-	if o == nil || core.IsNil(o.Permissions) {
+	if o == nil || utils.IsNil(o.Permissions) {
 		var ret []Permission
 		return ret
 	}
@@ -155,7 +155,7 @@ func (o *RoleDetail) GetPermissions() []Permission {
 // GetPermissionsOk returns a tuple with the Permissions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleDetail) GetPermissionsOk() ([]Permission, bool) {
-	if o == nil || core.IsNil(o.Permissions) {
+	if o == nil || utils.IsNil(o.Permissions) {
 		return nil, false
 	}
 	return o.Permissions, true
@@ -163,7 +163,7 @@ func (o *RoleDetail) GetPermissionsOk() ([]Permission, bool) {
 
 // HasPermissions returns a boolean if a field has been set.
 func (o *RoleDetail) HasPermissions() bool {
-	if o != nil && !core.IsNil(o.Permissions) {
+	if o != nil && !utils.IsNil(o.Permissions) {
 		return true
 	}
 
@@ -177,7 +177,7 @@ func (o *RoleDetail) SetPermissions(v []Permission) {
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *RoleDetail) GetLinks() SelfLinks {
-	if o == nil || core.IsNil(o.Links) {
+	if o == nil || utils.IsNil(o.Links) {
 		var ret SelfLinks
 		return ret
 	}
@@ -187,7 +187,7 @@ func (o *RoleDetail) GetLinks() SelfLinks {
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleDetail) GetLinksOk() (*SelfLinks, bool) {
-	if o == nil || core.IsNil(o.Links) {
+	if o == nil || utils.IsNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -195,7 +195,7 @@ func (o *RoleDetail) GetLinksOk() (*SelfLinks, bool) {
 
 // HasLinks returns a boolean if a field has been set.
 func (o *RoleDetail) HasLinks() bool {
-	if o != nil && !core.IsNil(o.Links) {
+	if o != nil && !utils.IsNil(o.Links) {
 		return true
 	}
 
@@ -208,7 +208,7 @@ func (o *RoleDetail) SetLinks(v SelfLinks) {
 }
 
 func (o RoleDetail) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -217,19 +217,19 @@ func (o RoleDetail) MarshalJSON() ([]byte, error) {
 
 func (o RoleDetail) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !core.IsNil(o.Name) {
+	if !utils.IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !core.IsNil(o.RoleId) {
+	if !utils.IsNil(o.RoleId) {
 		toSerialize["roleId"] = o.RoleId
 	}
-	if !core.IsNil(o.IsBuiltin) {
+	if !utils.IsNil(o.IsBuiltin) {
 		toSerialize["isBuiltin"] = o.IsBuiltin
 	}
-	if !core.IsNil(o.Permissions) {
+	if !utils.IsNil(o.Permissions) {
 		toSerialize["permissions"] = o.Permissions
 	}
-	if !core.IsNil(o.Links) {
+	if !utils.IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
 	return toSerialize, nil
@@ -270,5 +270,3 @@ func (v *NullableRoleDetail) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

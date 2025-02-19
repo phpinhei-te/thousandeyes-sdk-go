@@ -1,4 +1,4 @@
-# \EmulationAPI
+# EmulationAPI
 
 All URIs are relative to *https://api.thousandeyes.com/v7*
 
@@ -26,16 +26,16 @@ package main
 import (
 	"fmt"
 	"os"
-	"github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/client"
 	"github.com/thousandeyes/thousandeyes-sdk-go/v3/emulation"
 )
 
 func main() {
-	emulatedDevice := *openapiclient.NewEmulatedDevice(openapiclient.EmulatedDeviceCategory("desktop"), int32(1024), int32(768)) // EmulatedDevice | 
+	emulatedDevice := *emulation.NewEmulatedDevice(emulation.EmulatedDeviceCategory("desktop"), int32(1024), int32(768)) // EmulatedDevice | 
 	aid := "1234" // string | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
 
-	configuration := core.NewConfiguration().WithAuthToken("<bearer-token>")
-	apiClient := core.NewAPIClient(configuration)
+	configuration := client.NewConfiguration().WithAuthToken("<bearer-token>")
+	apiClient := client.NewAPIClient(configuration)
 
 	api := (*emulation.EmulationAPIService)(&apiClient.Common)
 
@@ -56,7 +56,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateEmulatedDeviceRequest struct via the builder pattern
+Other parameters are passed through a pointer to a ApiCreateEmulatedDeviceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)[[Back to README]](../README.md)
 
@@ -96,15 +96,15 @@ package main
 import (
 	"fmt"
 	"os"
-	"github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/client"
 	"github.com/thousandeyes/thousandeyes-sdk-go/v3/emulation"
 )
 
 func main() {
-	expand := []openapiclient.ExpandEmulatedDeviceOptions{openapiclient.ExpandEmulatedDeviceOptions("user-agent")} // []ExpandEmulatedDeviceOptions | Optional query parameter that controls whether user-agent templates are included in the response. By default, user-agent templates are not included. To include them, add `?expand=user-agent` to the request.  (optional)
+	expand := []emulation.ExpandEmulatedDeviceOptions{emulation.ExpandEmulatedDeviceOptions("user-agent")} // []ExpandEmulatedDeviceOptions | Optional query parameter that controls whether user-agent templates are included in the response. By default, user-agent templates are not included. To include them, add `?expand=user-agent` to the request.  (optional)
 
-	configuration := core.NewConfiguration().WithAuthToken("<bearer-token>")
-	apiClient := core.NewAPIClient(configuration)
+	configuration := client.NewConfiguration().WithAuthToken("<bearer-token>")
+	apiClient := client.NewAPIClient(configuration)
 
 	api := (*emulation.EmulationAPIService)(&apiClient.Common)
 
@@ -125,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetEmulatedDevicesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a ApiGetEmulatedDevicesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)[[Back to README]](../README.md)
 
@@ -164,15 +164,15 @@ package main
 import (
 	"fmt"
 	"os"
-	"github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/client"
 	"github.com/thousandeyes/thousandeyes-sdk-go/v3/emulation"
 )
 
 func main() {
 	aid := "1234" // string | A unique identifier associated with your account group. You can retrieve your `AccountGroupId` from the `/account-groups` endpoint. Note that you must be assigned to the target account group. Specifying this parameter without being assigned to the target account group will result in an error response. (optional)
 
-	configuration := core.NewConfiguration().WithAuthToken("<bearer-token>")
-	apiClient := core.NewAPIClient(configuration)
+	configuration := client.NewConfiguration().WithAuthToken("<bearer-token>")
+	apiClient := client.NewAPIClient(configuration)
 
 	api := (*emulation.EmulationAPIService)(&apiClient.Common)
 
@@ -193,7 +193,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetUserAgentsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a ApiGetUserAgentsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -211,7 +211,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/hal+json, application/problem+json
+- **Accept**: application/hal+json, application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)[[Back to README]](../README.md)
 

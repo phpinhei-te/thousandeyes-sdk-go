@@ -12,7 +12,6 @@ package administrative
 
 import (
 	"encoding/json"
-    
 	"fmt"
 )
 
@@ -21,14 +20,14 @@ type ErrorDetailCode string
 
 // List of ErrorDetailCode
 const (
-	ERRORDETAILCODE_AGENT_VERSION_OUTDATED ErrorDetailCode = "agent-version-outdated"
-	ERRORDETAILCODE_BROWSERBOT_VERSION_OUTDATED ErrorDetailCode = "browserbot-version-outdated"
-	ERRORDETAILCODE_APPLIANCE_VERSION_OUTDATED ErrorDetailCode = "appliance-version-outdated"
-	ERRORDETAILCODE_CLOCK_OFFSET ErrorDetailCode = "clock-offset"
+	ERRORDETAILCODE_AGENT_VERSION_OUTDATED         ErrorDetailCode = "agent-version-outdated"
+	ERRORDETAILCODE_BROWSERBOT_VERSION_OUTDATED    ErrorDetailCode = "browserbot-version-outdated"
+	ERRORDETAILCODE_APPLIANCE_VERSION_OUTDATED     ErrorDetailCode = "appliance-version-outdated"
+	ERRORDETAILCODE_CLOCK_OFFSET                   ErrorDetailCode = "clock-offset"
 	ERRORDETAILCODE_OS_END_OF_INSTALLATION_SUPPORT ErrorDetailCode = "os-end-of-installation-support"
-	ERRORDETAILCODE_OS_END_OF_SUPPORT ErrorDetailCode = "os-end-of-support"
-	ERRORDETAILCODE_OS_END_OF_LIFE ErrorDetailCode = "os-end-of-life"
-	ERRORDETAILCODE_NAT_TRAVERSAL_ERROR ErrorDetailCode = "nat-traversal-error"
+	ERRORDETAILCODE_OS_END_OF_SUPPORT              ErrorDetailCode = "os-end-of-support"
+	ERRORDETAILCODE_OS_END_OF_LIFE                 ErrorDetailCode = "os-end-of-life"
+	ERRORDETAILCODE_NAT_TRAVERSAL_ERROR            ErrorDetailCode = "nat-traversal-error"
 )
 
 // All allowed values of ErrorDetailCode enum
@@ -121,4 +120,3 @@ func (v *NullableErrorDetailCode) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

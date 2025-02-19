@@ -12,13 +12,12 @@ package administrative
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
-	"bytes"
 	"fmt"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 )
 
 // checks if the AgentResponse type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &AgentResponse{}
+var _ utils.MappedNullable = &AgentResponse{}
 
 // AgentResponse struct for AgentResponse
 type AgentResponse struct {
@@ -41,8 +40,8 @@ type AgentResponse struct {
 	// Prefix containing agents public IP address.
 	Prefix *string `json:"prefix,omitempty"`
 	// Flag indicating if has normal SSL operations or  if instead it's set to ignore SSL errors on browserbot-based tests.
-	VerifySslCertificates *bool `json:"verifySslCertificates,omitempty"`
-	AgentType CloudEnterpriseAgentType `json:"agentType"`
+	VerifySslCertificates *bool                    `json:"verifySslCertificates,omitempty"`
+	AgentType             CloudEnterpriseAgentType `json:"agentType"`
 }
 
 type _AgentResponse AgentResponse
@@ -67,7 +66,7 @@ func NewAgentResponseWithDefaults() *AgentResponse {
 
 // GetIpAddresses returns the IpAddresses field value if set, zero value otherwise.
 func (o *AgentResponse) GetIpAddresses() []string {
-	if o == nil || core.IsNil(o.IpAddresses) {
+	if o == nil || utils.IsNil(o.IpAddresses) {
 		var ret []string
 		return ret
 	}
@@ -77,7 +76,7 @@ func (o *AgentResponse) GetIpAddresses() []string {
 // GetIpAddressesOk returns a tuple with the IpAddresses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgentResponse) GetIpAddressesOk() ([]string, bool) {
-	if o == nil || core.IsNil(o.IpAddresses) {
+	if o == nil || utils.IsNil(o.IpAddresses) {
 		return nil, false
 	}
 	return o.IpAddresses, true
@@ -85,7 +84,7 @@ func (o *AgentResponse) GetIpAddressesOk() ([]string, bool) {
 
 // HasIpAddresses returns a boolean if a field has been set.
 func (o *AgentResponse) HasIpAddresses() bool {
-	if o != nil && !core.IsNil(o.IpAddresses) {
+	if o != nil && !utils.IsNil(o.IpAddresses) {
 		return true
 	}
 
@@ -99,7 +98,7 @@ func (o *AgentResponse) SetIpAddresses(v []string) {
 
 // GetPublicIpAddresses returns the PublicIpAddresses field value if set, zero value otherwise.
 func (o *AgentResponse) GetPublicIpAddresses() []string {
-	if o == nil || core.IsNil(o.PublicIpAddresses) {
+	if o == nil || utils.IsNil(o.PublicIpAddresses) {
 		var ret []string
 		return ret
 	}
@@ -109,7 +108,7 @@ func (o *AgentResponse) GetPublicIpAddresses() []string {
 // GetPublicIpAddressesOk returns a tuple with the PublicIpAddresses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgentResponse) GetPublicIpAddressesOk() ([]string, bool) {
-	if o == nil || core.IsNil(o.PublicIpAddresses) {
+	if o == nil || utils.IsNil(o.PublicIpAddresses) {
 		return nil, false
 	}
 	return o.PublicIpAddresses, true
@@ -117,7 +116,7 @@ func (o *AgentResponse) GetPublicIpAddressesOk() ([]string, bool) {
 
 // HasPublicIpAddresses returns a boolean if a field has been set.
 func (o *AgentResponse) HasPublicIpAddresses() bool {
-	if o != nil && !core.IsNil(o.PublicIpAddresses) {
+	if o != nil && !utils.IsNil(o.PublicIpAddresses) {
 		return true
 	}
 
@@ -131,7 +130,7 @@ func (o *AgentResponse) SetPublicIpAddresses(v []string) {
 
 // GetNetwork returns the Network field value if set, zero value otherwise.
 func (o *AgentResponse) GetNetwork() string {
-	if o == nil || core.IsNil(o.Network) {
+	if o == nil || utils.IsNil(o.Network) {
 		var ret string
 		return ret
 	}
@@ -141,7 +140,7 @@ func (o *AgentResponse) GetNetwork() string {
 // GetNetworkOk returns a tuple with the Network field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgentResponse) GetNetworkOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Network) {
+	if o == nil || utils.IsNil(o.Network) {
 		return nil, false
 	}
 	return o.Network, true
@@ -149,7 +148,7 @@ func (o *AgentResponse) GetNetworkOk() (*string, bool) {
 
 // HasNetwork returns a boolean if a field has been set.
 func (o *AgentResponse) HasNetwork() bool {
-	if o != nil && !core.IsNil(o.Network) {
+	if o != nil && !utils.IsNil(o.Network) {
 		return true
 	}
 
@@ -163,7 +162,7 @@ func (o *AgentResponse) SetNetwork(v string) {
 
 // GetAgentId returns the AgentId field value if set, zero value otherwise.
 func (o *AgentResponse) GetAgentId() string {
-	if o == nil || core.IsNil(o.AgentId) {
+	if o == nil || utils.IsNil(o.AgentId) {
 		var ret string
 		return ret
 	}
@@ -173,7 +172,7 @@ func (o *AgentResponse) GetAgentId() string {
 // GetAgentIdOk returns a tuple with the AgentId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgentResponse) GetAgentIdOk() (*string, bool) {
-	if o == nil || core.IsNil(o.AgentId) {
+	if o == nil || utils.IsNil(o.AgentId) {
 		return nil, false
 	}
 	return o.AgentId, true
@@ -181,7 +180,7 @@ func (o *AgentResponse) GetAgentIdOk() (*string, bool) {
 
 // HasAgentId returns a boolean if a field has been set.
 func (o *AgentResponse) HasAgentId() bool {
-	if o != nil && !core.IsNil(o.AgentId) {
+	if o != nil && !utils.IsNil(o.AgentId) {
 		return true
 	}
 
@@ -195,7 +194,7 @@ func (o *AgentResponse) SetAgentId(v string) {
 
 // GetAgentName returns the AgentName field value if set, zero value otherwise.
 func (o *AgentResponse) GetAgentName() string {
-	if o == nil || core.IsNil(o.AgentName) {
+	if o == nil || utils.IsNil(o.AgentName) {
 		var ret string
 		return ret
 	}
@@ -205,7 +204,7 @@ func (o *AgentResponse) GetAgentName() string {
 // GetAgentNameOk returns a tuple with the AgentName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgentResponse) GetAgentNameOk() (*string, bool) {
-	if o == nil || core.IsNil(o.AgentName) {
+	if o == nil || utils.IsNil(o.AgentName) {
 		return nil, false
 	}
 	return o.AgentName, true
@@ -213,7 +212,7 @@ func (o *AgentResponse) GetAgentNameOk() (*string, bool) {
 
 // HasAgentName returns a boolean if a field has been set.
 func (o *AgentResponse) HasAgentName() bool {
-	if o != nil && !core.IsNil(o.AgentName) {
+	if o != nil && !utils.IsNil(o.AgentName) {
 		return true
 	}
 
@@ -227,7 +226,7 @@ func (o *AgentResponse) SetAgentName(v string) {
 
 // GetLocation returns the Location field value if set, zero value otherwise.
 func (o *AgentResponse) GetLocation() string {
-	if o == nil || core.IsNil(o.Location) {
+	if o == nil || utils.IsNil(o.Location) {
 		var ret string
 		return ret
 	}
@@ -237,7 +236,7 @@ func (o *AgentResponse) GetLocation() string {
 // GetLocationOk returns a tuple with the Location field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgentResponse) GetLocationOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Location) {
+	if o == nil || utils.IsNil(o.Location) {
 		return nil, false
 	}
 	return o.Location, true
@@ -245,7 +244,7 @@ func (o *AgentResponse) GetLocationOk() (*string, bool) {
 
 // HasLocation returns a boolean if a field has been set.
 func (o *AgentResponse) HasLocation() bool {
-	if o != nil && !core.IsNil(o.Location) {
+	if o != nil && !utils.IsNil(o.Location) {
 		return true
 	}
 
@@ -259,7 +258,7 @@ func (o *AgentResponse) SetLocation(v string) {
 
 // GetCountryId returns the CountryId field value if set, zero value otherwise.
 func (o *AgentResponse) GetCountryId() string {
-	if o == nil || core.IsNil(o.CountryId) {
+	if o == nil || utils.IsNil(o.CountryId) {
 		var ret string
 		return ret
 	}
@@ -269,7 +268,7 @@ func (o *AgentResponse) GetCountryId() string {
 // GetCountryIdOk returns a tuple with the CountryId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgentResponse) GetCountryIdOk() (*string, bool) {
-	if o == nil || core.IsNil(o.CountryId) {
+	if o == nil || utils.IsNil(o.CountryId) {
 		return nil, false
 	}
 	return o.CountryId, true
@@ -277,7 +276,7 @@ func (o *AgentResponse) GetCountryIdOk() (*string, bool) {
 
 // HasCountryId returns a boolean if a field has been set.
 func (o *AgentResponse) HasCountryId() bool {
-	if o != nil && !core.IsNil(o.CountryId) {
+	if o != nil && !utils.IsNil(o.CountryId) {
 		return true
 	}
 
@@ -291,7 +290,7 @@ func (o *AgentResponse) SetCountryId(v string) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *AgentResponse) GetEnabled() bool {
-	if o == nil || core.IsNil(o.Enabled) {
+	if o == nil || utils.IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -301,7 +300,7 @@ func (o *AgentResponse) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgentResponse) GetEnabledOk() (*bool, bool) {
-	if o == nil || core.IsNil(o.Enabled) {
+	if o == nil || utils.IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -309,7 +308,7 @@ func (o *AgentResponse) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *AgentResponse) HasEnabled() bool {
-	if o != nil && !core.IsNil(o.Enabled) {
+	if o != nil && !utils.IsNil(o.Enabled) {
 		return true
 	}
 
@@ -323,7 +322,7 @@ func (o *AgentResponse) SetEnabled(v bool) {
 
 // GetPrefix returns the Prefix field value if set, zero value otherwise.
 func (o *AgentResponse) GetPrefix() string {
-	if o == nil || core.IsNil(o.Prefix) {
+	if o == nil || utils.IsNil(o.Prefix) {
 		var ret string
 		return ret
 	}
@@ -333,7 +332,7 @@ func (o *AgentResponse) GetPrefix() string {
 // GetPrefixOk returns a tuple with the Prefix field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgentResponse) GetPrefixOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Prefix) {
+	if o == nil || utils.IsNil(o.Prefix) {
 		return nil, false
 	}
 	return o.Prefix, true
@@ -341,7 +340,7 @@ func (o *AgentResponse) GetPrefixOk() (*string, bool) {
 
 // HasPrefix returns a boolean if a field has been set.
 func (o *AgentResponse) HasPrefix() bool {
-	if o != nil && !core.IsNil(o.Prefix) {
+	if o != nil && !utils.IsNil(o.Prefix) {
 		return true
 	}
 
@@ -355,7 +354,7 @@ func (o *AgentResponse) SetPrefix(v string) {
 
 // GetVerifySslCertificates returns the VerifySslCertificates field value if set, zero value otherwise.
 func (o *AgentResponse) GetVerifySslCertificates() bool {
-	if o == nil || core.IsNil(o.VerifySslCertificates) {
+	if o == nil || utils.IsNil(o.VerifySslCertificates) {
 		var ret bool
 		return ret
 	}
@@ -365,7 +364,7 @@ func (o *AgentResponse) GetVerifySslCertificates() bool {
 // GetVerifySslCertificatesOk returns a tuple with the VerifySslCertificates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgentResponse) GetVerifySslCertificatesOk() (*bool, bool) {
-	if o == nil || core.IsNil(o.VerifySslCertificates) {
+	if o == nil || utils.IsNil(o.VerifySslCertificates) {
 		return nil, false
 	}
 	return o.VerifySslCertificates, true
@@ -373,7 +372,7 @@ func (o *AgentResponse) GetVerifySslCertificatesOk() (*bool, bool) {
 
 // HasVerifySslCertificates returns a boolean if a field has been set.
 func (o *AgentResponse) HasVerifySslCertificates() bool {
-	if o != nil && !core.IsNil(o.VerifySslCertificates) {
+	if o != nil && !utils.IsNil(o.VerifySslCertificates) {
 		return true
 	}
 
@@ -410,7 +409,7 @@ func (o *AgentResponse) SetAgentType(v CloudEnterpriseAgentType) {
 }
 
 func (o AgentResponse) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -419,34 +418,34 @@ func (o AgentResponse) MarshalJSON() ([]byte, error) {
 
 func (o AgentResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !core.IsNil(o.IpAddresses) {
+	if !utils.IsNil(o.IpAddresses) {
 		toSerialize["ipAddresses"] = o.IpAddresses
 	}
-	if !core.IsNil(o.PublicIpAddresses) {
+	if !utils.IsNil(o.PublicIpAddresses) {
 		toSerialize["publicIpAddresses"] = o.PublicIpAddresses
 	}
-	if !core.IsNil(o.Network) {
+	if !utils.IsNil(o.Network) {
 		toSerialize["network"] = o.Network
 	}
-	if !core.IsNil(o.AgentId) {
+	if !utils.IsNil(o.AgentId) {
 		toSerialize["agentId"] = o.AgentId
 	}
-	if !core.IsNil(o.AgentName) {
+	if !utils.IsNil(o.AgentName) {
 		toSerialize["agentName"] = o.AgentName
 	}
-	if !core.IsNil(o.Location) {
+	if !utils.IsNil(o.Location) {
 		toSerialize["location"] = o.Location
 	}
-	if !core.IsNil(o.CountryId) {
+	if !utils.IsNil(o.CountryId) {
 		toSerialize["countryId"] = o.CountryId
 	}
-	if !core.IsNil(o.Enabled) {
+	if !utils.IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if !core.IsNil(o.Prefix) {
+	if !utils.IsNil(o.Prefix) {
 		toSerialize["prefix"] = o.Prefix
 	}
-	if !core.IsNil(o.VerifySslCertificates) {
+	if !utils.IsNil(o.VerifySslCertificates) {
 		toSerialize["verifySslCertificates"] = o.VerifySslCertificates
 	}
 	toSerialize["agentType"] = o.AgentType
@@ -466,10 +465,10 @@ func (o *AgentResponse) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -477,9 +476,7 @@ func (o *AgentResponse) UnmarshalJSON(data []byte) (err error) {
 
 	varAgentResponse := _AgentResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAgentResponse)
+	err = json.Unmarshal(data, &varAgentResponse)
 
 	if err != nil {
 		return err
@@ -525,5 +522,3 @@ func (v *NullableAgentResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

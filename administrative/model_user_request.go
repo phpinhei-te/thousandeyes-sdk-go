@@ -12,11 +12,11 @@ package administrative
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 )
 
 // checks if the UserRequest type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &UserRequest{}
+var _ utils.MappedNullable = &UserRequest{}
 
 // UserRequest struct for UserRequest
 type UserRequest struct {
@@ -25,8 +25,8 @@ type UserRequest struct {
 	// User's email address.
 	Email *string `json:"email,omitempty"`
 	// Unique ID of the login account group.
-	LoginAccountGroupId *string `json:"loginAccountGroupId,omitempty"`
-	AccountGroupRoles []UserAccountGroupRole `json:"accountGroupRoles,omitempty"`
+	LoginAccountGroupId *string                `json:"loginAccountGroupId,omitempty"`
+	AccountGroupRoles   []UserAccountGroupRole `json:"accountGroupRoles,omitempty"`
 	// Unique IDs representing the roles.
 	AllAccountGroupRoleIds []string `json:"allAccountGroupRoleIds,omitempty"`
 }
@@ -50,7 +50,7 @@ func NewUserRequestWithDefaults() *UserRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *UserRequest) GetName() string {
-	if o == nil || core.IsNil(o.Name) {
+	if o == nil || utils.IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -60,7 +60,7 @@ func (o *UserRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserRequest) GetNameOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Name) {
+	if o == nil || utils.IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -68,7 +68,7 @@ func (o *UserRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *UserRequest) HasName() bool {
-	if o != nil && !core.IsNil(o.Name) {
+	if o != nil && !utils.IsNil(o.Name) {
 		return true
 	}
 
@@ -82,7 +82,7 @@ func (o *UserRequest) SetName(v string) {
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *UserRequest) GetEmail() string {
-	if o == nil || core.IsNil(o.Email) {
+	if o == nil || utils.IsNil(o.Email) {
 		var ret string
 		return ret
 	}
@@ -92,7 +92,7 @@ func (o *UserRequest) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserRequest) GetEmailOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Email) {
+	if o == nil || utils.IsNil(o.Email) {
 		return nil, false
 	}
 	return o.Email, true
@@ -100,7 +100,7 @@ func (o *UserRequest) GetEmailOk() (*string, bool) {
 
 // HasEmail returns a boolean if a field has been set.
 func (o *UserRequest) HasEmail() bool {
-	if o != nil && !core.IsNil(o.Email) {
+	if o != nil && !utils.IsNil(o.Email) {
 		return true
 	}
 
@@ -114,7 +114,7 @@ func (o *UserRequest) SetEmail(v string) {
 
 // GetLoginAccountGroupId returns the LoginAccountGroupId field value if set, zero value otherwise.
 func (o *UserRequest) GetLoginAccountGroupId() string {
-	if o == nil || core.IsNil(o.LoginAccountGroupId) {
+	if o == nil || utils.IsNil(o.LoginAccountGroupId) {
 		var ret string
 		return ret
 	}
@@ -124,7 +124,7 @@ func (o *UserRequest) GetLoginAccountGroupId() string {
 // GetLoginAccountGroupIdOk returns a tuple with the LoginAccountGroupId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserRequest) GetLoginAccountGroupIdOk() (*string, bool) {
-	if o == nil || core.IsNil(o.LoginAccountGroupId) {
+	if o == nil || utils.IsNil(o.LoginAccountGroupId) {
 		return nil, false
 	}
 	return o.LoginAccountGroupId, true
@@ -132,7 +132,7 @@ func (o *UserRequest) GetLoginAccountGroupIdOk() (*string, bool) {
 
 // HasLoginAccountGroupId returns a boolean if a field has been set.
 func (o *UserRequest) HasLoginAccountGroupId() bool {
-	if o != nil && !core.IsNil(o.LoginAccountGroupId) {
+	if o != nil && !utils.IsNil(o.LoginAccountGroupId) {
 		return true
 	}
 
@@ -146,7 +146,7 @@ func (o *UserRequest) SetLoginAccountGroupId(v string) {
 
 // GetAccountGroupRoles returns the AccountGroupRoles field value if set, zero value otherwise.
 func (o *UserRequest) GetAccountGroupRoles() []UserAccountGroupRole {
-	if o == nil || core.IsNil(o.AccountGroupRoles) {
+	if o == nil || utils.IsNil(o.AccountGroupRoles) {
 		var ret []UserAccountGroupRole
 		return ret
 	}
@@ -156,7 +156,7 @@ func (o *UserRequest) GetAccountGroupRoles() []UserAccountGroupRole {
 // GetAccountGroupRolesOk returns a tuple with the AccountGroupRoles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserRequest) GetAccountGroupRolesOk() ([]UserAccountGroupRole, bool) {
-	if o == nil || core.IsNil(o.AccountGroupRoles) {
+	if o == nil || utils.IsNil(o.AccountGroupRoles) {
 		return nil, false
 	}
 	return o.AccountGroupRoles, true
@@ -164,7 +164,7 @@ func (o *UserRequest) GetAccountGroupRolesOk() ([]UserAccountGroupRole, bool) {
 
 // HasAccountGroupRoles returns a boolean if a field has been set.
 func (o *UserRequest) HasAccountGroupRoles() bool {
-	if o != nil && !core.IsNil(o.AccountGroupRoles) {
+	if o != nil && !utils.IsNil(o.AccountGroupRoles) {
 		return true
 	}
 
@@ -178,7 +178,7 @@ func (o *UserRequest) SetAccountGroupRoles(v []UserAccountGroupRole) {
 
 // GetAllAccountGroupRoleIds returns the AllAccountGroupRoleIds field value if set, zero value otherwise.
 func (o *UserRequest) GetAllAccountGroupRoleIds() []string {
-	if o == nil || core.IsNil(o.AllAccountGroupRoleIds) {
+	if o == nil || utils.IsNil(o.AllAccountGroupRoleIds) {
 		var ret []string
 		return ret
 	}
@@ -188,7 +188,7 @@ func (o *UserRequest) GetAllAccountGroupRoleIds() []string {
 // GetAllAccountGroupRoleIdsOk returns a tuple with the AllAccountGroupRoleIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserRequest) GetAllAccountGroupRoleIdsOk() ([]string, bool) {
-	if o == nil || core.IsNil(o.AllAccountGroupRoleIds) {
+	if o == nil || utils.IsNil(o.AllAccountGroupRoleIds) {
 		return nil, false
 	}
 	return o.AllAccountGroupRoleIds, true
@@ -196,7 +196,7 @@ func (o *UserRequest) GetAllAccountGroupRoleIdsOk() ([]string, bool) {
 
 // HasAllAccountGroupRoleIds returns a boolean if a field has been set.
 func (o *UserRequest) HasAllAccountGroupRoleIds() bool {
-	if o != nil && !core.IsNil(o.AllAccountGroupRoleIds) {
+	if o != nil && !utils.IsNil(o.AllAccountGroupRoleIds) {
 		return true
 	}
 
@@ -209,7 +209,7 @@ func (o *UserRequest) SetAllAccountGroupRoleIds(v []string) {
 }
 
 func (o UserRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -218,19 +218,19 @@ func (o UserRequest) MarshalJSON() ([]byte, error) {
 
 func (o UserRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !core.IsNil(o.Name) {
+	if !utils.IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !core.IsNil(o.Email) {
+	if !utils.IsNil(o.Email) {
 		toSerialize["email"] = o.Email
 	}
-	if !core.IsNil(o.LoginAccountGroupId) {
+	if !utils.IsNil(o.LoginAccountGroupId) {
 		toSerialize["loginAccountGroupId"] = o.LoginAccountGroupId
 	}
-	if !core.IsNil(o.AccountGroupRoles) {
+	if !utils.IsNil(o.AccountGroupRoles) {
 		toSerialize["accountGroupRoles"] = o.AccountGroupRoles
 	}
-	if !core.IsNil(o.AllAccountGroupRoleIds) {
+	if !utils.IsNil(o.AllAccountGroupRoleIds) {
 		toSerialize["allAccountGroupRoleIds"] = o.AllAccountGroupRoleIds
 	}
 	return toSerialize, nil
@@ -271,5 +271,3 @@ func (v *NullableUserRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

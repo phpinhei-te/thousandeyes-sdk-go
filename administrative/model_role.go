@@ -12,11 +12,11 @@ package administrative
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 )
 
 // checks if the Role type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &Role{}
+var _ utils.MappedNullable = &Role{}
 
 // Role struct for Role
 type Role struct {
@@ -49,7 +49,7 @@ func NewRoleWithDefaults() *Role {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Role) GetName() string {
-	if o == nil || core.IsNil(o.Name) {
+	if o == nil || utils.IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -59,7 +59,7 @@ func (o *Role) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Role) GetNameOk() (*string, bool) {
-	if o == nil || core.IsNil(o.Name) {
+	if o == nil || utils.IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -67,7 +67,7 @@ func (o *Role) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *Role) HasName() bool {
-	if o != nil && !core.IsNil(o.Name) {
+	if o != nil && !utils.IsNil(o.Name) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *Role) SetName(v string) {
 
 // GetRoleId returns the RoleId field value if set, zero value otherwise.
 func (o *Role) GetRoleId() string {
-	if o == nil || core.IsNil(o.RoleId) {
+	if o == nil || utils.IsNil(o.RoleId) {
 		var ret string
 		return ret
 	}
@@ -91,7 +91,7 @@ func (o *Role) GetRoleId() string {
 // GetRoleIdOk returns a tuple with the RoleId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Role) GetRoleIdOk() (*string, bool) {
-	if o == nil || core.IsNil(o.RoleId) {
+	if o == nil || utils.IsNil(o.RoleId) {
 		return nil, false
 	}
 	return o.RoleId, true
@@ -99,7 +99,7 @@ func (o *Role) GetRoleIdOk() (*string, bool) {
 
 // HasRoleId returns a boolean if a field has been set.
 func (o *Role) HasRoleId() bool {
-	if o != nil && !core.IsNil(o.RoleId) {
+	if o != nil && !utils.IsNil(o.RoleId) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *Role) SetRoleId(v string) {
 
 // GetIsBuiltin returns the IsBuiltin field value if set, zero value otherwise.
 func (o *Role) GetIsBuiltin() bool {
-	if o == nil || core.IsNil(o.IsBuiltin) {
+	if o == nil || utils.IsNil(o.IsBuiltin) {
 		var ret bool
 		return ret
 	}
@@ -123,7 +123,7 @@ func (o *Role) GetIsBuiltin() bool {
 // GetIsBuiltinOk returns a tuple with the IsBuiltin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Role) GetIsBuiltinOk() (*bool, bool) {
-	if o == nil || core.IsNil(o.IsBuiltin) {
+	if o == nil || utils.IsNil(o.IsBuiltin) {
 		return nil, false
 	}
 	return o.IsBuiltin, true
@@ -131,7 +131,7 @@ func (o *Role) GetIsBuiltinOk() (*bool, bool) {
 
 // HasIsBuiltin returns a boolean if a field has been set.
 func (o *Role) HasIsBuiltin() bool {
-	if o != nil && !core.IsNil(o.IsBuiltin) {
+	if o != nil && !utils.IsNil(o.IsBuiltin) {
 		return true
 	}
 
@@ -145,7 +145,7 @@ func (o *Role) SetIsBuiltin(v bool) {
 
 // GetHasManagementPermissions returns the HasManagementPermissions field value if set, zero value otherwise.
 func (o *Role) GetHasManagementPermissions() bool {
-	if o == nil || core.IsNil(o.HasManagementPermissions) {
+	if o == nil || utils.IsNil(o.HasManagementPermissions) {
 		var ret bool
 		return ret
 	}
@@ -155,7 +155,7 @@ func (o *Role) GetHasManagementPermissions() bool {
 // GetHasManagementPermissionsOk returns a tuple with the HasManagementPermissions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Role) GetHasManagementPermissionsOk() (*bool, bool) {
-	if o == nil || core.IsNil(o.HasManagementPermissions) {
+	if o == nil || utils.IsNil(o.HasManagementPermissions) {
 		return nil, false
 	}
 	return o.HasManagementPermissions, true
@@ -163,7 +163,7 @@ func (o *Role) GetHasManagementPermissionsOk() (*bool, bool) {
 
 // HasHasManagementPermissions returns a boolean if a field has been set.
 func (o *Role) HasHasManagementPermissions() bool {
-	if o != nil && !core.IsNil(o.HasManagementPermissions) {
+	if o != nil && !utils.IsNil(o.HasManagementPermissions) {
 		return true
 	}
 
@@ -176,7 +176,7 @@ func (o *Role) SetHasManagementPermissions(v bool) {
 }
 
 func (o Role) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -185,16 +185,16 @@ func (o Role) MarshalJSON() ([]byte, error) {
 
 func (o Role) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !core.IsNil(o.Name) {
+	if !utils.IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !core.IsNil(o.RoleId) {
+	if !utils.IsNil(o.RoleId) {
 		toSerialize["roleId"] = o.RoleId
 	}
-	if !core.IsNil(o.IsBuiltin) {
+	if !utils.IsNil(o.IsBuiltin) {
 		toSerialize["isBuiltin"] = o.IsBuiltin
 	}
-	if !core.IsNil(o.HasManagementPermissions) {
+	if !utils.IsNil(o.HasManagementPermissions) {
 		toSerialize["hasManagementPermissions"] = o.HasManagementPermissions
 	}
 	return toSerialize, nil
@@ -235,5 +235,3 @@ func (v *NullableRole) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

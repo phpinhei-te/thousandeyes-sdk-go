@@ -12,7 +12,6 @@ package administrative
 
 import (
 	"encoding/json"
-    
 	"fmt"
 )
 
@@ -21,7 +20,7 @@ type ExpandAccountGroupOptions string
 
 // List of ExpandAccountGroupOptions
 const (
-	EXPANDACCOUNTGROUPOPTIONS_USER ExpandAccountGroupOptions = "user"
+	EXPANDACCOUNTGROUPOPTIONS_USER  ExpandAccountGroupOptions = "user"
 	EXPANDACCOUNTGROUPOPTIONS_AGENT ExpandAccountGroupOptions = "agent"
 )
 
@@ -109,4 +108,3 @@ func (v *NullableExpandAccountGroupOptions) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

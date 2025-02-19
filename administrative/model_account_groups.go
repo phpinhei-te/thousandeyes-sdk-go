@@ -12,16 +12,16 @@ package administrative
 
 import (
 	"encoding/json"
-    "github.com/thousandeyes/thousandeyes-sdk-go/v3/core"
+	"github.com/thousandeyes/thousandeyes-sdk-go/v3/internal/utils"
 )
 
 // checks if the AccountGroups type satisfies the MappedNullable interface at compile time
-var _ core.MappedNullable = &AccountGroups{}
+var _ utils.MappedNullable = &AccountGroups{}
 
 // AccountGroups struct for AccountGroups
 type AccountGroups struct {
 	AccountGroups []AccountGroupInfo `json:"accountGroups,omitempty"`
-	Links *SelfLinks `json:"_links,omitempty"`
+	Links         *SelfLinks         `json:"_links,omitempty"`
 }
 
 // NewAccountGroups instantiates a new AccountGroups object
@@ -43,7 +43,7 @@ func NewAccountGroupsWithDefaults() *AccountGroups {
 
 // GetAccountGroups returns the AccountGroups field value if set, zero value otherwise.
 func (o *AccountGroups) GetAccountGroups() []AccountGroupInfo {
-	if o == nil || core.IsNil(o.AccountGroups) {
+	if o == nil || utils.IsNil(o.AccountGroups) {
 		var ret []AccountGroupInfo
 		return ret
 	}
@@ -53,7 +53,7 @@ func (o *AccountGroups) GetAccountGroups() []AccountGroupInfo {
 // GetAccountGroupsOk returns a tuple with the AccountGroups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountGroups) GetAccountGroupsOk() ([]AccountGroupInfo, bool) {
-	if o == nil || core.IsNil(o.AccountGroups) {
+	if o == nil || utils.IsNil(o.AccountGroups) {
 		return nil, false
 	}
 	return o.AccountGroups, true
@@ -61,7 +61,7 @@ func (o *AccountGroups) GetAccountGroupsOk() ([]AccountGroupInfo, bool) {
 
 // HasAccountGroups returns a boolean if a field has been set.
 func (o *AccountGroups) HasAccountGroups() bool {
-	if o != nil && !core.IsNil(o.AccountGroups) {
+	if o != nil && !utils.IsNil(o.AccountGroups) {
 		return true
 	}
 
@@ -75,7 +75,7 @@ func (o *AccountGroups) SetAccountGroups(v []AccountGroupInfo) {
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *AccountGroups) GetLinks() SelfLinks {
-	if o == nil || core.IsNil(o.Links) {
+	if o == nil || utils.IsNil(o.Links) {
 		var ret SelfLinks
 		return ret
 	}
@@ -85,7 +85,7 @@ func (o *AccountGroups) GetLinks() SelfLinks {
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountGroups) GetLinksOk() (*SelfLinks, bool) {
-	if o == nil || core.IsNil(o.Links) {
+	if o == nil || utils.IsNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -93,7 +93,7 @@ func (o *AccountGroups) GetLinksOk() (*SelfLinks, bool) {
 
 // HasLinks returns a boolean if a field has been set.
 func (o *AccountGroups) HasLinks() bool {
-	if o != nil && !core.IsNil(o.Links) {
+	if o != nil && !utils.IsNil(o.Links) {
 		return true
 	}
 
@@ -106,7 +106,7 @@ func (o *AccountGroups) SetLinks(v SelfLinks) {
 }
 
 func (o AccountGroups) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -115,10 +115,10 @@ func (o AccountGroups) MarshalJSON() ([]byte, error) {
 
 func (o AccountGroups) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !core.IsNil(o.AccountGroups) {
+	if !utils.IsNil(o.AccountGroups) {
 		toSerialize["accountGroups"] = o.AccountGroups
 	}
-	if !core.IsNil(o.Links) {
+	if !utils.IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
 	return toSerialize, nil
@@ -159,5 +159,3 @@ func (v *NullableAccountGroups) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
